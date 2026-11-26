@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAS Ganjil Bahasa Arab XII — Latihan & Pembahasan</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --accent: #0d9488;
+      --accent-light: #fef9c3;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #bfdbfe;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --danger: #475569;
+      --danger-bg: #e2e8f0;
+      --info: #0369a1;
+      --info-bg: #e0f2fe;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(37, 99, 235, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .topbar {
+      background: linear-gradient(135deg, #0f172a, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 18px 24px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.22);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: #bfdbfe;
+    }
+
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand p {
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-btn {
+      background: #fff;
+      color: var(--primary-dark);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .mode-btn:hover {
+      background: #bfdbfe;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 18px 48px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    /* Progress Bar */
+    .progress-wrap {
+      margin-bottom: 18px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-dark), #3b82f6);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Question Meta */
+    .q-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.2px;
+    }
+
+    .tag-num {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .tag-type {
+      background: #ccfbf1;
+      color: #115e59;
+      border: 1px solid #99f6e4;
+    }
+
+    .tag-cog {
+      background: var(--info-bg);
+      color: var(--info);
+    }
+
+    .tag-topic {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+    }
+
+    .q-text {
+      font-size: 1.03rem;
+      color: var(--text);
+      margin-bottom: 18px;
+      white-space: pre-line;
+      font-weight: 600;
+    }
+
+    .q-narasi {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 16px;
+      font-size: 0.96rem;
+      color: #334155;
+    }
+
+    .arab {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+      font-size: 1.38rem;
+      line-height: 2.1;
+      color: #0f172a;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin: 8px 0;
+    }
+
+    .arab-inline {
+      direction: rtl;
+      unicode-bidi: isolate;
+      font-family: 'Amiri', 'Traditional Arabic', serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+    }
+
+    /* Options PG */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 16px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      background: #fff;
+    }
+
+    .option-item:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16);
+    }
+
+    .option-item.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .option-item.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .option-letter {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .option-item.selected .option-letter {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .option-item.correct .option-letter {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .option-item.wrong .option-letter {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* PGK Benar/Salah Table */
+    .bs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+
+    .bs-table th {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .bs-table th.center,
+    .bs-table td.center {
+      text-align: center;
+      width: 82px;
+    }
+
+    .bs-table td {
+      padding: 12px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.94rem;
+      vertical-align: middle;
+    }
+
+    .bs-table tr.row-correct {
+      background: var(--success-bg);
+    }
+
+    .bs-table tr.row-wrong {
+      background: var(--danger-bg);
+    }
+
+    .bs-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .bs-btn.active-b {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .bs-btn.active-s {
+      background: #334155;
+      color: #fff;
+      border-color: #334155;
+    }
+
+    /* PGK Checklist */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 16px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.18s;
+      background: #fff;
+    }
+
+    .check-item:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .check-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .check-item.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .check-item.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid #94a3b8;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .check-item.selected .check-box {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Pembahasan Box */
+    .bahas-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #eff6ff;
+      border: 1.5px solid #93c5fd;
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .bahas-box.show {
+      display: block;
+    }
+
+    .bahas-title {
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.96rem;
+    }
+
+    .bahas-key {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .bahas-text {
+      font-size: 0.93rem;
+      color: #1e293b;
+      white-space: pre-line;
+    }
+
+    /* Action Footer */
+    .q-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #f1f5f9;
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-bahas {
+      background: var(--accent-light);
+      color: #713f12;
+      border-color: #eab308;
+    }
+
+    .btn-bahas:hover:not(:disabled) {
+      background: #fef08a;
+    }
+
+    .btn-finish {
+      background: #0d9488;
+      color: #fff;
+      border-color: #0d9488;
+    }
+
+    .btn-finish:hover:not(:disabled) {
+      background: #0f766e;
+    }
+
+    /* Sidebar Navigator */
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .nav-btn {
+      height: 38px;
+      border-radius: 9px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.15s;
+      color: var(--text);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--primary);
+    }
+
+    .nav-btn.current {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .nav-btn.answered {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .nav-btn.eval-correct {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .nav-btn.eval-wrong {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    .summary-banner {
+      display: none;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-banner.show {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .score-big {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #bfdbfe;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">ع</div>
+        <div>
+          <h1>SAS Ganjil Bahasa Arab — Kelas XII</h1>
+          <p>Peradaban Islam, Ilmuwan Muslim, Nahwu &amp; Sharaf • 40 Soal Sesuai Kisi-Kisi</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="pill" id="answeredCount">Terjawab: 0 / 40</span>
+        <button class="mode-btn" id="toggleAutoBahas" onclick="toggleModeBahas()">
+          Mode Bahas Langsung: OFF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div>
+      <!-- Hasil Akhir Banner -->
+      <section class="summary-banner" id="summaryBanner">
+        <div>
+          <div style="font-size:0.85rem; opacity:0.9; font-weight:600;">HASIL EVALUASI SAS GANJIL BAHASA ARAB</div>
+          <div class="score-big" id="finalScoreText">0 / 100</div>
+          <div style="font-size:0.9rem; margin-top:4px;" id="finalDetailText">Benar: 0 dari 40 soal</div>
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="resetQuiz()">Ulangi Latihan</button>
+          <button class="btn btn-bahas" onclick="showAllBahasMode()">Buka Semua Pembahasan</button>
+        </div>
+      </section>
+
+      <!-- Card Soal Utama -->
+      <section class="card" id="questionCard">
+        <div class="progress-wrap">
+          <div class="progress-header">
+            <span id="progressLabel">Soal 1 dari 40</span>
+            <span id="progressPercent">2.5%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="q-meta" id="qMeta"></div>
+        <div class="q-narasi" id="qNarasi"></div>
+        <div class="q-text" id="qText"></div>
+
+        <div id="qInputArea"></div>
+
+        <!-- Fitur Bahas -->
+        <div class="bahas-box" id="bahasBox">
+          <div class="bahas-title">📖 Pembahasan Soal</div>
+          <div class="bahas-key" id="bahasKey"></div>
+          <div class="bahas-text" id="bahasText"></div>
+        </div>
+
+        <div class="q-footer">
+          <div class="btn-group">
+            <button class="btn" id="prevBtn" onclick="goTo(currentIndex - 1)">← Sebelumnya</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="goTo(currentIndex + 1)">Selanjutnya →</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-bahas" id="bahasBtn" onclick="toggleBahas()">💡 Bahas Soal Ini</button>
+            <button class="btn btn-finish" onclick="finishQuiz()">✅ Selesai &amp; Nilai</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar Navigasi -->
+    <aside class="card sidebar-card">
+      <h3>Navigasi Soal (1–40)</h3>
+      <div class="legend">
+        <span><i class="dot" style="background:#fff; border:1.5px solid #cbd5e1;"></i> Belum</span>
+        <span><i class="dot" style="background:var(--primary);"></i> Dijawab</span>
+        <span><i class="dot" style="background:var(--success);"></i> Benar</span>
+        <span><i class="dot" style="background:var(--danger);"></i> Salah</span>
+      </div>
+      <div class="nav-grid" id="navGrid"></div>
+      <div style="font-size:0.8rem; color:var(--muted); line-height:1.5;">
+        <strong>Struktur Kisi-Kisi:</strong><br />
+        • No. 1–30: Pilihan Ganda (PG)<br />
+        • No. 31–35: Benar / Salah<br />
+        • No. 36–40: Checklist
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const QUESTIONS = [
+      // ===================== SOAL 1 - 30 (PILIHAN GANDA) =====================
+      {
+        no: 1,
+        type: "PG",
+        cog: "C2",
+        topic: "Peradaban Islam • Sejarah Awal Peradaban Islam",
+        narasi: `<div class="arab">بَدَأَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ مُنْذُ بِعْثَةِ النَّبِيِّ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي مَكَّةَ الْمُكَرَّمَةِ، ثُمَّ تَطَوَّرَتْ فِي الْمَدِينَةِ الْمُنَوَّرَةِ بِإِنْشَاءِ الْمُجْتَمَعِ الْمَدَنِيِّ الْأَوَّلِ.</div>`,
+        question: "Berdasarkan teks berbahasa Arab di atas, kapan dimulainya peradaban Islam?",
+        options: [
+          "Sejak berdirinya Dinasti Abbasiyah di Baghdad",
+          "Sejak diutusnya Nabi Muhammad SAW di Makkah al-Mukarramah",
+          "Sejak berakhirnya masa Khulafaur Rasyidin",
+          "Sejak dibangunnya Universitas Al-Azhar di Kairo",
+          "Sejak masuknya Islam ke wilayah Andalusia"
+        ],
+        answer: 1,
+        bahas: "Kalimat 'Bada'atil-ḥaḍāratul-islāmiyyatu munżu bi'ṡatin-nabiyyi Muḥammadin SAW fī Makkatal-Mukarramah' berarti: Peradaban Islam dimulai sejak diutusnya Nabi Muhammad SAW di Makkah al-Mukarramah."
+      },
+      {
+        no: 2,
+        type: "PG",
+        cog: "C3",
+        topic: "Nahwu • Fi'il Mudhari' Manshub setelah أنْ",
+        narasi: `<div class="arab">يَجِبُ عَلَى الطُّلَّابِ أَنْ .......... فِي طَلَبِ الْعِلْمِ بِإِخْلَاصٍ.</div>`,
+        question: "Bentuk fi'il mudhari' manshub yang tepat setelah (أَنْ) sesuai dhamir jamak mudzakkar (هُمْ) adalah...",
+        options: [
+          "<span class='arab-inline'>يَجْتَهِدُونَ</span>",
+          "<span class='arab-inline'>يَجْتَهِدُوا</span>",
+          "<span class='arab-inline'>يَجْتَهِدُ</span>",
+          "<span class='arab-inline'>تَجْتَهِدُوا</span>",
+          "<span class='arab-inline'>يَجْتَهِدَانِ</span>"
+        ],
+        answer: 1,
+        bahas: "Fi'il mudhari' dari af'alul khamsah (jamak mudzakkar يَجْتَهِدُونَ) apabila didahului huruf nashab (أَنْ) menjadi manshub dengan tanda hadzfun-nun (menghilangkan huruf nun) dan ditambah alif fariqah: يَجْتَهِدُوا."
+      },
+      {
+        no: 3,
+        type: "PG",
+        cog: "C3",
+        topic: "Nahwu • Dhamir dan Kesesuaian Fi'il (أنتم)",
+        narasi: `<div class="arab">يَا أَيُّهَا التَّلَامِيذُ، أَنْتُمْ .......... كُتُبَ التَّارِيخِ الْإِسْلَامِيِّ فِي الْمَكْتَبَةِ.</div>`,
+        question: "Bentuk fi'il mudhari' yang tepat sesuai dengan dhamir (أَنْتُمْ) dalam kalimat tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>يَقْرَؤُونَ</span>",
+          "<span class='arab-inline'>تَقْرَأُ</span>",
+          "<span class='arab-inline'>تَقْرَؤُونَ</span>",
+          "<span class='arab-inline'>تَقْرَآنِ</span>",
+          "<span class='arab-inline'>نَقْرَأُ</span>"
+        ],
+        answer: 2,
+        bahas: "Untuk dhamir mukhathab jamak mudzakkar أَنْتُمْ (kalian laki-laki), fi'il mudhari'nya diawali ta' mudhara'ah dan diakhiri wawu jamak serta nun: تَقْرَؤُونَ."
+      },
+      {
+        no: 4,
+        type: "PG",
+        cog: "C3",
+        topic: "Nahwu • Fi'il Mudhari' Majzum setelah لم",
+        narasi: `<div class="arab">لَمْ .......... الطَّالِبُ الْكَسْلَانُ إِلَى الْمَدْرَسَةِ أَمْسِ.</div>`,
+        question: "Bentuk fi'il mudhari' majzum yang tepat setelah huruf jazm (لَمْ) dalam kalimat negatif tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>يَذْهَبُ</span>",
+          "<span class='arab-inline'>يَذْهَبَ</span>",
+          "<span class='arab-inline'>يَذْهَبْ</span>",
+          "<span class='arab-inline'>يَذْهَبُوا</span>",
+          "<span class='arab-inline'>ذَهَبَ</span>"
+        ],
+        answer: 2,
+        bahas: "Huruf لَمْ men-jazm-kan fi'il mudhari'. Karena fi'il shahih akhir untuk dhamir هُوَ, tanda jazmnya adalah sukun: يَذْهَبْ."
+      },
+      {
+        no: 5,
+        type: "PG",
+        cog: "C3",
+        topic: "Nahwu • Dhamir أنتم (Tanggung Jawab Mencari Ilmu)",
+        narasi: `<div class="arab">أَنْتُمْ يَا شَبَابَ الْإِسْلَامِ .......... مَسْؤُولِيَّةَ طَلَبِ الْعِلْمِ وَنَشْرِ الْحَضَارَةِ.</div>`,
+        question: "Bentuk fi'il yang tepat untuk dhamir (أَنْتُمْ) dalam kalimat tentang tanggung jawab mencari ilmu tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>تَتَحَمَّلُ</span>",
+          "<span class='arab-inline'>يَتَحَمَّلُونَ</span>",
+          "<span class='arab-inline'>تَتَحَمَّلُونَ</span>",
+          "<span class='arab-inline'>نَتَحَمَّلُ</span>",
+          "<span class='arab-inline'>تَتَحَمَّلِينَ</span>"
+        ],
+        answer: 2,
+        bahas: "Dhamir أَنْتُمْ berpasangan dengan fi'il mudhari' تَتَحَمَّلُونَ (kalian memikul/bertanggung jawab)."
+      },
+      {
+        no: 6,
+        type: "PG",
+        cog: "C3",
+        topic: "Nahwu • Fi'il Mudhari' setelah أنْ untuk Dhamir أنتما",
+        narasi: `<div class="arab">أَنْتُمَا يَا صَدِيقَيَّ، يَنْبَغِي لَكُمَا أَنْ .......... إِلَى دُرُوسِ الْعُلَمَاءِ.</div>`,
+        question: "Bentuk fi'il mudhari' manshub yang tepat setelah (أَنْ) untuk dhamir mutsanna (أَنْتُمَا) adalah...",
+        options: [
+          "<span class='arab-inline'>تَسْتَمِعَانِ</span>",
+          "<span class='arab-inline'>تَسْتَمِعَا</span>",
+          "<span class='arab-inline'>يَسْتَمِعَا</span>",
+          "<span class='arab-inline'>تَسْتَمِعُوا</span>",
+          "<span class='arab-inline'>تَسْتَمِعَ</span>"
+        ],
+        answer: 1,
+        bahas: "Untuk dhamir أَنْتُمَا (kalian berdua), bentuk asal af'alul khamsahnya adalah تَسْتَمِعَانِ. Setelah dimasuki huruf nashab أَنْ, huruf nun dibuang menjadi: تَسْتَمِعَا."
+      },
+      {
+        no: 7,
+        type: "PG",
+        cog: "C2",
+        topic: "Sejarah Peradaban Islam • Masa Keemasan",
+        narasi: `<div class="arab">بَلَغَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ ذُرْوَةَ تَقَدُّمِهَا فِي الْعُلُومِ وَالْفُنُونِ وَالثَّقَافَةِ فِي الْعَصْرِ الْعَبَّاسِيِّ، خَاصَّةً فِي عَهْدِ هَارُونَ الرَّشِيدِ وَابْنِهِ الْمَأْمُونِ.</div>`,
+        question: "Berdasarkan teks tersebut, periode yang disebut sebagai masa keemasan (puncak kemajuan) peradaban Islam adalah...",
+        options: [
+          "Masa Bani Umayyah di Damaskus",
+          "Masa Dinasti Abbasiyah (Al-'Ashrul 'Abbasi)",
+          "Masa Kesultanan Utsmaniyah di Turki",
+          "Masa Fatimiyah di Mesir",
+          "Masa Jahiliyah di Jazirah Arab"
+        ],
+        answer: 1,
+        bahas: "Teks menyebutkan 'balaghatil-ḥaḍāratul-islāmiyyatu żurwata taqaddumihā... fil-'aṣril-'abbāsī' (puncak kemajuan pada masa Abbasiyah, khususnya era Harun ar-Rasyid dan Al-Ma'mun)."
+      },
+      {
+        no: 8,
+        type: "PG",
+        cog: "C2",
+        topic: "Sejarah Peradaban Islam • Aspek Kehidupan Material",
+        narasi: `<div class="arab">شَهِدَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ تَطَوُّرًا كَبِيرًا فِي الْحَيَاةِ الْمَادِّيَّةِ مِثْلَ بِنَاءِ الْمُسْتَشْفَيَاتِ وَالْمَدَارِسِ وَالْمَسَاجِدِ وَتَطْوِيرِ الزِّرَاعَةِ وَالتِّجَارَةِ.</div>`,
+        question: "Aspek kehidupan material yang mengalami perkembangan dalam peradaban Islam berdasarkan teks di atas adalah...",
+        options: [
+          "Pembangunan rumah sakit, sekolah, masjid, serta pengembangan pertanian dan perdagangan",
+          "Hanya penulisan syair-syair cinta di istana",
+          "Penutupan pasar-pasar tradisional di Baghdad",
+          "Penghapusan sistem irigasi dan pertanian",
+          "Larangan membangun sekolah dan rumah sakit umum"
+        ],
+        answer: 0,
+        bahas: "Teks menyebut aspek kehidupan material (al-ḥayāh al-māddiyyah): binā'ul-mustasyfayāt (pembangunan rumah sakit), al-madāris (sekolah), al-masājid (masjid), serta taṭwīruz-zirā'ah wat-tijārah (pertanian dan perdagangan)."
+      },
+      {
+        no: 9,
+        type: "PG",
+        cog: "C1",
+        topic: "Kosakata Bahasa Arab • Antonim (مضاد)",
+        narasi: `<div class="arab">انْتَشَرَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ فِي الْعَالَمِ بِشَكْلٍ <u>سَرِيعٍ</u>.</div>`,
+        question: "Antonim (مُضَادّ) dari kosakata bergaris bawah (سَرِيعٌ) yang berarti 'cepat' adalah...",
+        options: [
+          "<span class='arab-inline'>كَثِيرٌ</span>",
+          "<span class='arab-inline'>بَطِيءٌ</span>",
+          "<span class='arab-inline'>عَظِيمٌ</span>",
+          "<span class='arab-inline'>قَرِيبٌ</span>",
+          "<span class='arab-inline'>جَدِيدٌ</span>"
+        ],
+        answer: 1,
+        bahas: "سَرِيعٌ berarti cepat, lawan katanya (antonim) adalah بَطِيءٌ yang berarti lambat."
+      },
+      {
+        no: 10,
+        type: "PG",
+        cog: "C1",
+        topic: "Tokoh Ilmuwan Muslim • Biografi Imam Bukhari",
+        narasi: `<div class="arab">.......... الْإِمَامُ الْبُخَارِيُّ فِي مَدِينَةِ بُخَارَى سَنَةَ ١٩٤ هِجْرِيَّةً.</div>`,
+        question: "Kata kerja pasif (fi'il madhi majhul) yang tepat untuk melengkapi informasi kelahiran Imam Bukhari tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>تُوُفِّيَ</span> (wafat)",
+          "<span class='arab-inline'>وُلِدَ</span> (dilahirkan)",
+          "<span class='arab-inline'>سَافَرَ</span> (bepergian)",
+          "<span class='arab-inline'>أَلَّفَ</span> (mengarang)",
+          "<span class='arab-inline'>دَرَسَ</span> (belajar)"
+        ],
+        answer: 1,
+        bahas: "Imam Bukhari dilahirkan di kota Bukhara pada tahun 194 H. Kata kerja untuk 'dilahirkan' adalah وُلِدَ."
+      },
+      {
+        no: 11,
+        type: "PG",
+        cog: "C2",
+        topic: "Nahwu • Isim Tafdhil",
+        narasi: `<div class="arab">يُعَدُّ كِتَابُ صَحِيحِ الْبُخَارِيِّ .......... كِتَابٍ بَعْدَ الْقُرْآنِ الْكَرِيمِ عِنْدَ أَهْلِ السُّنَّةِ.</div>`,
+        question: "Bentuk isim tafdhil yang tepat untuk melengkapi kalimat tentang keunggulan kitab Shahih Bukhari sebagai 'kitab paling sahih' adalah...",
+        options: [
+          "<span class='arab-inline'>صَحِيحُ</span>",
+          "<span class='arab-inline'>أَصَحَّ</span> / <span class='arab-inline'>أَصَحُّ</span>",
+          "<span class='arab-inline'>مَصْحُوحُ</span>",
+          "<span class='arab-inline'>يَصِحُّ</span>",
+          "<span class='arab-inline'>صَاحِبُ</span>"
+        ],
+        answer: 1,
+        bahas: "Isim tafdhil berwazan أَفْعَلُ untuk kata صَحِيح adalah أَصَحُّ (paling sahih): أَصَحُّ كِتَابٍ بَعْدَ الْقُرْآنِ."
+      },
+      {
+        no: 12,
+        type: "PG",
+        cog: "C1",
+        topic: "Tata Bahasa Arab • Bilangan Bertingkat (الأعداد الترتيبية)",
+        narasi: `<div class="arab">الْأَئِمَّةُ الْأَرْبَعَةُ هُمْ: الْإِمَامُ أَبُو حَنِيفَةَ، وَالْإِمَامُ مَالِكٌ، وَالْإِمَامُ الشَّافِعِيُّ، وَالْإِمَامُ أَحْمَدُ بْنُ حَنْبَلٍ.</div>`,
+        question: "Berdasarkan urutan dalam kalimat tersebut, bilangan bertingkat yang tepat untuk urutan Imam Syafi'i adalah...",
+        options: [
+          "<span class='arab-inline'>الْأَوَّلُ</span> (pertama)",
+          "<span class='arab-inline'>الثَّانِي</span> (kedua)",
+          "<span class='arab-inline'>الثَّالِثُ</span> (ketiga)",
+          "<span class='arab-inline'>الرَّابِعُ</span> (keempat)",
+          "<span class='arab-inline'>الْخَامِسُ</span> (kelima)"
+        ],
+        answer: 2,
+        bahas: "Urutan dalam kalimat: 1. Abu Hanifah (الْأَوَّلُ), 2. Malik (الثَّانِي), 3. Asy-Syafi'i (الثَّالِثُ), 4. Ahmad bin Hambal (الرَّابِعُ)."
+      },
+      {
+        no: 13,
+        type: "PG",
+        cog: "C3",
+        topic: "Tokoh Ilmuwan Muslim • Ulama Bidang Ilmu Agama",
+        narasi: "Perhatikan daftar nama tokoh Muslim berikut: (1) Imam Bukhari, (2) Ibnu Sina, (3) Imam Al-Ghazali, (4) Jabir bin Hayyan, (5) Imam Asy-Syafi'i, (6) Al-Khawarizmi.",
+        question: "Kelompok tokoh Muslim yang termasuk ulama bidang ilmu agama (Hadis, Fikih, Tasawuf/Akidah) ditunjukkan oleh nomor...",
+        options: [
+          "(1), (2), dan (4)",
+          "(1), (3), dan (5)",
+          "(2), (4), dan (6)",
+          "(3), (4), dan (6)",
+          "(2), (5), dan (6)"
+        ],
+        answer: 1,
+        bahas: "Imam Bukhari (ilmu hadis), Imam Al-Ghazali (tasawuf/fikih/filsafat Islam), dan Imam Asy-Syafi'i (fikih/usul fikih) adalah ulama bidang ilmu agama. Sedangkan Ibnu Sina, Jabir bin Hayyan, dan Al-Khawarizmi adalah ilmuwan ilmu umum."
+      },
+      {
+        no: 14,
+        type: "PG",
+        cog: "C3",
+        topic: "Hiwar • Menyusun Pertanyaan Tentang Gelar Hujjatul Islam",
+        narasi: `<div class="arab">أَحْمَدُ : .......................... ؟<br/>سَلْمَانُ : لُقِّبَ الْإِمَامُ الْغَزَالِيُّ بِـ "حُجَّةِ الْإِسْلَامِ".</div>`,
+        question: "Pertanyaan yang paling sesuai untuk melengkapi dialog tentang gelar Hujjatul Islam tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>أَيْنَ وُلِدَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
+          "<span class='arab-inline'>بِمَاذَا لُقِّبَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
+          "<span class='arab-inline'>مَتَى تُوُفِّيَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
+          "<span class='arab-inline'>كَمْ كِتَابًا أَلَّفَ الْغَزَالِيُّ؟</span>",
+          "<span class='arab-inline'>مَا اسْمُ وَالِدِ الْغَزَالِيِّ؟</span>"
+        ],
+        answer: 1,
+        bahas: "Jawaban Salmān berbunyi 'Luqqibal-Imām al-Ghazālī bi-Ḥujjatil-Islām' (Imam Al-Ghazali digelari Hujjatul Islam). Maka pertanyaannya adalah 'Bimāżā luqqibal-Imām al-Ghazālī?' (Dengan gelar apa Imam Al-Ghazali dijuluki?)."
+      },
+      {
+        no: 15,
+        type: "PG",
+        cog: "C4",
+        topic: "Tokoh Ilmuwan Muslim • Analisis Ketepatan Biografi Imam Bukhari",
+        narasi: `<div class="arab">وُلِدَ الْإِمَامُ الْبُخَارِيُّ فِي بُخَارَى، وَرَحَلَ فِي طَلَبِ الْعِلْمِ، وَأَلَّفَ كِتَابَ "<u>الْقَانُونِ فِي الطِّبِّ</u>" الَّذِي يَجْمَعُ الْأَحَادِيثَ الصَّحِيحَةَ.</div>`,
+        question: "Informasi atau nama kitab yang TIDAK tepat dalam kalimat biografi Imam Bukhari di atas adalah...",
+        options: [
+          "<span class='arab-inline'>بُخَارَى</span>",
+          "<span class='arab-inline'>طَلَبِ الْعِلْمِ</span>",
+          "<span class='arab-inline'>الْقَانُونِ فِي الطِّبِّ</span>",
+          "<span class='arab-inline'>الْأَحَادِيثَ الصَّحِيحَةَ</span>",
+          "<span class='arab-inline'>وُلِدَ</span>"
+        ],
+        answer: 2,
+        bahas: "Kitab hadis sahih karya Imam Bukhari adalah 'Shahih al-Bukhari' (الْجَامِعُ الصَّحِيحُ), sedangkan 'Al-Qanun fi ath-Thibb' (الْقَانُونُ فِي الطِّبِّ) adalah kitab kedokteran karya Ibnu Sina."
+      },
+      {
+        no: 16,
+        type: "PG",
+        cog: "C2",
+        topic: "Tokoh Ilmuwan Muslim • Gagasan Utama Perjalanan Imam Bukhari",
+        narasi: `<div class="arab">رَحَلَ الْإِمَامُ الْبُخَارِيُّ إِلَى كَثِيرٍ مِنَ الْبِلَادِ مِثْلِ مَكَّةَ وَالْمَدِينَةِ وَبَغْدَادَ وَالشَّامِ وَمِصْرَ لِجَمْعِ الْأَحَادِيثِ النَّبَوِيَّةِ وَالتَّأَكُّدِ مِنْ صِحَّتِهَا.</div>`,
+        question: "Gagasan utama paragraf tersebut adalah...",
+        options: [
+          "Keindahan arsitektur kota Baghdad dan Kairo",
+          "Perjalanan Imam Bukhari ke berbagai negeri untuk mengumpulkan dan memverifikasi hadis Nabi SAW",
+          "Perdagangan sutra antara Bukhara dan Makkah",
+          "Biografi guru-guru Imam Bukhari di Andalusia",
+          "Jumlah penduduk kota Madinah pada abad ke-3 Hijriah"
+        ],
+        answer: 1,
+        bahas: "Kalimat menjelaskan rihlah ilmiah Imam Bukhari ke berbagai negeri (Makkah, Madinah, Baghdad, Syam, Mesir) untuk mengumpulkan dan meneliti kesahihan hadis."
+      },
+      {
+        no: 17,
+        type: "PG",
+        cog: "C1",
+        topic: "Kosakata Bahasa Arab • Bentuk Mufrad",
+        narasi: `<div class="arab">سَافَرَ الْإِمَامُ الْبُخَارِيُّ إِلَى <u>الْمُدُنِ</u> الْعِلْمِيَّةِ الْمَشْهُورَةِ.</div>`,
+        question: "Bentuk tunggal (مُفْرَد) dari kosakata (الْمُدُنُ) yang berarti 'kota-kota' adalah...",
+        options: [
+          "<span class='arab-inline'>مَيْدَانٌ</span>",
+          "<span class='arab-inline'>مَدِينَةٌ</span>",
+          "<span class='arab-inline'>دَوْلَةٌ</span>",
+          "<span class='arab-inline'>قَرْيَةٌ</span>",
+          "<span class='arab-inline'>بَلَدٌ</span>"
+        ],
+        answer: 1,
+        bahas: "الْمُدُنُ adalah jamak taksir dari kata tunggal (mufrad) مَدِينَةٌ (kota)."
+      },
+      {
+        no: 18,
+        type: "PG",
+        cog: "C2",
+        topic: "Nahwu • Fi'il Mabni Lil Ma'lum",
+        narasi: `<div class="arab"><u>كَتَبَ</u> الْإِمَامُ الْبُخَارِيُّ الصَّحِيحَ فِي سِتَّ عَشْرَةَ سَنَةً، بَعْدَ أَنْ <u>سُمِعَ</u> كَلَامُ شُيُوخِهِ وَ<u>جُمِعَتِ</u> الْأَحَادِيثُ.</div>`,
+        question: "Berdasarkan kalimat tersebut, kata kerja yang merupakan fi'il mabni lil ma'lum (kata kerja aktif) adalah...",
+        options: [
+          "<span class='arab-inline'>سُمِعَ</span>",
+          "<span class='arab-inline'>جُمِعَتْ</span>",
+          "<span class='arab-inline'>كَتَبَ</span>",
+          "<span class='arab-inline'>سِتَّ عَشْرَةَ</span>",
+          "<span class='arab-inline'>الصَّحِيحَ</span>"
+        ],
+        answer: 2,
+        bahas: "كَتَبَ (telah menulis) adalah fi'il madhi mabni lil ma'lum (aktif) dengan fa'ilnya الْإِمَامُ الْبُخَارِيُّ. Adapun سُمِعَ dan جُمِعَتْ berpola fu'ila (mabni lil majhul / pasif)."
+      },
+      {
+        no: 19,
+        type: "PG",
+        cog: "C1",
+        topic: "Kosakata Bahasa Arab • Sinonim (مرادف)",
+        narasi: `<div class="arab"><u>بَلَغَ</u> الْعُلَمَاءُ الْمُسْلِمُونَ مَكَانَةً رَفِيعَةً فِي تَارِيخِ الْعِلْمِ.</div>`,
+        question: "Sinonim (مُرَادِف) dari kata (بَلَغَ) berdasarkan konteks kalimat tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>تَرَكَ</span> (meninggalkan)",
+          "<span class='arab-inline'>وَصَلَ إِلَى</span> (mencapai/sampai pada)",
+          "<span class='arab-inline'>رَجَعَ</span> (kembali)",
+          "<span class='arab-inline'>نَسِيَ</span> (melupakan)",
+          "<span class='arab-inline'>مَنَعَ</span> (melarang)"
+        ],
+        answer: 1,
+        bahas: "Kata بَلَغَ dalam konteks mencapai kedudukan tinggi bersinonim dengan وَصَلَ إِلَى (mencapai)."
+      },
+      {
+        no: 20,
+        type: "PG",
+        cog: "C2",
+        topic: "Pemahaman Teks • Informasi Rinci dalam Paragraf",
+        narasi: `<div class="arab">زَارَ الْإِمَامُ الْبُخَارِيُّ مُدُنًا عَدِيدَةً لِطَلَبِ الْحَدِيثِ، مِنْهَا: مَكَّةُ، وَالْمَدِينَةُ، وَبَغْدَادُ، وَالْبَصْرَةُ، وَالْكُوفَةُ، وَدِمَشْقُ.</div>`,
+        question: "Berapa jumlah kota yang disebutkan secara tersurat dalam paragraf perjalanan Imam Bukhari tersebut?",
+        options: [
+          "4 kota (أَرْبَعُ مُدُنٍ)",
+          "5 kota (خَمْسُ مُدُنٍ)",
+          "6 kota (سِتُّ مُدُنٍ)",
+          "7 kota (سَبْعُ مُدُنٍ)",
+          "8 kota (ثَمَانِي مُدُنٍ)"
+        ],
+        answer: 2,
+        bahas: "Kota yang disebutkan ada 6: (1) Makkah, (2) Madinah, (3) Baghdad, (4) Bashrah, (5) Kufah, (6) Damaskus."
+      },
+      {
+        no: 21,
+        type: "PG",
+        cog: "C1",
+        topic: "Tokoh Ilmuwan Muslim • Kitab Al-Hawi (Kedokteran)",
+        narasi: `<div class="arab">هُوَ طَبِيبٌ مُسْلِمٌ مَشْهُورٌ، أَلَّفَ الْمَوْسُوعَةَ الطِّبِّيَّةَ الْكَبِيرَةَ الْمَعْرُوفَةَ بِكِتَابِ "الْحَاوِي فِي الطِّبِّ".</div>`,
+        question: "Ilmuwan Muslim bidang kedokteran yang menulis kitab Al-Hawi (الْحَاوِي) berdasarkan informasi tersebut adalah...",
+        options: [
+          "Ibnu Sina",
+          "Abu Bakar Ar-Razi",
+          "Jabir bin Hayyan",
+          "Al-Khawarizmi",
+          "Ibnu Khaldun"
+        ],
+        answer: 1,
+        bahas: "Abu Bakar Muhammad bin Zakariya Ar-Razi adalah dokter muslim terkenal penulis kitab ensiklopedia kedokteran 'Al-Hawi fi ath-Thibb'."
+      },
+      {
+        no: 22,
+        type: "PG",
+        cog: "C1",
+        topic: "Tokoh Ilmuwan Muslim • Jabir bin Hayyan & Ilmu Kimia",
+        narasi: `<div class="arab">يُلَقَّبُ بِأَبِي الْكِيمِيَاءِ، وَمِنْ أَشْهَرِ مُؤَلَّفَاتِهِ كِتَابُ "أَسْرَارِ الْكِيمِيَاءِ" وَكِتَابُ "السَّبْعِينَ".</div>`,
+        question: "Ilmuwan Muslim yang menulis kitab Asrar al-Kimiya (أَسْرَارُ الْكِيمِيَاءِ) dan dijuluki Bapak Ilmu Kimia adalah...",
+        options: [
+          "Al-Biruni",
+          "Jabir bin Hayyan",
+          "Al-Kindi",
+          "Ibnu Rusyd",
+          "Al-Idrisi"
+        ],
+        answer: 1,
+        bahas: "Jabir bin Hayyan (Geber) adalah perintis ilmu kimia modern dan penulis kitab Asrar al-Kimiya."
+      },
+      {
+        no: 23,
+        type: "PG",
+        cog: "C1",
+        topic: "Tokoh Ilmuwan Muslim • Ibnu Sina & Al-Qanun fi ath-Thibb",
+        narasi: `<div class="arab">يُعَدُّ كِتَابُ "الْقَانُونُ فِي الطِّبِّ" مَرْجِعًا رَئِيسِيًّا فِي الْجَامِعَاتِ الْأُورُوبِّيَّةِ لِعِدَّةِ قُرُونٍ.</div>`,
+        question: "Tokoh ilmuwan Muslim yang menulis kitab Al-Qanun fi ath-Thibb (الْقَانُونُ فِي الطِّبِّ) adalah...",
+        options: [
+          "Imam Al-Ghazali",
+          "Ibnu Sina",
+          "Jabir bin Hayyan",
+          "Al-Farabi",
+          "Al-Khawarizmi"
+        ],
+        answer: 1,
+        bahas: "Ibnu Sina (Avicenna) adalah penulis kitab kedokteran monumental Al-Qanun fi ath-Thibb (The Canon of Medicine)."
+      },
+      {
+        no: 24,
+        type: "PG",
+        cog: "C3",
+        topic: "Tokoh Ilmuwan Muslim • Ilmuwan Bidang Ilmu Umum",
+        narasi: "Perhatikan daftar nama berikut: (1) Jabir bin Hayyan, (2) Imam Malik, (3) Ibnu Sina, (4) Al-Khawarizmi, (5) Imam Bukhari, (6) Al-Biruni.",
+        question: "Kelompok tokoh yang berkaitan dengan bidang ilmu umum (Kimia, Kedokteran, Matematika, Astronomi) adalah...",
+        options: [
+          "(1), (2), dan (5)",
+          "(1), (3), (4), dan (6)",
+          "(2), (3), dan (5)",
+          "(2), (4), dan (5)",
+          "(3), (5), dan (6)"
+        ],
+        answer: 1,
+        bahas: "Jabir bin Hayyan (kimia), Ibnu Sina (kedokteran), Al-Khawarizmi (matematika), dan Al-Biruni (astronomi/geografi) adalah ilmuwan bidang ilmu umum."
+      },
+      {
+        no: 25,
+        type: "PG",
+        cog: "C3",
+        topic: "Hiwar • Pertanyaan Tentang Karya Terkenal Ibnu Sina",
+        narasi: `<div class="arab">فَاطِمَةُ : .......................... ؟<br/>عَائِشَةُ : أَشْهَرُ مُؤَلَّفَاتِ ابْنِ سِينَا هُوَ كِتَابُ "الْقَانُونُ فِي الطِّبِّ".</div>`,
+        question: "Bentuk pertanyaan yang tepat untuk melengkapi dialog tersebut adalah...",
+        options: [
+          "<span class='arab-inline'>مَتَى وُلِدَ ابْنُ سِينَا؟</span>",
+          "<span class='arab-inline'>مَا أَشْهَرُ مُؤَلَّفَاتِ ابْنِ سِينَا؟</span>",
+          "<span class='arab-inline'>أَيْنَ عَاشَ ابْنُ سِينَا؟</span>",
+          "<span class='arab-inline'>لِمَاذَا دَرَسَ ابْنُ سِينَا الطِّبَّ؟</span>",
+          "<span class='arab-inline'>هَلْ سَافَرَ ابْنُ سِينَا إِلَى مِصْرَ؟</span>"
+        ],
+        answer: 1,
+        bahas: "Pertanyaan 'Mā asyharu mu'allafāti Ibni Sīnā?' (Apa karya paling terkenal Ibnu Sina?) tepat berpasangan dengan jawaban 'Asyharu mu'allafāti Ibni Sīnā huwa kitābul-Qānūn fiṭ-Ṭibb'."
+      },
+      {
+        no: 26,
+        type: "PG",
+        cog: "C4",
+        topic: "Tokoh Ilmuwan Muslim • Analisis Pernyataan Jabir bin Hayyan",
+        narasi: `<div class="arab">جَابِرُ بْنُ حَيَّانَ عَالِمٌ مُسْلِمٌ بَرَعَ فِي عِلْمِ الْكِيمِيَاءِ، وَاعْتَمَدَ عَلَى التَّجْرِبَةِ الْعَمَلِيَّةِ، وَأَلَّفَ كِتَابَ "<u>صَحِيحِ مُسْلِمٍ</u>".</div>`,
+        question: "Informasi atau kata yang TIDAK tepat dalam pernyataan tentang Jabir bin Hayyan di atas adalah...",
+        options: [
+          "<span class='arab-inline'>عَالِمٌ مُسْلِمٌ</span>",
+          "<span class='arab-inline'>عِلْمِ الْكِيمِيَاءِ</span>",
+          "<span class='arab-inline'>التَّجْرِبَةِ الْعَمَلِيَّةِ</span>",
+          "<span class='arab-inline'>صَحِيحِ مُسْلِمٍ</span>",
+          "<span class='arab-inline'>بَرَعَ</span>"
+        ],
+        answer: 3,
+        bahas: "Shahih Muslim adalah kitab hadis karya Imam Muslim, bukan karya Jabir bin Hayyan."
+      },
+      {
+        no: 27,
+        type: "PG",
+        cog: "C1",
+        topic: "Tokoh Ilmuwan Muslim • Informasi Kuantitatif Karya Ibnu Sina",
+        narasi: `<div class="arab">تُرْجِمَتْ كُتُبُ ابْنِ سِينَا إِلَى <u>عَشْرِ</u> لُغَاتٍ أَجْنَبِيَّةٍ مِثْلِ اللَّاتِينِيَّةِ وَالْإِنْجِلِيزِيَّةِ وَالْفَرَنْسِيَّةِ.</div>`,
+        question: "Ungkapan bilangan yang sesuai dengan arti kata bergaris bawah (عَشْرِ لُغَاتٍ) adalah...",
+        options: [
+          "5 bahasa asing",
+          "7 bahasa asing",
+          "10 bahasa asing",
+          "12 bahasa asing",
+          "20 bahasa asing"
+        ],
+        answer: 2,
+        bahas: "عَشْرِ لُغَاتٍ berarti 'sepuluh (10) bahasa'."
+      },
+      {
+        no: 28,
+        type: "PG",
+        cog: "C2",
+        topic: "Sharaf • Fi'il Madhi Mabni Lil Majhul",
+        narasi: `<div class="arab"><u>تُرْجِمَ</u> كِتَابُ الْقَانُونِ إِلَى اللُّغَةِ اللَّاتِينِيَّةِ.</div>`,
+        question: "Klasifikasi bentuk kata (تُرْجِمَ) berdasarkan jenis waktu dan bentuk pelakunya adalah...",
+        options: [
+          "Fi'il madhi mabni lil ma'lum (kata kerja aktif lampau)",
+          "Fi'il madhi mabni lil majhul (kata kerja pasif lampau)",
+          "Fi'il mudhari' mabni lil majhul (kata kerja pasif sekarang)",
+          "Fi'il amr (kata kerja perintah)",
+          "Isim maf'ul (kata benda pasif)"
+        ],
+        answer: 1,
+        bahas: "تُرْجِمَ (telah diterjemahkan) berwazan فُعْلِلَ (dhammah huruf pertama, kasrah sebelum akhir) yang merupakan fi'il madhi mabni lil majhul."
+      },
+      {
+        no: 29,
+        type: "PG",
+        cog: "C1",
+        topic: "Kosakata Bahasa Arab • Antonim (مضاد)",
+        narasi: `<div class="arab">بَلَغَتْ نَهْضَةُ الْعُلُومِ مَرْحَلَةً مُهِمَّةً وَلَمْ تَكُنْ <u>نِهَايَةً</u> لِلْإِبْدَاعِ.</div>`,
+        question: "Antonim (مُضَادّ) dari kosakata (نِهَايَةٌ) yang berarti 'akhir' adalah...",
+        options: [
+          "<span class='arab-inline'>بِدَايَةٌ</span> (awal/permulaan)",
+          "<span class='arab-inline'>خَاتِمَةٌ</span> (penutup)",
+          "<span class='arab-inline'>غَايَةٌ</span> (tujuan)",
+          "<span class='arab-inline'>نَتِيجَةٌ</span> (hasil)",
+          "<span class='arab-inline'>وَسَطٌ</span> (tengah)"
+        ],
+        answer: 0,
+        bahas: "نِهَايَةٌ berarti akhir/penghujung, antonimnya adalah بِدَايَةٌ (permulaan/awal)."
+      },
+      {
+        no: 30,
+        type: "PG",
+        cog: "C2",
+        topic: "Sharaf • Fi'il Mudhari' Mabni Lil Majhul",
+        narasi: `<div class="arab"><u>يُدْرَسُ</u> كِتَابُ ابْنِ سِينَا فِي الْجَامِعَاتِ الْأُورُوبِّيَّةِ.</div>`,
+        question: "Jenis fi'il dari kata (يُدْرَسُ) berdasarkan bentuk waktu dan konstruksi pasifnya adalah...",
+        options: [
+          "Fi'il madhi mabni lil majhul",
+          "Fi'il mudhari' mabni lil ma'lum",
+          "Fi'il mudhari' mabni lil majhul",
+          "Fi'il madhi mabni lil ma'lum",
+          "Fi'il amr"
+        ],
+        answer: 2,
+        bahas: "يُدْرَسُ (dipelajari/sedang dipelajari) diawali ya' mudhara'ah berharakat dhammah dan huruf sebelum akhir berharakat fathah (يُفْعَلُ), sehingga merupakan fi'il mudhari' mabni lil majhul."
+      },
+
+      // ===================== SOAL 31 - 35 (BENAR / SALAH) =====================
+      {
+        no: 31,
+        type: "PGK_BS",
+        cog: "C2",
+        topic: "Faktor Perkembangan Peradaban Islam",
+        narasi: "Peradaban Islam mengalami kemajuan pesat pada abad pertengahan karena berbagai faktor pendorong internal maupun eksternal.",
+        question: "Tentukan kebenaran (Benar/Salah) pernyataan berikut tentang faktor yang memengaruhi perkembangan peradaban Islam!",
+        statements: [
+          "Dorongan ajaran Al-Qur'an dan Hadis untuk menuntut ilmu, meneliti alam, dan menggunakan akal menjadi faktor utama kemajuan.",
+          "Gerakan penerjemahan buku-buku ilmu pengetahuan dari Yunani, Persia, dan India ke dalam bahasa Arab di Baitul Hikmah.",
+          "Dukungan penuh para khalifah terhadap ilmuwan, pendirian perpustakaan, observatorium, dan rumah sakit.",
+          "Kebijakan khalifah Abbasiyah melarang umat Islam mempelajari ilmu kedokteran, matematika, dan astronomi.",
+          "Keterbukaan peradaban Islam dalam berinteraksi dengan budaya lain tanpa meninggalkan prinsip tauhid."
+        ],
+        answer: ["B", "B", "B", "S", "B"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (justru ilmu pengetahuan umum didorong dan difasilitasi penuh).\n5) BENAR."
+      },
+      {
+        no: 32,
+        type: "PGK_BS",
+        cog: "C3",
+        topic: "Nahwu • Al-Asma' Al-Khamsah (الأسماء الخمسة)",
+        narasi: "Al-Asma' Al-Khamsah (أَبُو، أَخُو، حَمُو، فُو، ذُو) di-i'rab dengan huruf: rafa' dengan wawu (و), nashab dengan alif (ا), dan jar dengan ya' (ي) apabila bersambung dengan selain ya' mutakallim.",
+        question: "Tentukan ketepatan (Benar/Salah) penggunaan Al-Asma' Al-Khamsah dalam kalimat-kalimat berikut!",
+        statements: [
+          "جَاءَ أَبُوكَ إِلَى الْمَدْرَسَةِ — Tepat karena أَبُوكَ berkedudukan rafa' (fa'il) dengan tanda wawu.",
+          "رَأَيْتُ أَخَاكَ فِي الْمَسْجِدِ — Tepat karena أَخَاكَ berkedudukan nashab (maf'ul bih) dengan tanda alif.",
+          "سَلَّمْتُ عَلَى أَبِيكَ — Tepat karena أَبِيكَ berkedudukan jar setelah huruf عَلَى dengan tanda ya'.",
+          "إِنَّ أَبُوكَ عَالِمٌ كَبِيرٌ — Tepat karena isim إِنَّ harus rafa' dengan wawu.",
+          "هٰذَا الرَّجُلُ ذُو عِلْمٍ وَاسِعٍ — Tepat karena ذُو berkedudukan rafa' (khabar) dengan tanda wawu."
+        ],
+        answer: ["B", "B", "B", "S", "B"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (isim إِنَّ harus nashab dengan alif: إِنَّ أَبَاكَ عَالِمٌ).\n5) BENAR."
+      },
+      {
+        no: 33,
+        type: "PGK_BS",
+        cog: "C3",
+        topic: "Nahwu • Al-Af'al Al-Khamsah (الأفعال الخمسة)",
+        narasi: "Al-Af'al Al-Khamsah adalah setiap fi'il mudhari' yang bersambung dengan alif itsnain (ان), wawu jama'ah (ون), atau ya' mukhathabah (ين).",
+        question: "Tentukan kebenaran (Benar/Salah) pernyataan mengenai keberadaan Al-Af'al Al-Khamsah dalam kalimat berikut!",
+        statements: [
+          "Kalimat (الطُّلَّابُ يَكْتُبُونَ الدَّرْسَ) mengandung al-af'al al-khamsah yaitu يَكْتُبُونَ.",
+          "Kalimat (الطَّالِبَانِ يَذْهَبَانِ إِلَى الْمَكْتَبَةِ) mengandung al-af'al al-khamsah yaitu يَذْهَبَانِ.",
+          "Kalimat (أَنْتِ تَقْرَئِينَ الْكِتَابَ) mengandung al-af'al al-khamsah yaitu تَقْرَئِينَ.",
+          "Kalimat (الطَّالِبُ يَكْتُبُ الدَّرْسَ) mengandung al-af'al al-khamsah yaitu يَكْتُبُ.",
+          "Kalimat (أَنْتُمْ تَجْتَهِدُونَ فِي الطَّلَبِ) mengandung al-af'al al-khamsah yaitu تَجْتَهِدُونَ."
+        ],
+        answer: ["B", "B", "B", "S", "B"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (يَكْتُبُ adalah fi'il mudhari' mufrad biasa, bukan af'alul khamsah).\n5) BENAR."
+      },
+      {
+        no: 34,
+        type: "PGK_BS",
+        cog: "C2",
+        topic: "Biografi dan Karya Imam Bukhari",
+        narasi: "Imam Muhammad bin Ismail Al-Bukhari (194–256 H) adalah ulama hadis terkemuka sepanjang sejarah Islam.",
+        question: "Nilailah kebenaran (Benar/Salah) pernyataan tentang identitas, gelar, dan karya Imam Bukhari berikut!",
+        statements: [
+          "Nama lengkap beliau adalah Abu Abdillah Muhammad bin Ismail Al-Bukhari.",
+          "Beliau mendapat gelar 'Amirul Mukminin fil Hadis' karena ketelitian dan hafalannya yang luar biasa.",
+          "Karya terbesar beliau adalah Al-Jami' ash-Shahih yang dikenal luas sebagai Shahih al-Bukhari.",
+          "Imam Bukhari menyusun kitab Shahih-nya dengan menyeleksi hadis-hadis secara sangat ketat selama sekitar 16 tahun.",
+          "Imam Bukhari lahir di kota Kairo dan menulis kitab Ihya' Ulumiddin."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (Imam Bukhari lahir di Bukhara; Ihya' Ulumiddin adalah karya Imam Al-Ghazali)."
+      },
+      {
+        no: 35,
+        type: "PGK_BS",
+        cog: "C2",
+        topic: "Biografi dan Pemikiran Imam Al-Ghazali",
+        narasi: "Abu Hamid Muhammad bin Muhammad Al-Ghazali (450–505 H) merupakan ulama besar yang pemikirannya memengaruhi dunia Islam.",
+        question: "Nilailah kebenaran (Benar/Salah) pernyataan tentang biografi, gelar, karya, dan pemikiran Imam Al-Ghazali berikut!",
+        statements: [
+          "Imam Al-Ghazali lahir di kota Thus, Khurasan (Persia) dan pernah mengajar di Madrasah Nizhamiyah Baghdad.",
+          "Beliau dijuluki 'Hujjatul Islam' karena kepiawaiannya membela akidah Islam dengan argumen rasional dan spiritual.",
+          "Karya monumental beliau yang memadukan fikih, akhlak, dan tasawuf adalah kitab Ihya' Ulumiddin.",
+          "Dalam kitab Tahafut al-Falasifah, beliau mengkritik pemikiran filsafat yang bertentangan dengan akidah Islam.",
+          "Imam Al-Ghazali merupakan penemu rumus aljabar dan penulis kitab Al-Jabr wal-Muqabalah."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (penulis Al-Jabr wal-Muqabalah adalah Al-Khawarizmi)."
+      },
+
+      // ===================== SOAL 36 - 40 (CHECKLIST) =====================
+      {
+        no: 36,
+        type: "PGK_CHECK",
+        cog: "C3",
+        topic: "Nahwu • Fi'il Mabni Lil Ma'lum (Kata Kerja Aktif)",
+        narasi: "Fi'il mabni lil ma'lum adalah kata kerja aktif yang menyebutkan pelakunya (fa'il) dalam kalimat.",
+        question: "Pilihlah kalimat-kalimat yang mengandung fi'il mabni lil ma'lum (kata kerja aktif)! (Pilih lebih dari satu)",
+        options: [
+          "<span class='arab-inline'>قَرَأَ الطَّالِبُ كِتَابَ التَّارِيخِ.</span>",
+          "<span class='arab-inline'>يَشْرَحُ الْأُسْتَاذُ الدَّرْسَ بِوُضُوحٍ.</span>",
+          "<span class='arab-inline'>فُتِحَ بَابُ الْمَكْتَبَةِ صَبَاحًا.</span>",
+          "<span class='arab-inline'>كَتَبَتْ عَائِشَةُ مَقَالَةً عِلْمِيَّةً.</span>",
+          "<span class='arab-inline'>أَلَّفَ ابْنُ سِينَا كِتَابَ الْقَانُونِ.</span>"
+        ],
+        answer: [0, 1, 3, 4],
+        bahas: "Kalimat 1 (قَرَأَ), 2 (يَشْرَحُ), 4 (كَتَبَتْ), dan 5 (أَلَّفَ) adalah fi'il mabni lil ma'lum (aktif). Kalimat 3 (فُتِحَ) adalah fi'il mabni lil majhul (pasif: dibuka)."
+      },
+      {
+        no: 37,
+        type: "PGK_CHECK",
+        cog: "C2",
+        topic: "Ulama Bidang Ilmu Agama & Kontribusinya",
+        narasi: "Para ulama Muslim mewariskan karya dan kontribusi penting dalam ilmu-ilmu keislaman (Hadis, Fikih, Tafsir, dan Tasawuf).",
+        question: "Pilihlah pernyataan yang SESUAI antara tokoh Muslim bidang ilmu agama dengan kontribusinya! (Pilih lebih dari satu)",
+        options: [
+          "Imam Bukhari — Ulama ahli hadis yang menyusun kitab Shahih al-Bukhari.",
+          "Imam Asy-Syafi'i — Ulama fikih yang merumuskan kaidah Usul Fikih dalam kitab Ar-Risalah.",
+          "Imam Al-Ghazali — Ulama yang memadukan ilmu fikih dan tasawuf dalam kitab Ihya' Ulumiddin.",
+          "Jabir bin Hayyan — Ulama ahli hadis yang menyusun kitab Shahih Muslim.",
+          "Imam Malik bin Anas — Ulama pendiri Mazhab Maliki yang menyusun kitab Al-Muwaththa'."
+        ],
+        answer: [0, 1, 2, 4],
+        bahas: "Pernyataan 1, 2, 3, dan 5 benar. Pernyataan 4 salah karena Jabir bin Hayyan adalah ilmuwan kimia, sedangkan penyusun Shahih Muslim adalah Imam Muslim."
+      },
+      {
+        no: 38,
+        type: "PGK_CHECK",
+        cog: "C3",
+        topic: "Sharaf • Fi'il Madhi Mabni Lil Majhul",
+        narasi: "Fi'il madhi mabni lil majhul (kata kerja pasif lampau) dibentuk dengan mendhammahkan huruf pertama dan mengkasrahkan huruf sebelum akhir (seperti فُعِلَ atau تُرْجِمَ).",
+        question: "Pilihlah kalimat-kalimat yang mengandung fi'il madhi mabni lil majhul! (Pilih lebih dari satu)",
+        options: [
+          "<span class='arab-inline'>كُتِبَ الدَّرْسُ عَلَى السَّبُّورَةِ.</span>",
+          "<span class='arab-inline'>وُلِدَ الْإِمَامُ الشَّافِعِيُّ فِي غَزَّةَ.</span>",
+          "<span class='arab-inline'>تُرْجِمَتْ كُتُبُ الْعُلَمَاءِ إِلَى اللَّاتِينِيَّةِ.</span>",
+          "<span class='arab-inline'>دَرَسَ الطُّلَّابُ فِي الْمَعْمَلِ.</span>",
+          "<span class='arab-inline'>بُنِيَتْ مَدِينَةُ بَغْدَادَ فِي الْعَصْرِ الْعَبَّاسِيِّ.</span>"
+        ],
+        answer: [0, 1, 2, 4],
+        bahas: "Kalimat 1 (كُتِبَ = ditulis), 2 (وُلِدَ = dilahirkan), 3 (تُرْجِمَتْ = diterjemahkan), dan 5 (بُنِيَتْ = dibangun) adalah fi'il madhi mabni lil majhul. Kalimat 4 (دَرَسَ) adalah mabni lil ma'lum (aktif)."
+      },
+      {
+        no: 39,
+        type: "PGK_CHECK",
+        cog: "C1",
+        topic: "Biografi dan Karya Ibnu Sina",
+        narasi: "Ibnu Sina (370–428 H / 980–1037 M) adalah salah satu ilmuwan polimatik terbesar dalam sejarah peradaban Islam.",
+        question: "Pilihlah pernyataan-pernyataan yang SESUAI dengan identitas, bidang keilmuan, dan karya Ibnu Sina! (Pilih lebih dari satu)",
+        options: [
+          "Di dunia Barat, Ibnu Sina dikenal dengan nama Avicenna dan dijuluki Bapak Kedokteran Modern.",
+          "Beliau lahir di Afshana dekat Bukhara dan menguasai berbagai ilmu sejak usia muda.",
+          "Karya utamanya di bidang kedokteran adalah Al-Qanun fi ath-Thibb (The Canon of Medicine).",
+          "Di bidang filsafat dan sains, beliau menulis kitab ensiklopedis berjudul Asy-Syifa'.",
+          "Ibnu Sina hanya menekuni ilmu nahwu dan tidak pernah menulis di bidang kedokteran."
+        ],
+        answer: [0, 1, 2, 3],
+        bahas: "Pernyataan 1, 2, 3, dan 4 sesuai dengan biografi dan karya Ibnu Sina. Pernyataan 5 salah."
+      },
+      {
+        no: 40,
+        type: "PGK_CHECK",
+        cog: "C1",
+        topic: "Biografi dan Kontribusi Al-Biruni",
+        narasi: "Abu Raihan Muhammad bin Ahmad Al-Biruni (362–440 H / 973–1048 M) adalah ilmuwan Muslim serba bisa pada masa keemasan Islam.",
+        question: "Pilihlah pernyataan-pernyataan yang SESUAI dengan bidang keilmuan, penemuan, dan karya Al-Biruni! (Pilih lebih dari satu)",
+        options: [
+          "Al-Biruni unggul dalam bidang astronomi, matematika, fisika, geografi, dan sejarah.",
+          "Beliau berhasil menghitung jari-jari dan keliling bumi dengan tingkat akurasi sangat tinggi pada masanya.",
+          "Salah satu karyanya yang terkenal tentang sejarah dan budaya India adalah kitab Tahqiq ma lil-Hind.",
+          "Beliau juga menulis kitab Al-Qanun al-Mas'udi di bidang astronomi.",
+          "Al-Biruni adalah seorang pelukis Eropa abad ke-19 yang menentang ilmu astronomi."
+        ],
+        answer: [0, 1, 2, 3],
+        bahas: "Pernyataan 1, 2, 3, dan 4 benar mengenai keilmuan, kontribusi pengukuran bumi, dan karya Al-Biruni. Pernyataan 5 salah."
+      }
+    ];
+
+    // State Aplikasi
+    let currentIndex = 0;
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let bahasVisible = new Array(QUESTIONS.length).fill(false);
+    let autoBahasMode = false;
+    let isEvaluated = false;
+
+    // Inisialisasi jawaban default untuk PGK B/S dan Checklist
+    QUESTIONS.forEach((q, idx) => {
+      if (q.type === "PGK_BS") {
+        userAnswers[idx] = new Array(q.statements.length).fill(null);
+      } else if (q.type === "PGK_CHECK") {
+        userAnswers[idx] = [];
+      }
+    });
+
+    function isQuestionAnswered(idx) {
+      const q = QUESTIONS[idx];
+      const ans = userAnswers[idx];
+      if (q.type === "PG") return ans !== null;
+      if (q.type === "PGK_BS") return Array.isArray(ans) && ans.every(v => v !== null);
+      if (q.type === "PGK_CHECK") return Array.isArray(ans) && ans.length > 0;
+      return false;
+    }
+
+    function isQuestionCorrect(idx) {
+      const q = QUESTIONS[idx];
+      const ans = userAnswers[idx];
+      if (q.type === "PG") return ans === q.answer;
+      if (q.type === "PGK_BS") {
+        return Array.isArray(ans) && q.answer.every((val, i) => ans[i] === val);
+      }
+      if (q.type === "PGK_CHECK") {
+        if (!Array.isArray(ans) || ans.length !== q.answer.length) return false;
+        const sortedA = [...ans].sort((a, b) => a - b);
+        const sortedB = [...q.answer].sort((a, b) => a - b);
+        return sortedA.every((val, i) => val === sortedB[i]);
+      }
+      return false;
+    }
+
+    function renderNav() {
+      const grid = document.getElementById("navGrid");
+      grid.innerHTML = "";
+      let answeredTotal = 0;
+
+      QUESTIONS.forEach((q, idx) => {
+        const answered = isQuestionAnswered(idx);
+        if (answered) answeredTotal++;
+
+        const btn = document.createElement("button");
+        btn.className = "nav-btn";
+        btn.textContent = q.no;
+
+        if (idx === currentIndex) btn.classList.add("current");
+        if (isEvaluated) {
+          btn.classList.add(isQuestionCorrect(idx) ? "eval-correct" : "eval-wrong");
+        } else if (answered) {
+          btn.classList.add("answered");
+        }
+
+        btn.onclick = () => goTo(idx);
+        grid.appendChild(btn);
+      });
+
+      document.getElementById("answeredCount").textContent = `Terjawab: ${answeredTotal} / ${QUESTIONS.length}`;
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[currentIndex];
+      const total = QUESTIONS.length;
+
+      // Progress
+      document.getElementById("progressLabel").textContent = `Soal ${q.no} dari ${total}`;
+      const pct = ((currentIndex + 1) / total) * 100;
+      document.getElementById("progressPercent").textContent = `${pct.toFixed(1)}%`;
+      document.getElementById("progressFill").style.width = `${pct}%`;
+
+      // Meta tags
+      const typeLabel =
+        q.type === "PG" ? "Pilihan Ganda" :
+        q.type === "PGK_BS" ? "Benar-Salah" :
+        "Checklist";
+
+      document.getElementById("qMeta").innerHTML = `
+        <span class="tag tag-num">No. ${q.no}</span>
+        <span class="tag tag-type">${typeLabel}</span>
+        <span class="tag tag-cog">${q.cog}</span>
+        <span class="tag tag-topic">${q.topic}</span>
+      `;
+
+      document.getElementById("qNarasi").innerHTML = q.narasi.replace(/\n/g, "<br>");
+      document.getElementById("qText").textContent = q.question;
+
+      const inputArea = document.getElementById("qInputArea");
+      inputArea.innerHTML = "";
+
+      const showCorrection = isEvaluated || bahasVisible[currentIndex];
+
+      if (q.type === "PG") {
+        const list = document.createElement("div");
+        list.className = "options-list";
+        const letters = ["A", "B", "C", "D", "E"];
+
+        q.options.forEach((opt, i) => {
+          const item = document.createElement("div");
+          item.className = "option-item";
+          const selected = userAnswers[currentIndex] === i;
+          if (selected) item.classList.add("selected");
+
+          if (showCorrection) {
+            if (i === q.answer) item.classList.add("correct");
+            else if (selected && i !== q.answer) item.classList.add("wrong");
+          }
+
+          item.innerHTML = `
+            <span class="option-letter">${letters[i]}</span>
+            <span>${opt}</span>
+          `;
+          item.onclick = () => selectPG(i);
+          list.appendChild(item);
+        });
+        inputArea.appendChild(list);
+      } else if (q.type === "PGK_BS") {
+        const table = document.createElement("table");
+        table.className = "bs-table";
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Pernyataan</th>
+              <th class="center">Benar</th>
+              <th class="center">Salah</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+        const tbody = table.querySelector("tbody");
+
+        q.statements.forEach((stmt, i) => {
+          const tr = document.createElement("tr");
+          const curVal = userAnswers[currentIndex][i];
+
+          if (showCorrection && curVal !== null) {
+            tr.className = curVal === q.answer[i] ? "row-correct" : "row-wrong";
+          }
+
+          tr.innerHTML = `
+            <td><strong>${i + 1}.</strong> ${stmt}</td>
+            <td class="center">
+              <button class="bs-btn ${curVal === 'B' ? 'active-b' : ''}" onclick="selectBS(${i}, 'B')">B</button>
+            </td>
+            <td class="center">
+              <button class="bs-btn ${curVal === 'S' ? 'active-s' : ''}" onclick="selectBS(${i}, 'S')">S</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+        inputArea.appendChild(table);
+      } else if (q.type === "PGK_CHECK") {
+        const list = document.createElement("div");
+        list.className = "options-list";
+
+        q.options.forEach((opt, i) => {
+          const item = document.createElement("div");
+          item.className = "check-item";
+          const selected = userAnswers[currentIndex].includes(i);
+          if (selected) item.classList.add("selected");
+
+          if (showCorrection) {
+            if (q.answer.includes(i)) item.classList.add("correct");
+            else if (selected && !q.answer.includes(i)) item.classList.add("wrong");
+          }
+
+          item.innerHTML = `
+            <span class="check-box">${selected ? "✓" : ""}</span>
+            <span>${opt}</span>
+          `;
+          item.onclick = () => toggleCheck(i);
+          list.appendChild(item);
+        });
+        inputArea.appendChild(list);
+      }
+
+      // Pembahasan box
+      const bahasBox = document.getElementById("bahasBox");
+      const shouldShowBahas = bahasVisible[currentIndex] || autoBahasMode;
+      if (shouldShowBahas) {
+        bahasBox.classList.add("show");
+        document.getElementById("bahasKey").textContent = formatAnswerKey(q);
+        document.getElementById("bahasText").textContent = q.bahas;
+      } else {
+        bahasBox.classList.remove("show");
+      }
+
+      // Tombol prev/next
+      document.getElementById("prevBtn").disabled = currentIndex === 0;
+      document.getElementById("nextBtn").disabled = currentIndex === total - 1;
+      document.getElementById("bahasBtn").textContent = shouldShowBahas ? "🙈 Sembunyikan Bahas" : "💡 Bahas Soal Ini";
+
+      renderNav();
+    }
+
+    function formatAnswerKey(q) {
+      const letters = ["A", "B", "C", "D", "E"];
+      if (q.type === "PG") {
+        return `Kunci Jawaban: ${letters[q.answer]}`;
+      }
+      if (q.type === "PGK_BS") {
+        return `Kunci Jawaban: ${q.answer.map((v, i) => `${i + 1}.${v === 'B' ? 'Benar' : 'Salah'}`).join(" | ")}`;
+      }
+      if (q.type === "PGK_CHECK") {
+        return `Kunci Jawaban: Pernyataan nomor ${q.answer.map(i => i + 1).join(", ")}`;
+      }
+    }
+
+    function selectPG(optionIdx) {
+      userAnswers[currentIndex] = optionIdx;
+      if (autoBahasMode) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function selectBS(stmtIdx, val) {
+      userAnswers[currentIndex][stmtIdx] = val;
+      if (autoBahasMode && isQuestionAnswered(currentIndex)) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function toggleCheck(optIdx) {
+      const arr = userAnswers[currentIndex];
+      const pos = arr.indexOf(optIdx);
+      if (pos === -1) arr.push(optIdx);
+      else arr.splice(pos, 1);
+      if (autoBahasMode) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function toggleBahas() {
+      bahasVisible[currentIndex] = !bahasVisible[currentIndex];
+      renderQuestion();
+    }
+
+    function toggleModeBahas() {
+      autoBahasMode = !autoBahasMode;
+      const btn = document.getElementById("toggleAutoBahas");
+      btn.textContent = `Mode Bahas Langsung: ${autoBahasMode ? "ON" : "OFF"}`;
+      if (autoBahasMode) {
+        bahasVisible[currentIndex] = true;
+      }
+      renderQuestion();
+    }
+
+    function goTo(idx) {
+      if (idx < 0 || idx >= QUESTIONS.length) return;
+      currentIndex = idx;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function finishQuiz() {
+      isEvaluated = true;
+      let correctCount = 0;
+      QUESTIONS.forEach((_, idx) => {
+        if (isQuestionCorrect(idx)) correctCount++;
+        bahasVisible[idx] = true;
+      });
+
+      const score = Math.round((correctCount / QUESTIONS.length) * 100);
+      document.getElementById("finalScoreText").textContent = `${score} / 100`;
+      document.getElementById("finalDetailText").textContent = `Benar: ${correctCount} dari ${QUESTIONS.length} soal`;
+      document.getElementById("summaryBanner").classList.add("show");
+
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showAllBahasMode() {
+      bahasVisible = bahasVisible.map(() => true);
+      renderQuestion();
+    }
+
+    function resetQuiz() {
+      isEvaluated = false;
+      currentIndex = 0;
+      bahasVisible.fill(false);
+      QUESTIONS.forEach((q, idx) => {
+        if (q.type === "PG") userAnswers[idx] = null;
+        else if (q.type === "PGK_BS") userAnswers[idx] = new Array(q.statements.length).fill(null);
+        else userAnswers[idx] = [];
+      });
+      document.getElementById("summaryBanner").classList.remove("show");
+      renderQuestion();
+    }
+
+    // Render awal
+    renderQuestion();
+  </script>
+</body>
+</html>
