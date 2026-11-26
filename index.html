@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAS Ganjil Bahasa Arab XII — Latihan & Pembahasan</title>
+  <title>Asesmen Sumatif Fisika X — Pengukuran &amp; Vektor</title>
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1e3a8a;
-      --primary-light: #dbeafe;
-      --accent: #0d9488;
-      --accent-light: #fef9c3;
-      --bg: #f1f5f9;
+      --primary: #0e7490;
+      --primary-dark: #164e63;
+      --primary-light: #cffafe;
+      --accent: #3730a3;
+      --accent-light: #e0e7ff;
+      --bg: #ecfeff;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
-      --border: #bfdbfe;
+      --border: #a5f3fc;
       --success: #15803d;
       --success-bg: #dcfce7;
       --danger: #475569;
@@ -23,7 +23,7 @@
       --info: #0369a1;
       --info-bg: #e0f2fe;
       --radius: 14px;
-      --shadow: 0 8px 24px rgba(37, 99, 235, 0.09);
+      --shadow: 0 8px 24px rgba(14, 116, 144, 0.10);
     }
 
     * {
@@ -36,16 +36,105 @@
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       min-height: 100vh;
+    }
+
+    /* Math & Table Helpers */
+    .math {
+      font-family: 'Cambria Math', 'Times New Roman', Georgia, serif;
+      font-size: 1.05em;
+    }
+
+    .vec {
+      display: inline-block;
+      position: relative;
+      font-weight: 700;
+    }
+
+    .vec::before {
+      content: "→";
+      position: absolute;
+      top: -0.62em;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.65em;
+      line-height: 1;
+    }
+
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      font-size: 0.9em;
+      line-height: 1.15;
+    }
+
+    .frac .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px;
+      text-align: center;
+    }
+
+    .frac .den {
+      padding: 2px 4px 0;
+      text-align: center;
+    }
+
+    .sqrt {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .sqrt-rad {
+      border-top: 1.5px solid currentColor;
+      padding: 0 3px;
+      margin-left: 1px;
+    }
+
+    .data-table {
+      width: 100%;
+      max-width: 560px;
+      border-collapse: collapse;
+      margin: 12px auto;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.91rem;
+    }
+
+    .data-table th {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 9px 12px;
+      text-align: center;
+    }
+
+    .data-table td {
+      padding: 8px 12px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .step-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 10px 0;
+      line-height: 1.85;
     }
 
     /* Header */
     .topbar {
-      background: linear-gradient(135deg, #0f172a, var(--primary-dark), var(--primary));
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       color: #fff;
       padding: 18px 24px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.22);
+      box-shadow: 0 4px 16px rgba(22, 78, 99, 0.24);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -75,9 +164,9 @@
       border: 1px solid rgba(255, 255, 255, 0.28);
       display: grid;
       place-items: center;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 800;
-      color: #bfdbfe;
+      color: #a5f3fc;
     }
 
     .brand h1 {
@@ -88,7 +177,7 @@
 
     .brand p {
       font-size: 0.82rem;
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
     .topbar-actions {
@@ -123,7 +212,7 @@
     }
 
     .mode-btn:hover {
-      background: #bfdbfe;
+      background: #a5f3fc;
     }
 
     /* Layout */
@@ -133,7 +222,7 @@
       padding: 0 18px 48px;
       display: grid;
       grid-template-columns: 1fr 320px;
-      gap: 22px;
+      gap: 24px;
       align-items: start;
     }
 
@@ -149,12 +238,12 @@
       border: 1px solid #cbd5e1;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 24px;
+      padding: 26px;
     }
 
     /* Progress Bar */
     .progress-wrap {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .progress-header {
@@ -175,7 +264,7 @@
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary-dark), #3b82f6);
+      background: linear-gradient(90deg, var(--primary), #06b6d4);
       width: 0%;
       transition: width 0.3s ease;
     }
@@ -185,13 +274,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .tag {
       font-size: 0.76rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       letter-spacing: 0.2px;
     }
@@ -218,74 +307,75 @@
       border: 1px solid var(--border);
     }
 
-    .q-text {
-      font-size: 1.03rem;
-      color: var(--text);
-      margin-bottom: 18px;
-      white-space: pre-line;
-      font-weight: 600;
-    }
-
     .q-narasi {
       background: #f8fafc;
       border-left: 4px solid var(--primary);
-      padding: 14px 16px;
-      border-radius: 0 10px 10px 0;
-      margin-bottom: 16px;
-      font-size: 0.96rem;
+      padding: 16px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 18px;
+      font-size: 0.97rem;
       color: #334155;
+      line-height: 1.85;
     }
 
-    .arab {
-      direction: rtl;
-      text-align: right;
-      font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
-      font-size: 1.38rem;
-      line-height: 2.1;
-      color: #0f172a;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin: 8px 0;
-    }
-
-    .arab-inline {
-      direction: rtl;
-      unicode-bidi: isolate;
-      font-family: 'Amiri', 'Traditional Arabic', serif;
-      font-size: 1.18rem;
+    .q-text {
+      font-size: 1.04rem;
+      color: var(--text);
+      margin-bottom: 20px;
       font-weight: 600;
+      line-height: 1.8;
+    }
+
+    .visual-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 14px;
+      margin: 12px 0 4px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(22, 78, 99, 0.05);
+    }
+
+    .visual-caption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #334155;
+      background: #ecfeff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: left;
+      line-height: 1.6;
     }
 
     /* Options PG */
     .options-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .option-item {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 13px 16px;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
       border: 1.5px solid #cbd5e1;
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.18s ease;
       background: #fff;
+      line-height: 1.75;
     }
 
     .option-item:hover {
       border-color: var(--primary);
-      background: #eff6ff;
+      background: var(--bg);
     }
 
     .option-item.selected {
       border-color: var(--primary);
       background: var(--primary-light);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16);
+      box-shadow: 0 0 0 2px rgba(14, 116, 144, 0.16);
     }
 
     .option-item.correct {
@@ -326,127 +416,13 @@
       color: #fff;
     }
 
-    /* PGK Benar/Salah Table */
-    .bs-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #cbd5e1;
-    }
-
-    .bs-table th {
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 10px 12px;
-      font-size: 0.85rem;
-      text-align: left;
-    }
-
-    .bs-table th.center,
-    .bs-table td.center {
-      text-align: center;
-      width: 82px;
-    }
-
-    .bs-table td {
-      padding: 12px;
-      border-top: 1px solid #e2e8f0;
-      font-size: 0.94rem;
-      vertical-align: middle;
-    }
-
-    .bs-table tr.row-correct {
-      background: var(--success-bg);
-    }
-
-    .bs-table tr.row-wrong {
-      background: var(--danger-bg);
-    }
-
-    .bs-btn {
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: 1.5px solid #cbd5e1;
-      background: #fff;
-      font-weight: 700;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-
-    .bs-btn.active-b {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .bs-btn.active-s {
-      background: #334155;
-      color: #fff;
-      border-color: #334155;
-    }
-
-    /* PGK Checklist */
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 13px 16px;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.18s;
-      background: #fff;
-    }
-
-    .check-item:hover {
-      border-color: var(--primary);
-      background: #eff6ff;
-    }
-
-    .check-item.selected {
-      border-color: var(--primary);
-      background: var(--primary-light);
-    }
-
-    .check-item.correct {
-      border-color: var(--success);
-      background: var(--success-bg);
-    }
-
-    .check-item.wrong {
-      border-color: var(--danger);
-      background: var(--danger-bg);
-    }
-
-    .check-box {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      border: 2px solid #94a3b8;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .check-item.selected .check-box {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
     /* Pembahasan Box */
     .bahas-box {
-      margin-top: 20px;
-      padding: 18px;
+      margin-top: 22px;
+      padding: 20px;
       border-radius: 12px;
-      background: #eff6ff;
-      border: 1.5px solid #93c5fd;
+      background: #f0fdfa;
+      border: 1.5px solid #5eead4;
       display: none;
       animation: fadeIn 0.25s ease;
     }
@@ -458,28 +434,28 @@
     .bahas-title {
       font-weight: 800;
       color: var(--primary-dark);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.96rem;
+      font-size: 0.98rem;
     }
 
     .bahas-key {
       display: inline-block;
       background: var(--primary);
       color: #fff;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 6px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .bahas-text {
-      font-size: 0.93rem;
+      font-size: 0.95rem;
       color: #1e293b;
-      white-space: pre-line;
+      line-height: 1.9;
     }
 
     /* Action Footer */
@@ -536,22 +512,22 @@
 
     .btn-bahas {
       background: var(--accent-light);
-      color: #713f12;
-      border-color: #eab308;
+      color: #312e81;
+      border-color: #818cf8;
     }
 
     .btn-bahas:hover:not(:disabled) {
-      background: #fef08a;
+      background: #c7d2fe;
     }
 
     .btn-finish {
-      background: #0d9488;
+      background: #0f766e;
       color: #fff;
-      border-color: #0d9488;
+      border-color: #0f766e;
     }
 
     .btn-finish:hover:not(:disabled) {
-      background: #0f766e;
+      background: #115e59;
     }
 
     /* Sidebar Navigator */
@@ -608,7 +584,7 @@
 
     .nav-btn.current {
       border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 0 0 2px rgba(14, 116, 144, 0.25);
       background: var(--primary-light);
       color: var(--primary-dark);
     }
@@ -634,7 +610,7 @@
     .summary-banner {
       display: none;
       margin-bottom: 20px;
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      background: linear-gradient(135deg, #164e63, #0e7490);
       color: #fff;
       border-radius: var(--radius);
       padding: 22px 24px;
@@ -653,7 +629,7 @@
       font-size: 2.3rem;
       font-weight: 800;
       line-height: 1.1;
-      color: #bfdbfe;
+      color: #a5f3fc;
     }
 
     @keyframes fadeIn {
@@ -667,14 +643,14 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <div class="brand-badge">ع</div>
+        <div class="brand-badge">FIS</div>
         <div>
-          <h1>SAS Ganjil Bahasa Arab — Kelas XII</h1>
-          <p>Peradaban Islam, Ilmuwan Muslim, Nahwu &amp; Sharaf • 40 Soal Sesuai Kisi-Kisi</p>
+          <h1>Asesmen Sumatif Akhir Fisika — Kelas X</h1>
+          <p>Besaran, Dimensi, Alat Ukur, Angka Penting, Ketidakpastian &amp; Vektor • 30 Soal</p>
         </div>
       </div>
       <div class="topbar-actions">
-        <span class="pill" id="answeredCount">Terjawab: 0 / 40</span>
+        <span class="pill" id="answeredCount">Terjawab: 0 / 30</span>
         <button class="mode-btn" id="toggleAutoBahas" onclick="toggleModeBahas()">
           Mode Bahas Langsung: OFF
         </button>
@@ -687,9 +663,9 @@
       <!-- Hasil Akhir Banner -->
       <section class="summary-banner" id="summaryBanner">
         <div>
-          <div style="font-size:0.85rem; opacity:0.9; font-weight:600;">HASIL EVALUASI SAS GANJIL BAHASA ARAB</div>
+          <div style="font-size:0.85rem; opacity:0.9; font-weight:600;">HASIL EVALUASI ASESMEN FISIKA</div>
           <div class="score-big" id="finalScoreText">0 / 100</div>
-          <div style="font-size:0.9rem; margin-top:4px;" id="finalDetailText">Benar: 0 dari 40 soal</div>
+          <div style="font-size:0.9rem; margin-top:4px;" id="finalDetailText">Benar: 0 dari 30 soal</div>
         </div>
         <div class="btn-group">
           <button class="btn" onclick="resetQuiz()">Ulangi Latihan</button>
@@ -701,8 +677,8 @@
       <section class="card" id="questionCard">
         <div class="progress-wrap">
           <div class="progress-header">
-            <span id="progressLabel">Soal 1 dari 40</span>
-            <span id="progressPercent">2.5%</span>
+            <span id="progressLabel">Soal 1 dari 30</span>
+            <span id="progressPercent">3.3%</span>
           </div>
           <div class="progress-track">
             <div class="progress-fill" id="progressFill"></div>
@@ -717,7 +693,7 @@
 
         <!-- Fitur Bahas -->
         <div class="bahas-box" id="bahasBox">
-          <div class="bahas-title">📖 Pembahasan Soal</div>
+          <div class="bahas-title">🔬 Pembahasan Soal</div>
           <div class="bahas-key" id="bahasKey"></div>
           <div class="bahas-text" id="bahasText"></div>
         </div>
@@ -737,7 +713,7 @@
 
     <!-- Sidebar Navigasi -->
     <aside class="card sidebar-card">
-      <h3>Navigasi Soal (1–40)</h3>
+      <h3>Navigasi Soal (1–30)</h3>
       <div class="legend">
         <span><i class="dot" style="background:#fff; border:1.5px solid #cbd5e1;"></i> Belum</span>
         <span><i class="dot" style="background:var(--primary);"></i> Dijawab</span>
@@ -745,701 +721,877 @@
         <span><i class="dot" style="background:var(--danger);"></i> Salah</span>
       </div>
       <div class="nav-grid" id="navGrid"></div>
-      <div style="font-size:0.8rem; color:var(--muted); line-height:1.5;">
-        <strong>Struktur Kisi-Kisi:</strong><br />
-        • No. 1–30: Pilihan Ganda (PG)<br />
-        • No. 31–35: Benar / Salah<br />
-        • No. 36–40: Checklist
+      <div style="font-size:0.8rem; color:var(--muted); line-height:1.6;">
+        <strong>Cakupan Kisi-Kisi (No. 1–30):</strong><br />
+        • No. 1–7: Besaran, Satuan &amp; Dimensi<br />
+        • No. 8–20: Alat Ukur, Kesalahan, Ketidakpastian &amp; Angka Penting<br />
+        • No. 21–30: Vektor, Gaya &amp; Kecepatan Resultan
       </div>
     </aside>
   </main>
 
   <script>
+    const frac = (n, d) => `<span class="frac"><span class="num">${n}</span><span class="den">${d}</span></span>`;
+    const sqrt = (inner) => `<span class="sqrt">√<span class="sqrt-rad">${inner}</span></span>`;
+    const vec = (s) => `<span class="vec">${s}</span>`;
+
+    // Helper pembangun SVG Mikrometer Sekrup presisi
+    function buildMicrometerSVG(mainLabelText, upperTicks, lowerTicks, thimbleMarks, alignedVal, titleText, subCaption) {
+      const startX = 38;
+      const stepMM = 28;
+      const datumY = 92;
+      const bevelX = 225;
+
+      let upperSVG = "";
+      upperTicks.forEach(t => {
+        const x = startX + t.pos * stepMM;
+        upperSVG += `<line x1="${x}" y1="${datumY}" x2="${x}" y2="${datumY - 22}" stroke="#0f172a" stroke-width="1.8"/>`;
+        upperSVG += `<text x="${x}" y="${datumY - 27}" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f172a">${t.label}</text>`;
+      });
+
+      let lowerSVG = "";
+      lowerTicks.forEach(pos => {
+        const x = startX + pos * stepMM;
+        lowerSVG += `<line x1="${x}" y1="${datumY}" x2="${x}" y2="${datumY + 18}" stroke="#0e7490" stroke-width="1.7"/>`;
+      });
+
+      const stepThimble = 11;
+      let thimbleSVG = "";
+      thimbleMarks.forEach(m => {
+        const y = datumY - (m - alignedVal) * stepThimble;
+        if (y >= 26 && y <= 158) {
+          const displayLabel = ((m % 50) + 50) % 50;
+          const isFive = displayLabel % 5 === 0;
+          const isAligned = m === alignedVal;
+          const len = isFive ? 26 : 15;
+          const col = isAligned ? "#0e7490" : "#0f172a";
+          const sw = isAligned ? "2.4" : (isFive ? "1.8" : "1.2");
+          thimbleSVG += `<line x1="${bevelX + 18}" y1="${y}" x2="${bevelX + 18 + len}" y2="${y}" stroke="${col}" stroke-width="${sw}"/>`;
+          if (isFive || isAligned) {
+            thimbleSVG += `<text x="${bevelX + 52}" y="${y + 4}" font-size="11.5" font-weight="${isAligned ? 'bold' : '600'}" fill="${col}">${displayLabel}</text>`;
+          }
+        }
+      });
+
+      return `
+        <div class="visual-box">
+          <div style="font-size:0.86rem; font-weight:700; color:#164e63; margin-bottom:6px;">${titleText}</div>
+          <svg width="390" height="175" viewBox="0 0 390 175" style="width:100%; max-width:390px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="42" width="${bevelX - 18}" height="100" fill="#f8fafc" stroke="#334155" stroke-width="1.8"/>
+            <line x1="22" y1="${datumY}" x2="${bevelX}" y2="${datumY}" stroke="#0f172a" stroke-width="2.2"/>
+            ${upperSVG}
+            ${lowerSVG}
+            <text x="26" y="135" font-size="10" font-weight="bold" fill="#475569">${mainLabelText}</text>
+            <polygon points="${bevelX},42 ${bevelX + 18},30 ${bevelX + 18},154 ${bevelX},142" fill="#e2e8f0" stroke="#334155" stroke-width="1.8"/>
+            <rect x="${bevelX + 18}" y="30" width="115" height="124" rx="4" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+            ${thimbleSVG}
+          </svg>
+          <div class="visual-caption">${subCaption}</div>
+        </div>
+      `;
+    }
+
+    const SVG_Q8 = buildMicrometerSVG(
+      "mm",
+      [0, 1, 2, 3, 4, 5].map(v => ({ pos: v, label: v })),
+      [0.5, 1.5, 2.5, 3.5, 4.5, 5.5],
+      Array.from({ length: 16 }, (_, i) => 20 + i),
+      28,
+      "Gambar Skala Mikrometer Sekrup",
+      "<b>Petunjuk Gambar:</b> Garis tengah skala utama tepat segaris dengan strip angka <b>28</b> pada skala putar, dan garis <b>5,5 mm</b> (bawah) tampak di sebelah kiri tepi selubung putar."
+    );
+
+    const SVG_Q9_ZERO = buildMicrometerSVG(
+      "mm (tertutup)",
+      [{ pos: 0, label: "0" }],
+      [],
+      [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7],
+      3,
+      "(a) Kondisi Rahang Tertutup Rapat (Uji Kesalahan Nol)",
+      "<b>Gambar (a):</b> Saat rahang tertutup rapat, angka <b>0</b> skala putar berada 3 strip di bawah garis acuan sehingga garis acuan segaris dengan angka <b>3</b>."
+    );
+
+    const SVG_Q9_MEAS = buildMicrometerSVG(
+      "mm (ukur)",
+      [0, 1, 2, 3, 4].map(v => ({ pos: v, label: v })),
+      [0.5, 1.5, 2.5, 3.5],
+      Array.from({ length: 15 }, (_, i) => 28 + i),
+      35,
+      "(b) Kondisi Saat Mengukur Tebal Pelat Logam",
+      "<b>Gambar (b):</b> Tampak garis atas terakhir yang terlihat adalah <b>4 mm</b> (garis 4,5 mm belum tampak) dan garis acuan sejajar dengan angka <b>35</b> pada skala putar."
+    );
+
+    function buildVernierSVG() {
+      const startX = 48;
+      const mmPx = 22;
+      let mainTicks = "";
+      for (let i = 0; i <= 15; i++) {
+        const x = startX + i * mmPx;
+        const isCm = i % 10 === 0;
+        const isHalf = i % 5 === 0;
+        const h = isCm ? 26 : (isHalf ? 20 : 14);
+        mainTicks += `<line x1="${x}" y1="78" x2="${x}" y2="${78 - h}" stroke="#0f172a" stroke-width="${isCm ? 2.1 : 1.4}"/>`;
+        if (isCm) {
+          const valCm = 2 + i / 10;
+          mainTicks += `<text x="${x}" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">${valCm}</text>`;
+        }
+      }
+
+      const x0 = startX + 3.6 * mmPx;
+      const stepV = 0.9 * mmPx;
+      let vernierTicks = "";
+      for (let j = 0; j <= 10; j++) {
+        const x = x0 + j * stepV;
+        const isLong = j % 5 === 0 || j === 6;
+        const isMatch = j === 6;
+        const h = isLong ? 24 : 15;
+        const col = isMatch ? "#0e7490" : "#0f172a";
+        vernierTicks += `<line x1="${x}" y1="82" x2="${x}" y2="${82 + h}" stroke="${col}" stroke-width="${isMatch ? 2.3 : 1.4}"/>`;
+        if (j === 0 || j === 5 || j === 6 || j === 10) {
+          vernierTicks += `<text x="${x}" y="121" text-anchor="middle" font-size="11.5" font-weight="${isMatch ? 'bold' : '600'}" fill="${col}">${j}</text>`;
+        }
+      }
+
+      return `
+        <div class="visual-box">
+          <div style="font-size:0.86rem; font-weight:700; color:#164e63; margin-bottom:6px;">Gambar Skala Jangka Sorong (Ketelitian 0,01 cm)</div>
+          <svg width="420" height="145" viewBox="0 0 420 145" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="24" width="380" height="54" fill="#f8fafc" stroke="#334155" stroke-width="1.7"/>
+            <text x="27" y="42" font-size="10.5" font-weight="bold" fill="#475569">cm</text>
+            ${mainTicks}
+            <rect x="${x0 - 16}" y="82" width="${10 * stepV + 32}" height="48" fill="#e0f2fe" stroke="#0e7490" stroke-width="1.7"/>
+            ${vernierTicks}
+          </svg>
+          <div class="visual-caption"><b>Petunjuk Gambar:</b> Garis angka <b>0</b> skala nonius berada di antara 2,3 cm dan 2,4 cm, sedangkan garis skala nonius ke-<b>6</b> tepat berimpit segaris dengan skala utama 2,9 cm.</div>
+        </div>
+      `;
+    }
+    const SVG_Q12 = buildVernierSVG();
+
+    function buildResultanGraphSVG() {
+      const mapX = deg => 65 + (deg / 180) * 300;
+      const mapY = r => 210 - r * 11;
+      let path = "";
+      for (let d = 0; d <= 180; d += 5) {
+        const rad = (d * Math.PI) / 180;
+        const r = Math.sqrt(36 + 64 + 96 * Math.cos(rad));
+        path += (path === "" ? "M " : " L ") + `${mapX(d).toFixed(1)} ${mapY(r).toFixed(1)}`;
+      }
+      return `
+        <div class="visual-box">
+          <svg width="420" height="250" viewBox="0 0 420 250" style="width:100%; max-width:420px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr22" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L7,3 z" fill="#0f172a"/>
+              </marker>
+            </defs>
+            <line x1="65" y1="${mapY(14)}" x2="365" y2="${mapY(14)}" stroke="#e2e8f0" stroke-dasharray="4 3"/>
+            <line x1="65" y1="${mapY(10)}" x2="365" y2="${mapY(10)}" stroke="#e2e8f0" stroke-dasharray="4 3"/>
+            <line x1="65" y1="${mapY(2)}" x2="365" y2="${mapY(2)}" stroke="#e2e8f0" stroke-dasharray="4 3"/>
+            <line x1="${mapX(90)}" y1="25" x2="${mapX(90)}" y2="210" stroke="#e2e8f0" stroke-dasharray="4 3"/>
+            <line x1="${mapX(180)}" y1="25" x2="${mapX(180)}" y2="210" stroke="#e2e8f0" stroke-dasharray="4 3"/>
+            <line x1="50" y1="210" x2="390" y2="210" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arr22)"/>
+            <line x1="65" y1="228" x2="65" y2="18" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arr22)"/>
+            <text x="394" y="214" font-size="11.5" font-weight="bold" fill="#0f172a">θ (°)</text>
+            <text x="32" y="16" font-size="11.5" font-weight="bold" fill="#0f172a">R (N)</text>
+            <path d="${path}" fill="none" stroke="#0e7490" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="${mapX(0)}" cy="${mapY(14)}" r="4.5" fill="#164e63"/>
+            <circle cx="${mapX(90)}" cy="${mapY(10)}" r="4.5" fill="#0e7490"/>
+            <circle cx="${mapX(180)}" cy="${mapY(2)}" r="4.5" fill="#3730a3"/>
+            <text x="58" y="226" font-size="11" fill="#334155">0°</text>
+            <text x="${mapX(90) - 10}" y="226" font-size="11" fill="#334155">90°</text>
+            <text x="${mapX(180) - 12}" y="226" font-size="11" fill="#334155">180°</text>
+            <text x="42" y="${mapY(14) + 4}" font-size="11" font-weight="bold" fill="#164e63">14</text>
+            <text x="42" y="${mapY(10) + 4}" font-size="11" font-weight="bold" fill="#0e7490">10</text>
+            <text x="48" y="${mapY(2) + 4}" font-size="11" font-weight="bold" fill="#3730a3">2</text>
+            <text x="${mapX(0) + 8}" y="${mapY(14) - 4}" font-size="10.5" font-weight="bold" fill="#164e63">(0°, 14 N)</text>
+            <text x="${mapX(90) + 8}" y="${mapY(10) - 6}" font-size="10.5" font-weight="bold" fill="#0e7490">(90°, 10 N)</text>
+            <text x="${mapX(180) - 58}" y="${mapY(2) - 8}" font-size="10.5" font-weight="bold" fill="#3730a3">(180°, 2 N)</text>
+          </svg>
+          <div class="visual-caption"><b>Penjelasan Grafik:</b> Kurva memperlihatkan perubahan besar resultan R dari dua vektor gaya F<sub>1</sub> = 6 N dan F<sub>2</sub> = 8 N seiring bertambahnya sudut apit θ dari 0° sampai 180°.</div>
+        </div>
+      `;
+    }
+    const SVG_Q22 = buildResultanGraphSVG();
+
+    const SVG_Q23 = `
+      <div class="visual-box">
+        <svg width="450" height="200" viewBox="0 0 450 200" style="width:100%; max-width:450px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+          <line x1="55" y1="165" x2="425" y2="165" stroke="#0f172a" stroke-width="1.8"/>
+          <line x1="55" y1="165" x2="55" y2="20" stroke="#0f172a" stroke-width="1.8"/>
+          <text x="15" y="18" font-size="11" font-weight="bold" fill="#0f172a">Resultan (N)</text>
+          <rect x="82" y="43" width="54" height="122" rx="5" fill="#0e7490"/>
+          <text x="109" y="36" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#164e63">21,0 N</text>
+          <text x="109" y="181" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Susunan I</text>
+          <text x="109" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">(θ = 0°)</text>
+          <rect x="168" y="59" width="54" height="106" rx="5" fill="#0891b2"/>
+          <text x="195" y="52" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0e7490">18,2 N</text>
+          <text x="195" y="181" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Susunan II</text>
+          <text x="195" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">(θ = 60°)</text>
+          <rect x="254" y="78" width="54" height="87" rx="5" fill="#0284c7"/>
+          <text x="281" y="71" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369a1">15,0 N</text>
+          <text x="281" y="181" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Susunan III</text>
+          <text x="281" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">(θ = 90°)</text>
+          <rect x="340" y="148" width="54" height="17" rx="4" fill="#64748b"/>
+          <text x="367" y="141" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#475569">3,0 N</text>
+          <text x="367" y="181" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Susunan IV</text>
+          <text x="367" y="194" text-anchor="middle" font-size="9.5" fill="#64748b">(θ = 180°)</text>
+        </svg>
+        <div class="visual-caption"><b>Keterangan Grafik:</b> Perbandingan resultan gaya tarik benda dari F<sub>1</sub> = 9 N dan F<sub>2</sub> = 12 N pada empat susunan sudut apit berbeda.</div>
+      </div>
+    `;
+
+    const SVG_Q24 = `
+      <div class="visual-box">
+        <svg width="390" height="250" viewBox="0 0 390 250" style="width:100%; max-width:390px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrAxis24" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L6,3 z" fill="#475569"/>
+            </marker>
+            <marker id="arrVec24" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto">
+              <path d="M0,0 L0,7 L8,3.5 z" fill="#0e7490"/>
+            </marker>
+          </defs>
+          <line x1="40" y1="130" x2="355" y2="130" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrAxis24)"/>
+          <line x1="195" y1="230" x2="195" y2="20" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrAxis24)"/>
+          <text x="360" y="134" font-size="12" font-weight="bold" fill="#334155">+x</text>
+          <text x="20" y="134" font-size="12" font-weight="bold" fill="#334155">-x</text>
+          <text x="188" y="14" font-size="12" font-weight="bold" fill="#334155">+y</text>
+          <text x="188" y="244" font-size="12" font-weight="bold" fill="#334155">-y</text>
+          <line x1="195" y1="130" x2="295" y2="55" stroke="#0e7490" stroke-width="2.8" marker-end="url(#arrVec24)"/>
+          <path d="M 233 130 A 38 38 0 0 0 225 107" fill="none" stroke="#0e7490" stroke-width="1.6"/>
+          <text x="237" y="121" font-size="11" font-weight="bold" fill="#164e63">37°</text>
+          <text x="298" y="48" font-size="12" font-weight="bold" fill="#164e63">F₁ = 20 N</text>
+          <line x1="195" y1="130" x2="147" y2="66" stroke="#0e7490" stroke-width="2.8" marker-end="url(#arrVec24)"/>
+          <path d="M 160 130 A 35 35 0 0 1 174 102" fill="none" stroke="#0e7490" stroke-width="1.6"/>
+          <text x="135" y="120" font-size="11" font-weight="bold" fill="#164e63">53°</text>
+          <text x="80" y="60" font-size="12" font-weight="bold" fill="#164e63">F₂ = 10 N</text>
+          <line x1="195" y1="130" x2="195" y2="208" stroke="#0e7490" stroke-width="2.8" marker-end="url(#arrVec24)"/>
+          <text x="205" y="206" font-size="12" font-weight="bold" fill="#164e63">F₃ = 12 N</text>
+          <circle cx="195" cy="130" r="4" fill="#0f172a"/>
+        </svg>
+        <div class="visual-caption"><b>Keterangan Gambar:</b> Ketiga gaya bertitik tangkap di pusat O(0, 0). Gunakan nilai pendekatan sin 37° = cos 53° = 0,6 dan cos 37° = sin 53° = 0,8.</div>
+      </div>
+    `;
+
+    function buildVectorGridSVG() {
+      const ox = 155, oy = 135, u = 26;
+      const px = x => ox + x * u;
+      const py = y => oy - y * u;
+      let gridLines = "";
+      for (let gx = -3; gx <= 5; gx++) {
+        gridLines += `<line x1="${px(gx)}" y1="${py(5)}" x2="${px(gx)}" y2="${py(-4)}" stroke="#e2e8f0" stroke-width="1"/>`;
+        if (gx !== 0) gridLines += `<text x="${px(gx)}" y="${oy + 14}" text-anchor="middle" font-size="10" fill="#64748b">${gx}</text>`;
+      }
+      for (let gy = -4; gy <= 5; gy++) {
+        gridLines += `<line x1="${px(-3)}" y1="${py(gy)}" x2="${px(5)}" y2="${py(gy)}" stroke="#e2e8f0" stroke-width="1"/>`;
+        if (gy !== 0) gridLines += `<text x="${ox - 10}" y="${py(gy) + 4}" text-anchor="end" font-size="10" fill="#64748b">${gy}</text>`;
+      }
+      return `
+        <div class="visual-box">
+          <svg width="370" height="270" viewBox="0 0 370 270" style="width:100%; max-width:370px; height:auto; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrV30a" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#0e7490"/></marker>
+              <marker id="arrV30b" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#3730a3"/></marker>
+              <marker id="arrV30c" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#0f766e"/></marker>
+            </defs>
+            ${gridLines}
+            <line x1="${px(-3.4)}" y1="${oy}" x2="${px(5.4)}" y2="${oy}" stroke="#0f172a" stroke-width="1.6"/>
+            <line x1="${ox}" y1="${py(-4.3)}" x2="${ox}" y2="${py(5.3)}" stroke="#0f172a" stroke-width="1.6"/>
+            <text x="${px(5.5)}" y="${oy + 4}" font-size="11.5" font-weight="bold" fill="#0f172a">x</text>
+            <text x="${ox + 6}" y="${py(5.2)}" font-size="11.5" font-weight="bold" fill="#0f172a">y</text>
+            <line x1="${ox}" y1="${oy}" x2="${px(3)}" y2="${py(2)}" stroke="#0e7490" stroke-width="2.6" marker-end="url(#arrV30a)"/>
+            <text x="${px(3) + 6}" y="${py(2) - 4}" font-size="11.5" font-weight="bold" fill="#164e63">A(3, 2)</text>
+            <line x1="${ox}" y1="${oy}" x2="${px(-1)}" y2="${py(4)}" stroke="#3730a3" stroke-width="2.6" marker-end="url(#arrV30b)"/>
+            <text x="${px(-1) - 46}" y="${py(4) - 6}" font-size="11.5" font-weight="bold" fill="#3730a3">B(-1, 4)</text>
+            <line x1="${ox}" y1="${oy}" x2="${px(2)}" y2="${py(-3)}" stroke="#0f766e" stroke-width="2.6" marker-end="url(#arrV30c)"/>
+            <text x="${px(2) + 6}" y="${py(-3) + 4}" font-size="11.5" font-weight="bold" fill="#0f766e">C(2, -3)</text>
+            <circle cx="${ox}" cy="${oy}" r="3.5" fill="#0f172a"/>
+          </svg>
+          <div class="visual-caption"><b>Keterangan Gambar:</b> Tiga vektor A, B, dan C pada bidang koordinat Kartesius dengan titik pangkal di O(0, 0).</div>
+        </div>
+      `;
+    }
+    const SVG_Q30 = buildVectorGridSVG();
+
     const QUESTIONS = [
-      // ===================== SOAL 1 - 30 (PILIHAN GANDA) =====================
       {
         no: 1,
         type: "PG",
-        cog: "C2",
-        topic: "Peradaban Islam • Sejarah Awal Peradaban Islam",
-        narasi: `<div class="arab">بَدَأَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ مُنْذُ بِعْثَةِ النَّبِيِّ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي مَكَّةَ الْمُكَرَّمَةِ، ثُمَّ تَطَوَّرَتْ فِي الْمَدِينَةِ الْمُنَوَّرَةِ بِإِنْشَاءِ الْمُجْتَمَعِ الْمَدَنِيِّ الْأَوَّلِ.</div>`,
-        question: "Berdasarkan teks berbahasa Arab di atas, kapan dimulainya peradaban Islam?",
+        cog: "C3",
+        topic: "Besaran Pokok & Turunan",
+        narasi: `<p>Berikut adalah tabel data hasil praktikum fisika di laboratorium:</p><table class="data-table"><thead><tr><th>No.</th><th>Nama Besaran</th><th>Hasil Ukur</th></tr></thead><tbody><tr><td>1</td><td>Massa benda</td><td>450 g</td></tr><tr><td>2</td><td>Panjang lintasan</td><td>120 cm</td></tr><tr><td>3</td><td>Kecepatan rata-rata</td><td>4,5 m/s</td></tr><tr><td>4</td><td>Waktu tempuh</td><td>15 s</td></tr><tr><td>5</td><td>Luas penampang</td><td>25 cm<sup>2</sup></td></tr><tr><td>6</td><td>Gaya dorong</td><td>12 N</td></tr><tr><td>7</td><td>Suhu ruang</td><td>27 °C</td></tr></tbody></table>`,
+        question: "Berdasarkan tabel data hasil praktikum di atas, kelompok besaran yang seluruhnya termasuk besaran turunan adalah nomor...",
         options: [
-          "Sejak berdirinya Dinasti Abbasiyah di Baghdad",
-          "Sejak diutusnya Nabi Muhammad SAW di Makkah al-Mukarramah",
-          "Sejak berakhirnya masa Khulafaur Rasyidin",
-          "Sejak dibangunnya Universitas Al-Azhar di Kairo",
-          "Sejak masuknya Islam ke wilayah Andalusia"
+          "1, 2, dan 4",
+          "2, 3, dan 7",
+          "3, 5, dan 6",
+          "4, 5, dan 7",
+          "1, 5, dan 6"
         ],
-        answer: 1,
-        bahas: "Kalimat 'Bada'atil-ḥaḍāratul-islāmiyyatu munżu bi'ṡatin-nabiyyi Muḥammadin SAW fī Makkatal-Mukarramah' berarti: Peradaban Islam dimulai sejak diutusnya Nabi Muhammad SAW di Makkah al-Mukarramah."
+        answer: 2,
+        bahas: "Massa (1), panjang (2), waktu (4), dan suhu (7) termasuk <b>besaran pokok</b>. Sedangkan <b>kecepatan rata-rata (3)</b>, <b>luas penampang (5)</b>, dan <b>gaya dorong (6)</b> diturunkan dari besaran-besaran pokok sehingga termasuk <b>besaran turunan</b>."
       },
       {
         no: 2,
         type: "PG",
         cog: "C3",
-        topic: "Nahwu • Fi'il Mudhari' Manshub setelah أنْ",
-        narasi: `<div class="arab">يَجِبُ عَلَى الطُّلَّابِ أَنْ .......... فِي طَلَبِ الْعِلْمِ بِإِخْلَاصٍ.</div>`,
-        question: "Bentuk fi'il mudhari' manshub yang tepat setelah (أَنْ) sesuai dhamir jamak mudzakkar (هُمْ) adalah...",
+        topic: "Konversi Satuan Massa Jenis",
+        narasi: `Sebuah balok logam aluminium memiliki massa <span class="math">540 gram</span> dengan ukuran panjang <span class="math">10 cm</span>, lebar <span class="math">5 cm</span>, dan tinggi <span class="math">4 cm</span>.`,
+        question: `Massa jenis balok logam tersebut jika dinyatakan dalam satuan SI (<span class="math">kg/m<sup>3</sup></span>) adalah...`,
         options: [
-          "<span class='arab-inline'>يَجْتَهِدُونَ</span>",
-          "<span class='arab-inline'>يَجْتَهِدُوا</span>",
-          "<span class='arab-inline'>يَجْتَهِدُ</span>",
-          "<span class='arab-inline'>تَجْتَهِدُوا</span>",
-          "<span class='arab-inline'>يَجْتَهِدَانِ</span>"
+          "2,7 kg/m<sup>3</sup>",
+          "270 kg/m<sup>3</sup>",
+          "2.700 kg/m<sup>3</sup>",
+          "27.000 kg/m<sup>3</sup>",
+          "0,27 kg/m<sup>3</sup>"
         ],
-        answer: 1,
-        bahas: "Fi'il mudhari' dari af'alul khamsah (jamak mudzakkar يَجْتَهِدُونَ) apabila didahului huruf nashab (أَنْ) menjadi manshub dengan tanda hadzfun-nun (menghilangkan huruf nun) dan ditambah alif fariqah: يَجْتَهِدُوا."
+        answer: 2,
+        bahas: `• Volume balok: <span class="math">V = 10 &times; 5 &times; 4 = 200 cm<sup>3</sup></span><br/>
+        • Massa jenis dalam <span class="math">g/cm<sup>3</sup></span>: <span class="math">&rho; = ${frac("540 g", "200 cm<sup>3</sup>")} = 2,7 g/cm<sup>3</sup></span><br/>
+        • Konversi ke SI (<span class="math">kg/m<sup>3</sup></span>):<br/>
+        <span class="math">&rho; = 2,7 &times; ${frac("10<sup>&minus;3</sup> kg", "10<sup>&minus;6</sup> m<sup>3</sup>")} = 2,7 &times; 10<sup>3</sup> kg/m<sup>3</sup> = <b>2.700 kg/m<sup>3</sup></b></span>.`
       },
       {
         no: 3,
         type: "PG",
         cog: "C3",
-        topic: "Nahwu • Dhamir dan Kesesuaian Fi'il (أنتم)",
-        narasi: `<div class="arab">يَا أَيُّهَا التَّلَامِيذُ، أَنْتُمْ .......... كُتُبَ التَّارِيخِ الْإِسْلَامِيِّ فِي الْمَكْتَبَةِ.</div>`,
-        question: "Bentuk fi'il mudhari' yang tepat sesuai dengan dhamir (أَنْتُمْ) dalam kalimat tersebut adalah...",
+        topic: "Analisis Dimensi",
+        narasi: `Sebuah mesin pompa air mampu melakukan usaha sebesar <span class="math">W = F &middot; s</span> dalam selang waktu <span class="math">t</span> untuk menaikkan air ke penampung. Laju usaha yang dilakukan tiap satuan waktu tersebut dikenal sebagai besaran <b>Daya (<span class="math">P = W / t</span>)</b>.`,
+        question: `Dimensi dari besaran Daya (<span class="math">P</span>) tersebut adalah...`,
         options: [
-          "<span class='arab-inline'>يَقْرَؤُونَ</span>",
-          "<span class='arab-inline'>تَقْرَأُ</span>",
-          "<span class='arab-inline'>تَقْرَؤُونَ</span>",
-          "<span class='arab-inline'>تَقْرَآنِ</span>",
-          "<span class='arab-inline'>نَقْرَأُ</span>"
+          `<span class="math">[M][L][T]<sup>&minus;2</sup></span>`,
+          `<span class="math">[M][L]<sup>2</sup>[T]<sup>&minus;2</sup></span>`,
+          `<span class="math">[M][L]<sup>2</sup>[T]<sup>&minus;3</sup></span>`,
+          `<span class="math">[M][L]<sup>&minus;1</sup>[T]<sup>&minus;2</sup></span>`,
+          `<span class="math">[M][L]<sup>3</sup>[T]<sup>&minus;2</sup></span>`
         ],
         answer: 2,
-        bahas: "Untuk dhamir mukhathab jamak mudzakkar أَنْتُمْ (kalian laki-laki), fi'il mudhari'nya diawali ta' mudhara'ah dan diakhiri wawu jamak serta nun: تَقْرَؤُونَ."
+        bahas: `• Gaya <span class="math">F = m &middot; a &rarr; [M][L][T]<sup>&minus;2</sup></span><br/>
+        • Usaha <span class="math">W = F &middot; s &rarr; [M][L][T]<sup>&minus;2</sup> &middot; [L] = [M][L]<sup>2</sup>[T]<sup>&minus;2</sup></span><br/>
+        • Daya <span class="math">P = W / t &rarr; ${frac("[M][L]<sup>2</sup>[T]<sup>&minus;2</sup>", "[T]")} = <b>[M][L]<sup>2</sup>[T]<sup>&minus;3</sup></b></span>.`
       },
       {
         no: 4,
         type: "PG",
         cog: "C3",
-        topic: "Nahwu • Fi'il Mudhari' Majzum setelah لم",
-        narasi: `<div class="arab">لَمْ .......... الطَّالِبُ الْكَسْلَانُ إِلَى الْمَدْرَسَةِ أَمْسِ.</div>`,
-        question: "Bentuk fi'il mudhari' majzum yang tepat setelah huruf jazm (لَمْ) dalam kalimat negatif tersebut adalah...",
+        topic: "Konversi Satuan Kecepatan",
+        narasi: `Sebuah kereta antarkota bergerak di lintasan lurus dengan kecepatan tetap sebesar <span class="math">126 km/jam</span>.`,
+        question: `Kecepatan kereta tersebut jika dikonversi ke dalam satuan SI (<span class="math">m/s</span>) adalah...`,
         options: [
-          "<span class='arab-inline'>يَذْهَبُ</span>",
-          "<span class='arab-inline'>يَذْهَبَ</span>",
-          "<span class='arab-inline'>يَذْهَبْ</span>",
-          "<span class='arab-inline'>يَذْهَبُوا</span>",
-          "<span class='arab-inline'>ذَهَبَ</span>"
+          "25 m/s",
+          "30 m/s",
+          "35 m/s",
+          "40 m/s",
+          "45 m/s"
         ],
         answer: 2,
-        bahas: "Huruf لَمْ men-jazm-kan fi'il mudhari'. Karena fi'il shahih akhir untuk dhamir هُوَ, tanda jazmnya adalah sukun: يَذْهَبْ."
+        bahas: `<span class="math">126 km/jam = ${frac("126 &times; 1.000 m", "3.600 s")} = ${frac("126.000", "3.600")} m/s = <b>35 m/s</b></span>.`
       },
       {
         no: 5,
         type: "PG",
         cog: "C3",
-        topic: "Nahwu • Dhamir أنتم (Tanggung Jawab Mencari Ilmu)",
-        narasi: `<div class="arab">أَنْتُمْ يَا شَبَابَ الْإِسْلَامِ .......... مَسْؤُولِيَّةَ طَلَبِ الْعِلْمِ وَنَشْرِ الْحَضَارَةِ.</div>`,
-        question: "Bentuk fi'il yang tepat untuk dhamir (أَنْتُمْ) dalam kalimat tentang tanggung jawab mencari ilmu tersebut adalah...",
+        topic: "Dimensi Besaran Energi",
+        narasi: `Ketika buah kelapa bermassa <span class="math">m</span> jatuh bebas dari ketinggian <span class="math">h</span> pada percepatan gravitasi <span class="math">g</span>, energi potensial gravitasinya (<span class="math">E<sub>p</sub> = m &middot; g &middot; h</span>) berubah menjadi energi kinetik (<span class="math">E<sub>k</sub> = ${frac("1","2")}mv<sup>2</sup></span>).`,
+        question: `Dimensi dari besaran energi (<span class="math">E<sub>p</sub></span> maupun <span class="math">E<sub>k</sub></span>) adalah...`,
         options: [
-          "<span class='arab-inline'>تَتَحَمَّلُ</span>",
-          "<span class='arab-inline'>يَتَحَمَّلُونَ</span>",
-          "<span class='arab-inline'>تَتَحَمَّلُونَ</span>",
-          "<span class='arab-inline'>نَتَحَمَّلُ</span>",
-          "<span class='arab-inline'>تَتَحَمَّلِينَ</span>"
+          `<span class="math">[M][L][T]<sup>&minus;1</sup></span>`,
+          `<span class="math">[M][L][T]<sup>&minus;2</sup></span>`,
+          `<span class="math">[M][L]<sup>2</sup>[T]<sup>&minus;2</sup></span>`,
+          `<span class="math">[M][L]<sup>2</sup>[T]<sup>&minus;3</sup></span>`,
+          `<span class="math">[M]<sup>2</sup>[L]<sup>2</sup>[T]<sup>&minus;2</sup></span>`
         ],
         answer: 2,
-        bahas: "Dhamir أَنْتُمْ berpasangan dengan fi'il mudhari' تَتَحَمَّلُونَ (kalian memikul/bertanggung jawab)."
+        bahas: `Dari <span class="math">E<sub>p</sub> = m &middot; g &middot; h</span>:<br/>
+        <span class="math">[m] = [M]</span>, <span class="math">[g] = [L][T]<sup>&minus;2</sup></span>, <span class="math">[h] = [L]</span>.<br/>
+        Maka <span class="math">[E<sub>p</sub>] = [M] &middot; [L][T]<sup>&minus;2</sup> &middot; [L] = <b>[M][L]<sup>2</sup>[T]<sup>&minus;2</sup></b></span>. (Hal yang sama berlaku untuk <span class="math">[E<sub>k</sub>] = [M]([L][T]<sup>&minus;1</sup>)<sup>2</sup> = [M][L]<sup>2</sup>[T]<sup>&minus;2</sup></span>).`
       },
       {
         no: 6,
         type: "PG",
-        cog: "C3",
-        topic: "Nahwu • Fi'il Mudhari' setelah أنْ untuk Dhamir أنتما",
-        narasi: `<div class="arab">أَنْتُمَا يَا صَدِيقَيَّ، يَنْبَغِي لَكُمَا أَنْ .......... إِلَى دُرُوسِ الْعُلَمَاءِ.</div>`,
-        question: "Bentuk fi'il mudhari' manshub yang tepat setelah (أَنْ) untuk dhamir mutsanna (أَنْتُمَا) adalah...",
+        cog: "C5",
+        topic: "Evaluasi Satuan Konstanta Gaya Hambat",
+        narasi: `Sebuah bola berjari-jari <span class="math">r</span> bergerak dalam fluida dengan kelajuan <span class="math">v</span> sehingga mengalami gaya hambat sebesar <span class="math">F = k &middot; r &middot; v</span>, dengan <span class="math">k</span> adalah konstanta gaya hambat fluida.<br/>Tiga siswa menyampaikan kesimpulan mengenai satuan dari konstanta <span class="math">k</span>:<br/>• <b>Andi:</b> "Satuan konstanta k dalam satuan dasar SI adalah <span class="math">kg &middot; m<sup>&minus;1</sup> &middot; s<sup>&minus;1</sup></span>."<br/>• <b>Budi:</b> "Satuan konstanta k juga dapat ditulis sebagai <span class="math">N &middot; s &middot; m<sup>&minus;2</sup></span>."<br/>• <b>Citra:</b> "Satuan konstanta k adalah <span class="math">kg &middot; m &middot; s<sup>&minus;1</sup></span>."`,
+        question: "Evaluasi kebenaran kesimpulan ketiga siswa tersebut melalui analisis satuan!",
         options: [
-          "<span class='arab-inline'>تَسْتَمِعَانِ</span>",
-          "<span class='arab-inline'>تَسْتَمِعَا</span>",
-          "<span class='arab-inline'>يَسْتَمِعَا</span>",
-          "<span class='arab-inline'>تَسْتَمِعُوا</span>",
-          "<span class='arab-inline'>تَسْتَمِعَ</span>"
+          "Hanya kesimpulan Andi yang benar.",
+          "Hanya kesimpulan Citra yang benar.",
+          "Kesimpulan Andi dan Budi benar, sedangkan kesimpulan Citra salah.",
+          "Kesimpulan Budi dan Citra benar, sedangkan kesimpulan Andi salah.",
+          "Ketiga kesimpulan siswa tersebut benar."
         ],
-        answer: 1,
-        bahas: "Untuk dhamir أَنْتُمَا (kalian berdua), bentuk asal af'alul khamsahnya adalah تَسْتَمِعَانِ. Setelah dimasuki huruf nashab أَنْ, huruf nun dibuang menjadi: تَسْتَمِعَا."
+        answer: 2,
+        bahas: `Dari <span class="math">F = k &middot; r &middot; v</span>, diperoleh <span class="math">k = ${frac("F", "r &middot; v")}</span>.<br/>
+        • Dalam N, m, s: <span class="math">${frac("N", "m &middot; (m/s)")} = ${frac("N &middot; s", "m<sup>2</sup>")} = <b>N &middot; s &middot; m<sup>&minus;2</sup></b></span> (<b>Budi BENAR</b>).<br/>
+        • Dalam satuan pokok SI (<span class="math">N = kg &middot; m &middot; s<sup>&minus;2</sup></span>): <span class="math">${frac("kg &middot; m &middot; s<sup>&minus;2</sup>", "m &middot; m &middot; s<sup>&minus;1</sup>")} = <b>kg &middot; m<sup>&minus;1</sup> &middot; s<sup>&minus;1</sup></b></span> (<b>Andi BENAR</b>).<br/>
+        • Satuan yang disebut Citra (<span class="math">kg &middot; m &middot; s<sup>&minus;1</sup></span>) adalah satuan momentum, bukan konstanta <span class="math">k</span> (<b>Citra SALAH</b>).`
       },
       {
         no: 7,
         type: "PG",
-        cog: "C2",
-        topic: "Sejarah Peradaban Islam • Masa Keemasan",
-        narasi: `<div class="arab">بَلَغَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ ذُرْوَةَ تَقَدُّمِهَا فِي الْعُلُومِ وَالْفُنُونِ وَالثَّقَافَةِ فِي الْعَصْرِ الْعَبَّاسِيِّ، خَاصَّةً فِي عَهْدِ هَارُونَ الرَّشِيدِ وَابْنِهِ الْمَأْمُونِ.</div>`,
-        question: "Berdasarkan teks tersebut, periode yang disebut sebagai masa keemasan (puncak kemajuan) peradaban Islam adalah...",
+        cog: "C4",
+        topic: "Analisis Satuan SI yang Tepat",
+        narasi: `Perhatikan empat narasi hasil pengamatan fisika berikut:<br/>(1) Suhu air mendidih dalam ketel tercatat sebesar <span class="math">100 °C</span>.<br/>(2) Kuat arus listrik pada rangkaian pengisi daya tercatat <span class="math">500 mA</span>.<br/>(3) Massa sebuah batu uji pada neraca tercatat <span class="math">250 gram</span>.<br/>(4) Intensitas cahaya lampu ruang tercatat <span class="math">80 candela</span>.`,
+        question: "Pasangan satuan SI yang tepat untuk menggantikan dan menyeragamkan keempat besaran pada narasi di atas secara berturut-turut adalah...",
         options: [
-          "Masa Bani Umayyah di Damaskus",
-          "Masa Dinasti Abbasiyah (Al-'Ashrul 'Abbasi)",
-          "Masa Kesultanan Utsmaniyah di Turki",
-          "Masa Fatimiyah di Mesir",
-          "Masa Jahiliyah di Jazirah Arab"
+          "Celcius, ampere, gram, candela",
+          "Kelvin, ampere, kilogram, candela",
+          "Kelvin, volt, kilogram, watt",
+          "Fahrenheit, ampere, kilogram, lumen",
+          "Kelvin, coulomb, gram, candela"
         ],
         answer: 1,
-        bahas: "Teks menyebutkan 'balaghatil-ḥaḍāratul-islāmiyyatu żurwata taqaddumihā... fil-'aṣril-'abbāsī' (puncak kemajuan pada masa Abbasiyah, khususnya era Harun ar-Rasyid dan Al-Ma'mun)."
+        bahas: `Dalam Sistem Internasional (SI):<br/>
+        (1) Suhu &rarr; <b>kelvin (K)</b><br/>
+        (2) Kuat arus listrik &rarr; <b>ampere (A)</b><br/>
+        (3) Massa &rarr; <b>kilogram (kg)</b><br/>
+        (4) Intensitas cahaya &rarr; <b>candela (cd)</b>.`
       },
       {
         no: 8,
         type: "PG",
-        cog: "C2",
-        topic: "Sejarah Peradaban Islam • Aspek Kehidupan Material",
-        narasi: `<div class="arab">شَهِدَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ تَطَوُّرًا كَبِيرًا فِي الْحَيَاةِ الْمَادِّيَّةِ مِثْلَ بِنَاءِ الْمُسْتَشْفَيَاتِ وَالْمَدَارِسِ وَالْمَسَاجِدِ وَتَطْوِيرِ الزِّرَاعَةِ وَالتِّجَارَةِ.</div>`,
-        question: "Aspek kehidupan material yang mengalami perkembangan dalam peradaban Islam berdasarkan teks di atas adalah...",
+        cog: "C3",
+        topic: "Membaca Skala Mikrometer Sekrup",
+        narasi: "Seorang siswa mengukur ketebalan sebuah pelat baja tipis menggunakan mikrometer sekrup sehingga diperoleh posisi skala seperti gambar di bawah ini:" + SVG_Q8,
+        question: "Hasil pembacaan pengukuran ketebalan pelat baja tersebut adalah...",
         options: [
-          "Pembangunan rumah sakit, sekolah, masjid, serta pengembangan pertanian dan perdagangan",
-          "Hanya penulisan syair-syair cinta di istana",
-          "Penutupan pasar-pasar tradisional di Baghdad",
-          "Penghapusan sistem irigasi dan pertanian",
-          "Larangan membangun sekolah dan rumah sakit umum"
+          "5,28 mm",
+          "5,58 mm",
+          "5,78 mm",
+          "5,82 mm",
+          "6,28 mm"
         ],
-        answer: 0,
-        bahas: "Teks menyebut aspek kehidupan material (al-ḥayāh al-māddiyyah): binā'ul-mustasyfayāt (pembangunan rumah sakit), al-madāris (sekolah), al-masājid (masjid), serta taṭwīruz-zirā'ah wat-tijārah (pertanian dan perdagangan)."
+        answer: 2,
+        bahas: `• Skala utama (SU) yang terlihat terakhir tepat di depan tepi selubung putar: garis atas menunjukkan <span class="math">5 mm</span> dan garis bawah berikutnya (<span class="math">5,5 mm</span>) sudah terlihat, sehingga <span class="math">SU = 5,50 mm</span>.<br/>
+        • Skala putar/nonius (SN) yang segaris dengan garis acuan utama: <span class="math">28 &times; 0,01 mm = 0,28 mm</span>.<br/>
+        • Hasil pembacaan = <span class="math">5,50 + 0,28 = <b>5,78 mm</b></span>.`
       },
       {
         no: 9,
         type: "PG",
-        cog: "C1",
-        topic: "Kosakata Bahasa Arab • Antonim (مضاد)",
-        narasi: `<div class="arab">انْتَشَرَتِ الْحَضَارَةُ الْإِسْلَامِيَّةُ فِي الْعَالَمِ بِشَكْلٍ <u>سَرِيعٍ</u>.</div>`,
-        question: "Antonim (مُضَادّ) dari kosakata bergaris bawah (سَرِيعٌ) yang berarti 'cepat' adalah...",
+        cog: "C4",
+        topic: "Koreksi Kesalahan Nol Mikrometer Sekrup",
+        narasi: "Sebelum mengukur tebal pelat logam, seorang praktikan memeriksa kondisi rahang mikrometer sekrup saat tertutup rapat seperti pada Gambar (a), kemudian menggunakannya untuk mengukur pelat seperti pada Gambar (b):" + SVG_Q9_ZERO + SVG_Q9_MEAS,
+        question: "Hasil pengukuran ketebalan pelat logam yang sebenarnya setelah dikoreksi terhadap kesalahan nol adalah...",
         options: [
-          "<span class='arab-inline'>كَثِيرٌ</span>",
-          "<span class='arab-inline'>بَطِيءٌ</span>",
-          "<span class='arab-inline'>عَظِيمٌ</span>",
-          "<span class='arab-inline'>قَرِيبٌ</span>",
-          "<span class='arab-inline'>جَدِيدٌ</span>"
+          "4,05 mm",
+          "4,32 mm",
+          "4,35 mm",
+          "4,38 mm",
+          "4,82 mm"
         ],
         answer: 1,
-        bahas: "سَرِيعٌ berarti cepat, lawan katanya (antonim) adalah بَطِيءٌ yang berarti lambat."
+        bahas: `• Dari Gambar (a), saat rahang tertutup rapat, angka 0 skala putar berada 3 skala di bawah garis acuan sehingga alat sudah terbaca <span class="math">+0,03 mm</span> (kesalahan nol positif = <span class="math">+0,03 mm</span>).<br/>
+        • Dari Gambar (b), pembacaan ukur langsung: <span class="math">SU = 4,00 mm</span> (garis 4,5 belum muncul) dan <span class="math">SN = 35 &times; 0,01 = 0,35 mm</span>, sehingga terbaca <span class="math">4,35 mm</span>.<br/>
+        • Hasil sebenarnya = <span class="math">4,35 mm &minus; (+0,03 mm) = <b>4,32 mm</b></span>.`
       },
       {
         no: 10,
         type: "PG",
-        cog: "C1",
-        topic: "Tokoh Ilmuwan Muslim • Biografi Imam Bukhari",
-        narasi: `<div class="arab">.......... الْإِمَامُ الْبُخَارِيُّ فِي مَدِينَةِ بُخَارَى سَنَةَ ١٩٤ هِجْرِيَّةً.</div>`,
-        question: "Kata kerja pasif (fi'il madhi majhul) yang tepat untuk melengkapi informasi kelahiran Imam Bukhari tersebut adalah...",
+        cog: "C5",
+        topic: "Evaluasi Kesalahan Nol & Pengaruhnya",
+        narasi: `Ketika kedua rahang sebuah jangka sorong dirapatkan sebelum digunakan, garis angka <b>0 pada skala nonius berada tepat di sebelah kanan garis angka 0 pada skala utama</b> sejauh <span class="math">0,04 cm</span>. Seorang siswa langsung memakai alat tersebut mengukur panjang baut tanpa melakukan koreksi.`,
+        question: "Kesimpulan evaluasi yang paling tepat mengenai jenis kesalahan nol dan pengaruhnya terhadap hasil pengukuran tersebut adalah...",
         options: [
-          "<span class='arab-inline'>تُوُفِّيَ</span> (wafat)",
-          "<span class='arab-inline'>وُلِدَ</span> (dilahirkan)",
-          "<span class='arab-inline'>سَافَرَ</span> (bepergian)",
-          "<span class='arab-inline'>أَلَّفَ</span> (mengarang)",
-          "<span class='arab-inline'>دَرَسَ</span> (belajar)"
+          "Termasuk kesalahan acak; hasil pembacaan akan berfluktuasi lebih besar atau lebih kecil secara tidak menentu.",
+          "Termasuk kesalahan nol negatif (kesalahan sistematis); hasil pembacaan langsung selalu lebih kecil 0,04 cm dari nilai sebenarnya sehingga perlu ditambah 0,04 cm.",
+          "Termasuk kesalahan nol positif (kesalahan sistematis); hasil pembacaan langsung selalu lebih besar 0,04 cm dari nilai sebenarnya sehingga menurunkan akurasi dan harus dikurangi 0,04 cm.",
+          "Termasuk kesalahan paralaks; cukup diperbaiki dengan mengulang pengukuran tiga kali tanpa koreksi matematis.",
+          "Tidak memengaruhi akurasi pengukuran sama sekali karena jarak 0,04 cm masih di bawah 1 mm."
         ],
-        answer: 1,
-        bahas: "Imam Bukhari dilahirkan di kota Bukhara pada tahun 194 H. Kata kerja untuk 'dilahirkan' adalah وُلِدَ."
+        answer: 2,
+        bahas: `Garis nol nonius yang bergeser ke sebelah kanan nol skala utama saat rahang tertutup menandakan adanya <b>kesalahan nol positif</b> sebesar <span class="math">+0,04 cm</span> (bagian dari <b>kesalahan sistematis</b>). Akibatnya, setiap hasil pembacaan selalu tercatat <b>lebih besar 0,04 cm</b> daripada nilai sebenarnya (menurunkan akurasi), dan wajib dikoreksi dengan mengurangkan <span class="math">0,04 cm</span>.`
       },
       {
         no: 11,
         type: "PG",
-        cog: "C2",
-        topic: "Nahwu • Isim Tafdhil",
-        narasi: `<div class="arab">يُعَدُّ كِتَابُ صَحِيحِ الْبُخَارِيِّ .......... كِتَابٍ بَعْدَ الْقُرْآنِ الْكَرِيمِ عِنْدَ أَهْلِ السُّنَّةِ.</div>`,
-        question: "Bentuk isim tafdhil yang tepat untuk melengkapi kalimat tentang keunggulan kitab Shahih Bukhari sebagai 'kitab paling sahih' adalah...",
+        cog: "C3",
+        topic: "Pemilihan Alat Ukur yang Tepat",
+        narasi: "Seorang teknisi bengkel otomotif harus mengukur tiga objek berbeda: (1) diameter bagian dalam sebuah cincin piston sekitar 2,4 cm secara teliti hingga 0,01 cm, (2) ketebalan lembaran plat tembaga sekitar 0,65 mm hingga ketelitian 0,01 mm, dan (3) panjang meja perakitan sepanjang 1,8 meter.",
+        question: "Pernyataan yang tepat dalam memilih alat ukur untuk ketiga objek tersebut berturut-turut adalah...",
         options: [
-          "<span class='arab-inline'>صَحِيحُ</span>",
-          "<span class='arab-inline'>أَصَحَّ</span> / <span class='arab-inline'>أَصَحُّ</span>",
-          "<span class='arab-inline'>مَصْحُوحُ</span>",
-          "<span class='arab-inline'>يَصِحُّ</span>",
-          "<span class='arab-inline'>صَاحِبُ</span>"
+          "Mistar untuk diameter dalam cincin piston, jangka sorong untuk tebal plat tembaga, dan mikrometer sekrup untuk panjang meja.",
+          "Jangka sorong (rahang atas) untuk diameter dalam cincin piston, mikrometer sekrup untuk tebal plat tembaga, dan meteran gulung/mistar panjang untuk panjang meja.",
+          "Mikrometer sekrup untuk ketiga objek sekaligus karena ketelitiannya paling tinggi.",
+          "Jangka sorong untuk mengukur panjang meja 1,8 m dan mistar kayu untuk tebal plat 0,65 mm.",
+          "Neraca Ohauss untuk diameter dalam cincin piston dan stopwatch untuk tebal plat."
         ],
         answer: 1,
-        bahas: "Isim tafdhil berwazan أَفْعَلُ untuk kata صَحِيح adalah أَصَحُّ (paling sahih): أَصَحُّ كِتَابٍ بَعْدَ الْقُرْآنِ."
+        bahas: `• <b>Jangka sorong</b> memiliki rahang atas (rahang dalam) yang dirancang khusus untuk mengukur diameter dalam hingga ketelitian 0,01 cm (0,1 mm).<br/>
+        • <b>Mikrometer sekrup</b> tepat untuk mengukur benda tipis seperti plat tembaga berketebalan ~0,65 mm dengan ketelitian 0,01 mm.<br/>
+        • <b>Meteran gulung</b> memiliki jangkauan panjang (&gt; 1 m) yang sesuai untuk mengukur panjang meja 1,8 m.`
       },
       {
         no: 12,
         type: "PG",
-        cog: "C1",
-        topic: "Tata Bahasa Arab • Bilangan Bertingkat (الأعداد الترتيبية)",
-        narasi: `<div class="arab">الْأَئِمَّةُ الْأَرْبَعَةُ هُمْ: الْإِمَامُ أَبُو حَنِيفَةَ، وَالْإِمَامُ مَالِكٌ، وَالْإِمَامُ الشَّافِعِيُّ، وَالْإِمَامُ أَحْمَدُ بْنُ حَنْبَلٍ.</div>`,
-        question: "Berdasarkan urutan dalam kalimat tersebut, bilangan bertingkat yang tepat untuk urutan Imam Syafi'i adalah...",
+        cog: "C3",
+        topic: "Membaca Skala Jangka Sorong",
+        narasi: `Sebuah balok kayu kecil diukur panjangnya menggunakan jangka sorong berketelitian <span class="math">0,01 cm</span> dengan tampilan skala sebagai berikut:` + SVG_Q12,
+        question: "Berdasarkan pembacaan skala jangka sorong di atas, panjang balok kayu tersebut adalah...",
         options: [
-          "<span class='arab-inline'>الْأَوَّلُ</span> (pertama)",
-          "<span class='arab-inline'>الثَّانِي</span> (kedua)",
-          "<span class='arab-inline'>الثَّالِثُ</span> (ketiga)",
-          "<span class='arab-inline'>الرَّابِعُ</span> (keempat)",
-          "<span class='arab-inline'>الْخَامِسُ</span> (kelima)"
+          "2,30 cm",
+          "2,34 cm",
+          "2,36 cm",
+          "2,46 cm",
+          "2,96 cm"
         ],
         answer: 2,
-        bahas: "Urutan dalam kalimat: 1. Abu Hanifah (الْأَوَّلُ), 2. Malik (الثَّانِي), 3. Asy-Syafi'i (الثَّالِثُ), 4. Ahmad bin Hambal (الرَّابِعُ)."
+        bahas: `• Skala utama (SU) tepat di sebelah kiri garis angka 0 skala nonius: <span class="math">2,3 cm</span>.<br/>
+        • Skala nonius (SN) yang berimpit lurus dengan skala utama: garis ke-<b>6</b> &rarr; <span class="math">6 &times; 0,01 cm = 0,06 cm</span>.<br/>
+        • Hasil pengukuran = <span class="math">2,3 + 0,06 = <b>2,36 cm</b></span>.`
       },
       {
         no: 13,
         type: "PG",
-        cog: "C3",
-        topic: "Tokoh Ilmuwan Muslim • Ulama Bidang Ilmu Agama",
-        narasi: "Perhatikan daftar nama tokoh Muslim berikut: (1) Imam Bukhari, (2) Ibnu Sina, (3) Imam Al-Ghazali, (4) Jabir bin Hayyan, (5) Imam Asy-Syafi'i, (6) Al-Khawarizmi.",
-        question: "Kelompok tokoh Muslim yang termasuk ulama bidang ilmu agama (Hadis, Fikih, Tasawuf/Akidah) ditunjukkan oleh nomor...",
+        cog: "C4",
+        topic: "Perbandingan Ketidakpastian Relatif Pengukuran Tunggal",
+        narasi: `Tiga benda diukur secara tunggal masing-masing satu kali dengan tiga alat ukur berbeda:<br/>
+        • <b>Alat A (Mistar, nst = 0,1 cm):</b> mengukur panjang buku diperoleh <span class="math">x<sub>A</sub> = 5,0 cm</span>.<br/>
+        • <b>Alat B (Jangka Sorong, nst = 0,01 cm):</b> mengukur diameter tabung diperoleh <span class="math">x<sub>B</sub> = 2,50 cm</span>.<br/>
+        • <b>Alat C (Mikrometer Sekrup, nst = 0,01 mm):</b> mengukur tebal keping tipis diperoleh <span class="math">x<sub>C</sub> = 1,00 mm</span>.`,
+        question: `Berdasarkan perhitungan ketidakpastian relatif (<span class="math">KR = ${frac("&Delta;x", "x")} &times; 100%</span> dengan <span class="math">&Delta;x = ${frac("1","2")} nst</span>), urutan hasil pengukuran dari yang paling teliti (ketidakpastian relatif terkecil) ke paling kurang teliti adalah...`,
         options: [
-          "(1), (2), dan (4)",
-          "(1), (3), dan (5)",
-          "(2), (4), dan (6)",
-          "(3), (4), dan (6)",
-          "(2), (5), dan (6)"
+          "Alat C (0,5%), lalu Alat B (0,2%), kemudian Alat A (1,0%)",
+          "Alat A (1,0%), lalu Alat B (0,2%), kemudian Alat C (0,5%)",
+          "Alat B (0,2%), lalu Alat C (0,5%), kemudian Alat A (1,0%)",
+          "Alat B (0,4%), lalu Alat C (0,1%), kemudian Alat A (2,0%)",
+          "Alat C selalu paling kecil ketidakpastian relatifnya untuk semua ukuran benda"
         ],
-        answer: 1,
-        bahas: "Imam Bukhari (ilmu hadis), Imam Al-Ghazali (tasawuf/fikih/filsafat Islam), dan Imam Asy-Syafi'i (fikih/usul fikih) adalah ulama bidang ilmu agama. Sedangkan Ibnu Sina, Jabir bin Hayyan, dan Al-Khawarizmi adalah ilmuwan ilmu umum."
+        answer: 2,
+        bahas: `Hitung ketidakpastian mutlak (<span class="math">&Delta;x = ${frac("1","2")} nst</span>) dan relatif masing-masing:<br/>
+        • <b>Alat A:</b> <span class="math">&Delta;x<sub>A</sub> = 0,05 cm</span> &rArr; <span class="math">KR<sub>A</sub> = ${frac("0,05", "5,0")} &times; 100% = <b>1,0%</b></span><br/>
+        • <b>Alat B:</b> <span class="math">&Delta;x<sub>B</sub> = 0,005 cm</span> &rArr; <span class="math">KR<sub>B</sub> = ${frac("0,005", "2,50")} &times; 100% = <b>0,2%</b></span><br/>
+        • <b>Alat C:</b> <span class="math">&Delta;x<sub>C</sub> = 0,005 mm</span> &rArr; <span class="math">KR<sub>C</sub> = ${frac("0,005", "1,00")} &times; 100% = <b>0,5%</b></span><br/>
+        Semakin kecil ketidakpastian relatif, semakin tinggi ketelitian relatifnya, sehingga urutannya: <b>Alat B (0,2%), lalu Alat C (0,5%), kemudian Alat A (1,0%)</b>.`
       },
       {
         no: 14,
         type: "PG",
-        cog: "C3",
-        topic: "Hiwar • Menyusun Pertanyaan Tentang Gelar Hujjatul Islam",
-        narasi: `<div class="arab">أَحْمَدُ : .......................... ؟<br/>سَلْمَانُ : لُقِّبَ الْإِمَامُ الْغَزَالِيُّ بِـ "حُجَّةِ الْإِسْلَامِ".</div>`,
-        question: "Pertanyaan yang paling sesuai untuk melengkapi dialog tentang gelar Hujjatul Islam tersebut adalah...",
+        cog: "C4",
+        topic: "Analisis Kesimpulan Hasil Pengukuran",
+        narasi: `Sebuah kelompok praktikum melaporkan hasil pengukuran panjang silinder standar yang diketahui memiliki nilai referensi pabrik <span class="math">12,46 cm</span>. Dari pengolahan data berulang, kelompok tersebut memperoleh hasil pelaporan <span class="math">x = (12,45 &plusmn; 0,03) cm</span>.`,
+        question: "Kesimpulan analisis yang paling tepat mengenai hasil pengukuran kelompok tersebut adalah...",
         options: [
-          "<span class='arab-inline'>أَيْنَ وُلِدَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
-          "<span class='arab-inline'>بِمَاذَا لُقِّبَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
-          "<span class='arab-inline'>مَتَى تُوُفِّيَ الْإِمَامُ الْغَزَالِيُّ؟</span>",
-          "<span class='arab-inline'>كَمْ كِتَابًا أَلَّفَ الْغَزَالِيُّ؟</span>",
-          "<span class='arab-inline'>مَا اسْمُ وَالِدِ الْغَزَالِيِّ؟</span>"
+          "Pengukuran gagal total karena rata-rata 12,45 cm tidak sama persis dengan 12,46 cm.",
+          "Rentang nilai pengukuran berada pada 12,42 cm hingga 12,48 cm yang masih mencakup nilai referensi 12,46 cm, dengan ketidakpastian relatif sekitar 0,24% (akurasi dan ketelitian sangat baik).",
+          "Rentang nilai sebenarnya pasti lebih besar dari 12,50 cm.",
+          "Ketidakpastian mutlak pengukuran tersebut adalah 12,45 cm dan rata-ratanya 0,03 cm.",
+          "Kesalahan relatif pengukuran lebih dari 5% sehingga alat ukur harus dibuang."
         ],
         answer: 1,
-        bahas: "Jawaban Salmān berbunyi 'Luqqibal-Imām al-Ghazālī bi-Ḥujjatil-Islām' (Imam Al-Ghazali digelari Hujjatul Islam). Maka pertanyaannya adalah 'Bimāżā luqqibal-Imām al-Ghazālī?' (Dengan gelar apa Imam Al-Ghazali dijuluki?)."
+        bahas: `Pelaporan <span class="math">(12,45 &plusmn; 0,03) cm</span> berarti nilai ukur terbaik terletak pada rentang <span class="math">12,45 &minus; 0,03 = 12,42 cm</span> sampai <span class="math">12,45 + 0,03 = 12,48 cm</span>. Nilai referensi <span class="math">12,46 cm</span> berada di dalam rentang tersebut, dan <span class="math">KR = ${frac("0,03", "12,45")} &times; 100% &approx; 0,24%</span> (sangat teliti dan akurat).`
       },
       {
         no: 15,
         type: "PG",
         cog: "C4",
-        topic: "Tokoh Ilmuwan Muslim • Analisis Ketepatan Biografi Imam Bukhari",
-        narasi: `<div class="arab">وُلِدَ الْإِمَامُ الْبُخَارِيُّ فِي بُخَارَى، وَرَحَلَ فِي طَلَبِ الْعِلْمِ، وَأَلَّفَ كِتَابَ "<u>الْقَانُونِ فِي الطِّبِّ</u>" الَّذِي يَجْمَعُ الْأَحَادِيثَ الصَّحِيحَةَ.</div>`,
-        question: "Informasi atau nama kitab yang TIDAK tepat dalam kalimat biografi Imam Bukhari di atas adalah...",
+        topic: "Akurasi dan Presisi Data Pengukuran",
+        narasi: `<p>Empat kelompok siswa mengukur panjang sebuah batang kalibrasi yang nilai sebenarnya diketahui tepat <b>10,00 cm</b> sebanyak 4 kali:</p><table class="data-table"><thead><tr><th>Kelompok</th><th>Data 1 (cm)</th><th>Data 2 (cm)</th><th>Data 3 (cm)</th><th>Data 4 (cm)</th></tr></thead><tbody><tr><td><b>A</b></td><td>9,99</td><td>10,01</td><td>10,00</td><td>10,00</td></tr><tr><td><b>B</b></td><td>9,21</td><td>9,20</td><td>9,22</td><td>9,21</td></tr><tr><td><b>C</b></td><td>9,60</td><td>10,40</td><td>9,70</td><td>10,30</td></tr><tr><td><b>D</b></td><td>8,90</td><td>9,50</td><td>8,40</td><td>9,10</td></tr></tbody></table>`,
+        question: "Berdasarkan analisis akurasi (kedekatan terhadap nilai sebenarnya) dan presisi (kerapatan/konsistensi antar-data), kesimpulan yang paling tepat adalah...",
         options: [
-          "<span class='arab-inline'>بُخَارَى</span>",
-          "<span class='arab-inline'>طَلَبِ الْعِلْمِ</span>",
-          "<span class='arab-inline'>الْقَانُونِ فِي الطِّبِّ</span>",
-          "<span class='arab-inline'>الْأَحَادِيثَ الصَّحِيحَةَ</span>",
-          "<span class='arab-inline'>وُلِدَ</span>"
+          "Kelompok B memiliki akurasi tinggi dan presisi rendah.",
+          "Kelompok C memiliki presisi tinggi dan akurasi rendah.",
+          "Kelompok B memiliki presisi tinggi (data sangat konsisten berdekatan) namun akurasi rendah (menyimpang jauh dari 10,00 cm), sedangkan Kelompok A memiliki akurasi dan presisi tinggi.",
+          "Kelompok D memiliki presisi paling tinggi di antara keempat kelompok.",
+          "Kelompok A dan Kelompok C sama-sama memiliki presisi yang sangat rapat."
         ],
         answer: 2,
-        bahas: "Kitab hadis sahih karya Imam Bukhari adalah 'Shahih al-Bukhari' (الْجَامِعُ الصَّحِيحُ), sedangkan 'Al-Qanun fi ath-Thibb' (الْقَانُونُ فِي الطِّبِّ) adalah kitab kedokteran karya Ibnu Sina."
+        bahas: `• <b>Kelompok A:</b> Rata-rata 10,00 cm (akurat) dan rentang sebaran sangat sempit 0,02 cm (presisi tinggi).<br/>
+        • <b>Kelompok B:</b> Sebaran data sangat rapat di sekitar 9,21 cm (presisi tinggi), tetapi jauh dari nilai standar 10,00 cm (akurasi rendah, biasanya akibat kesalahan sistematis/kalibrasi).<br/>
+        • <b>Kelompok C:</b> Rata-ratanya kebetulan 10,00 cm namun datanya tersebar lebar dari 9,60 hingga 10,40 (presisi rendah).`
       },
       {
         no: 16,
         type: "PG",
-        cog: "C2",
-        topic: "Tokoh Ilmuwan Muslim • Gagasan Utama Perjalanan Imam Bukhari",
-        narasi: `<div class="arab">رَحَلَ الْإِمَامُ الْبُخَارِيُّ إِلَى كَثِيرٍ مِنَ الْبِلَادِ مِثْلِ مَكَّةَ وَالْمَدِينَةِ وَبَغْدَادَ وَالشَّامِ وَمِصْرَ لِجَمْعِ الْأَحَادِيثِ النَّبَوِيَّةِ وَالتَّأَكُّدِ مِنْ صِحَّتِهَا.</div>`,
-        question: "Gagasan utama paragraf tersebut adalah...",
+        cog: "C3",
+        topic: "Ketidakpastian Relatif Pengukuran Berulang",
+        narasi: `Seorang siswa melakukan pengukuran panjang tali sebanyak 5 kali secara berulang dan memperoleh data: <b>19,8 cm; 20,0 cm; 20,1 cm; 19,9 cm; dan 20,2 cm</b>.<br/>Diketahui ketidakpastian mutlak dihitung dengan rumus <span class="math">&Delta;x = ${frac("1", "2")}(data terbesar &minus; data terkecil)</span>.`,
+        question: "Nilai ketidakpastian relatif dari pengukuran berulang tersebut adalah...",
         options: [
-          "Keindahan arsitektur kota Baghdad dan Kairo",
-          "Perjalanan Imam Bukhari ke berbagai negeri untuk mengumpulkan dan memverifikasi hadis Nabi SAW",
-          "Perdagangan sutra antara Bukhara dan Makkah",
-          "Biografi guru-guru Imam Bukhari di Andalusia",
-          "Jumlah penduduk kota Madinah pada abad ke-3 Hijriah"
+          "0,2%",
+          "0,5%",
+          "1,0%",
+          "2,0%",
+          "4,0%"
         ],
-        answer: 1,
-        bahas: "Kalimat menjelaskan rihlah ilmiah Imam Bukhari ke berbagai negeri (Makkah, Madinah, Baghdad, Syam, Mesir) untuk mengumpulkan dan meneliti kesahihan hadis."
+        answer: 2,
+        bahas: `• Rata-rata (<span class="math">x&#772;</span>) = <span class="math">${frac("19,8 + 20,0 + 20,1 + 19,9 + 20,2", "5")} = ${frac("100,0", "5")} = 20,0 cm</span>.<br/>
+        • Ketidakpastian mutlak: <span class="math">&Delta;x = ${frac("1", "2")}(20,2 &minus; 19,8) = ${frac("1", "2")}(0,4) = 0,2 cm</span>.<br/>
+        • Ketidakpastian relatif: <span class="math">KR = ${frac("&Delta;x", "x&#772;")} &times; 100% = ${frac("0,2", "20,0")} &times; 100% = <b>1,0%</b></span>.`
       },
       {
         no: 17,
         type: "PG",
-        cog: "C1",
-        topic: "Kosakata Bahasa Arab • Bentuk Mufrad",
-        narasi: `<div class="arab">سَافَرَ الْإِمَامُ الْبُخَارِيُّ إِلَى <u>الْمُدُنِ</u> الْعِلْمِيَّةِ الْمَشْهُورَةِ.</div>`,
-        question: "Bentuk tunggal (مُفْرَد) dari kosakata (الْمُدُنُ) yang berarti 'kota-kota' adalah...",
+        cog: "C5",
+        topic: "Mengurangi Kesalahan dalam Pengukuran",
+        narasi: "Data pengukuran waktu ayunan bandul oleh seorang siswa menunjukkan hasil yang berfluktuasi cukup lebar antar-percobaan karena keterlambatan refleks menekan stopwatch, sekaligus bergeser lebih cepat 0,20 detik akibat jarum stopwatch tidak kembali tepat ke angka nol.",
+        question: "Evaluasi kombinasi tindakan paling tepat yang harus dilakukan untuk mengurangi kedua jenis kesalahan pengukuran tersebut adalah...",
         options: [
-          "<span class='arab-inline'>مَيْدَانٌ</span>",
-          "<span class='arab-inline'>مَدِينَةٌ</span>",
-          "<span class='arab-inline'>دَوْلَةٌ</span>",
-          "<span class='arab-inline'>قَرْيَةٌ</span>",
-          "<span class='arab-inline'>بَلَدٌ</span>"
+          "Cukup mengukur satu kali saja agar fluktuasi tidak terlihat di tabel laporan.",
+          "Mengganti satuan detik menjadi jam dan membaca angka stopwatch dari sudut miring.",
+          "Melakukan kalibrasi/reset titik nol alat ukur sebelum digunakan (mengatasi kesalahan sistematis), membaca skala tegak lurus mata, serta melakukan pengukuran berulang dan mengambil rata-ratanya (mengurangi kesalahan acak).",
+          "Membulatkan seluruh data pengukuran secara sepihak menjadi bilangan genap.",
+          "Mengurangi panjang tali bandul tanpa mencatat perubahan variabel."
         ],
-        answer: 1,
-        bahas: "الْمُدُنُ adalah jamak taksir dari kata tunggal (mufrad) مَدِينَةٌ (kota)."
+        answer: 2,
+        bahas: `• Pergeseran titik nol adalah <b>kesalahan sistematis</b> &rarr; dikurangi dengan kalibrasi titik nol alat sebelum mengukur.<br/>
+        • Fluktuasi akibat refleks dan pembacaan adalah <b>kesalahan acak/paralaks</b> &rarr; dikurangi dengan pembacaan mata tegak lurus skala serta memperbanyak pengulangan pengukuran lalu merata-ratakannya.`
       },
       {
         no: 18,
         type: "PG",
-        cog: "C2",
-        topic: "Nahwu • Fi'il Mabni Lil Ma'lum",
-        narasi: `<div class="arab"><u>كَتَبَ</u> الْإِمَامُ الْبُخَارِيُّ الصَّحِيحَ فِي سِتَّ عَشْرَةَ سَنَةً، بَعْدَ أَنْ <u>سُمِعَ</u> كَلَامُ شُيُوخِهِ وَ<u>جُمِعَتِ</u> الْأَحَادِيثُ.</div>`,
-        question: "Berdasarkan kalimat tersebut, kata kerja yang merupakan fi'il mabni lil ma'lum (kata kerja aktif) adalah...",
+        cog: "C3",
+        topic: "Jumlah Angka Penting",
+        narasi: `Dalam suatu penelitian material optik, ketebalan lapisan pelindung lensa kacamata tercatat sebesar <span class="math">0,004050 mm</span>.`,
+        question: "Banyak angka penting pada hasil pengukuran ketebalan lapisan pelindung tersebut adalah...",
         options: [
-          "<span class='arab-inline'>سُمِعَ</span>",
-          "<span class='arab-inline'>جُمِعَتْ</span>",
-          "<span class='arab-inline'>كَتَبَ</span>",
-          "<span class='arab-inline'>سِتَّ عَشْرَةَ</span>",
-          "<span class='arab-inline'>الصَّحِيحَ</span>"
+          "2 angka penting",
+          "3 angka penting",
+          "4 angka penting",
+          "5 angka penting",
+          "7 angka penting"
         ],
         answer: 2,
-        bahas: "كَتَبَ (telah menulis) adalah fi'il madhi mabni lil ma'lum (aktif) dengan fa'ilnya الْإِمَامُ الْبُخَارِيُّ. Adapun سُمِعَ dan جُمِعَتْ berpola fu'ila (mabni lil majhul / pasif)."
+        bahas: `Pada bilangan desimal <span class="math">0,004050</span>:<br/>
+        • Tiga angka nol di depan (0,00) bukan angka penting.<br/>
+        • Angka <b>4</b> dan <b>5</b> (bukan nol), angka <b>0</b> di antara 4 dan 5, serta angka <b>0</b> di paling kanan setelah tanda desimal termasuk angka penting.<br/>
+        Jadi ada <b>4 angka penting</b> (4, 0, 5, 0).`
       },
       {
         no: 19,
         type: "PG",
-        cog: "C1",
-        topic: "Kosakata Bahasa Arab • Sinonim (مرادف)",
-        narasi: `<div class="arab"><u>بَلَغَ</u> الْعُلَمَاءُ الْمُسْلِمُونَ مَكَانَةً رَفِيعَةً فِي تَارِيخِ الْعِلْمِ.</div>`,
-        question: "Sinonim (مُرَادِف) dari kata (بَلَغَ) berdasarkan konteks kalimat tersebut adalah...",
+        cog: "C3",
+        topic: "Perkalian Sesuai Aturan Angka Penting",
+        narasi: `Sebuah lempeng persegi panjang diukur panjangnya <span class="math">p = 12,4 cm</span> dan lebarnya <span class="math">l = 4,2 cm</span>.`,
+        question: "Luas lempeng tersebut jika dinyatakan sesuai aturan angka penting adalah...",
         options: [
-          "<span class='arab-inline'>تَرَكَ</span> (meninggalkan)",
-          "<span class='arab-inline'>وَصَلَ إِلَى</span> (mencapai/sampai pada)",
-          "<span class='arab-inline'>رَجَعَ</span> (kembali)",
-          "<span class='arab-inline'>نَسِيَ</span> (melupakan)",
-          "<span class='arab-inline'>مَنَعَ</span> (melarang)"
+          "52,08 cm<sup>2</sup>",
+          "52,1 cm<sup>2</sup>",
+          "52 cm<sup>2</sup>",
+          "50 cm<sup>2</sup>",
+          "52,0 cm<sup>2</sup>"
         ],
-        answer: 1,
-        bahas: "Kata بَلَغَ dalam konteks mencapai kedudukan tinggi bersinonim dengan وَصَلَ إِلَى (mencapai)."
+        answer: 2,
+        bahas: `• <span class="math">12,4 cm</span> memiliki <b>3 angka penting</b>; <span class="math">4,2 cm</span> memiliki <b>2 angka penting</b>.<br/>
+        • Hasil kali matematis: <span class="math">12,4 &times; 4,2 = 52,08 cm<sup>2</sup></span>.<br/>
+        • Sesuai aturan perkalian angka penting, hasilnya dibulatkan mengikuti jumlah angka penting paling sedikit (<b>2 angka penting</b>), yaitu <b>52 cm<sup>2</sup></b>.`
       },
       {
         no: 20,
         type: "PG",
-        cog: "C2",
-        topic: "Pemahaman Teks • Informasi Rinci dalam Paragraf",
-        narasi: `<div class="arab">زَارَ الْإِمَامُ الْبُخَارِيُّ مُدُنًا عَدِيدَةً لِطَلَبِ الْحَدِيثِ، مِنْهَا: مَكَّةُ، وَالْمَدِينَةُ، وَبَغْدَادُ، وَالْبَصْرَةُ، وَالْكُوفَةُ، وَدِمَشْقُ.</div>`,
-        question: "Berapa jumlah kota yang disebutkan secara tersurat dalam paragraf perjalanan Imam Bukhari tersebut?",
+        cog: "C3",
+        topic: "Prefiks & Notasi Ilmiah",
+        narasi: `Sebuah sumber cahaya laser merah memancarkan gelombang elektromagnetik dengan panjang gelombang sebesar <span class="math">650 nm</span> (nanometer).`,
+        question: `Jika dinyatakan dalam satuan meter (<span class="math">m</span>) menggunakan notasi ilmiah yang baku, panjang gelombang laser tersebut adalah...`,
         options: [
-          "4 kota (أَرْبَعُ مُدُنٍ)",
-          "5 kota (خَمْسُ مُدُنٍ)",
-          "6 kota (سِتُّ مُدُنٍ)",
-          "7 kota (سَبْعُ مُدُنٍ)",
-          "8 kota (ثَمَانِي مُدُنٍ)"
+          `<span class="math">6,5 &times; 10<sup>&minus;9</sup> m</span>`,
+          `<span class="math">65 &times; 10<sup>&minus;8</sup> m</span>`,
+          `<span class="math">6,5 &times; 10<sup>&minus;7</sup> m</span>`,
+          `<span class="math">6,5 &times; 10<sup>&minus;6</sup> m</span>`,
+          `<span class="math">0,65 &times; 10<sup>&minus;6</sup> m</span>`
         ],
         answer: 2,
-        bahas: "Kota yang disebutkan ada 6: (1) Makkah, (2) Madinah, (3) Baghdad, (4) Bashrah, (5) Kufah, (6) Damaskus."
+        bahas: `Diketahui prefiks nano (<span class="math">n</span>) = <span class="math">10<sup>&minus;9</sup></span>:<br/>
+        <span class="math">650 nm = 650 &times; 10<sup>&minus;9</sup> m = (6,5 &times; 10<sup>2</sup>) &times; 10<sup>&minus;9</sup> m = <b>6,5 &times; 10<sup>&minus;7</sup> m</b></span>.<br/>
+        (Notasi ilmiah baku mensyaratkan bilangan pokok antara 1 hingga kurang dari 10, yakni <span class="math">6,5</span>).`
       },
       {
         no: 21,
         type: "PG",
-        cog: "C1",
-        topic: "Tokoh Ilmuwan Muslim • Kitab Al-Hawi (Kedokteran)",
-        narasi: `<div class="arab">هُوَ طَبِيبٌ مُسْلِمٌ مَشْهُورٌ، أَلَّفَ الْمَوْسُوعَةَ الطِّبِّيَّةَ الْكَبِيرَةَ الْمَعْرُوفَةَ بِكِتَابِ "الْحَاوِي فِي الطِّبِّ".</div>`,
-        question: "Ilmuwan Muslim bidang kedokteran yang menulis kitab Al-Hawi (الْحَاوِي) berdasarkan informasi tersebut adalah...",
+        cog: "C3",
+        topic: "Menghitung Besar Resultan Gaya",
+        narasi: `Dua buah gaya masing-masing sebesar <span class="math">F<sub>1</sub> = 6 N</span> dan <span class="math">F<sub>2</sub> = 10 N</span> bekerja pada satu titik tangkap yang sama dan saling mengapit sudut <span class="math">&theta; = 60°</span>.`,
+        question: "Besar resultan kedua gaya tersebut adalah...",
         options: [
-          "Ibnu Sina",
-          "Abu Bakar Ar-Razi",
-          "Jabir bin Hayyan",
-          "Al-Khawarizmi",
-          "Ibnu Khaldun"
+          "8 N",
+          "12 N",
+          "14 N",
+          "16 N",
+          "20 N"
         ],
-        answer: 1,
-        bahas: "Abu Bakar Muhammad bin Zakariya Ar-Razi adalah dokter muslim terkenal penulis kitab ensiklopedia kedokteran 'Al-Hawi fi ath-Thibb'."
+        answer: 2,
+        bahas: `Gunakan rumus kosinus resultan dua vektor:<br/>
+        <span class="math">R = ${sqrt("F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup> + 2 F<sub>1</sub> F<sub>2</sub> cos 60°")}</span><br/>
+        <span class="math">R = ${sqrt("6<sup>2</sup> + 10<sup>2</sup> + 2(6)(10)(0,5)")} = ${sqrt("36 + 100 + 60")} = ${sqrt("196")} = <b>14 N</b></span>.`
       },
       {
         no: 22,
         type: "PG",
-        cog: "C1",
-        topic: "Tokoh Ilmuwan Muslim • Jabir bin Hayyan & Ilmu Kimia",
-        narasi: `<div class="arab">يُلَقَّبُ بِأَبِي الْكِيمِيَاءِ، وَمِنْ أَشْهَرِ مُؤَلَّفَاتِهِ كِتَابُ "أَسْرَارِ الْكِيمِيَاءِ" وَكِتَابُ "السَّبْعِينَ".</div>`,
-        question: "Ilmuwan Muslim yang menulis kitab Asrar al-Kimiya (أَسْرَارُ الْكِيمِيَاءِ) dan dijuluki Bapak Ilmu Kimia adalah...",
+        cog: "C4",
+        topic: "Analisis Grafik Resultan Terhadap Sudut Apit",
+        narasi: `Grafik berikut menggambarkan perubahan besar resultan (<span class="math">R</span>) dari dua buah gaya tetap terhadap variasi sudut apitnya (<span class="math">&theta;</span>):` + SVG_Q22,
+        question: `Berdasarkan analisis grafik di atas, kesimpulan hubungan antara sudut apit (<span class="math">&theta;</span>) dan besar resultan dua vektor (<span class="math">R</span>) yang paling tepat adalah...`,
         options: [
-          "Al-Biruni",
-          "Jabir bin Hayyan",
-          "Al-Kindi",
-          "Ibnu Rusyd",
-          "Al-Idrisi"
+          "Semakin besar sudut apit θ dari 0° hingga 180°, besar resultan R semakin meningkat secara linear.",
+          "Besar resultan R tidak dipengaruhi oleh sudut apit θ karena selalu bernilai 10 N.",
+          "Semakin besar sudut apit θ dari 0° hingga 180°, besar resultan R semakin menurun secara nonlinear karena nilai cos θ berkurang dari +1 ke &minus;1, dengan nilai maksimum saat θ = 0° dan minimum saat θ = 180°.",
+          "Resultan mencapai nilai maksimum ketika kedua vektor saling tegak lurus (θ = 90°).",
+          "Resultan bernilai nol saat kedua vektor searah (θ = 0°)."
         ],
-        answer: 1,
-        bahas: "Jabir bin Hayyan (Geber) adalah perintis ilmu kimia modern dan penulis kitab Asrar al-Kimiya."
+        answer: 2,
+        bahas: `Dari persamaan <span class="math">R = ${sqrt("F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup> + 2F<sub>1</sub>F<sub>2</sub> cos &theta;")}</span> dan grafik kurva:<br/>
+        • Ketika <span class="math">&theta;</span> bertambah dari <span class="math">0°</span> ke <span class="math">180°</span>, nilai <span class="math">cos &theta;</span> turun dari <span class="math">+1</span> menuju <span class="math">&minus;1</span> sehingga besar resultan <span class="math">R</span> menurun melengkung (nonlinear) dari maksimum <span class="math">F<sub>1</sub> + F<sub>2</sub> = 14 N</span> (saat <span class="math">&theta; = 0°</span>) hingga minimum <span class="math">|F<sub>1</sub> &minus; F<sub>2</sub>| = 2 N</span> (saat <span class="math">&theta; = 180°</span>).`
       },
       {
         no: 23,
         type: "PG",
-        cog: "C1",
-        topic: "Tokoh Ilmuwan Muslim • Ibnu Sina & Al-Qanun fi ath-Thibb",
-        narasi: `<div class="arab">يُعَدُّ كِتَابُ "الْقَانُونُ فِي الطِّبِّ" مَرْجِعًا رَئِيسِيًّا فِي الْجَامِعَاتِ الْأُورُوبِّيَّةِ لِعِدَّةِ قُرُونٍ.</div>`,
-        question: "Tokoh ilmuwan Muslim yang menulis kitab Al-Qanun fi ath-Thibb (الْقَانُونُ فِي الطِّبِّ) adalah...",
+        cog: "C5",
+        topic: "Evaluasi Susunan Gaya untuk Resultan Maksimal",
+        narasi: `Dua pekerja menarik sebuah peti berat menggunakan dua tali dengan besar gaya masing-masing tetap <span class="math">F<sub>1</sub> = 9 N</span> dan <span class="math">F<sub>2</sub> = 12 N</span> dalam empat variasi susunan sudut tarikan yang berbeda, menghasilkan grafik perbandingan resultan sebagai berikut:` + SVG_Q23,
+        question: "Evaluasi susunan gaya tarik yang harus dipilih pekerja untuk menghasilkan gaya resultan paling maksimal beserta alasan fisisnya adalah...",
         options: [
-          "Imam Al-Ghazali",
-          "Ibnu Sina",
-          "Jabir bin Hayyan",
-          "Al-Farabi",
-          "Al-Khawarizmi"
+          "Susunan III (θ = 90°) karena kedua gaya saling tegak lurus sehingga komponen sumbu-x dan sumbu-y seimbang.",
+          "Susunan IV (θ = 180°) karena kedua pekerja menarik berlawanan sehingga peti lebih stabil.",
+          "Susunan I (θ = 0°), yaitu kedua tali ditarik sejajar dan searah, karena seluruh komponen gaya saling menjumlahkan secara penuh (cos 0° = 1) sehingga menghasilkan resultan maksimal 21 N.",
+          "Susunan II (θ = 60°) karena menghasilkan resultan lebih besar dari penjumlahan aljabar kedua gaya.",
+          "Semua susunan menghasilkan besar resultan yang sama yaitu 21 N."
         ],
-        answer: 1,
-        bahas: "Ibnu Sina (Avicenna) adalah penulis kitab kedokteran monumental Al-Qanun fi ath-Thibb (The Canon of Medicine)."
+        answer: 2,
+        bahas: `Dari grafik dan analisis vektor, resultan maksimum dua vektor terjadi pada <b>Susunan I (<span class="math">&theta; = 0°</span>, searah)</b> karena nilai <span class="math">cos 0° = +1</span> adalah maksimum, sehingga <span class="math">R<sub>maks</sub> = F<sub>1</sub> + F<sub>2</sub> = 9 + 12 = <b>21 N</b></span> tanpa ada komponen gaya yang saling mengurangi.`
       },
       {
         no: 24,
         type: "PG",
         cog: "C3",
-        topic: "Tokoh Ilmuwan Muslim • Ilmuwan Bidang Ilmu Umum",
-        narasi: "Perhatikan daftar nama berikut: (1) Jabir bin Hayyan, (2) Imam Malik, (3) Ibnu Sina, (4) Al-Khawarizmi, (5) Imam Bukhari, (6) Al-Biruni.",
-        question: "Kelompok tokoh yang berkaitan dengan bidang ilmu umum (Kimia, Kedokteran, Matematika, Astronomi) adalah...",
+        topic: "Komponen Resultan Tiga Gaya pada Sumbu-x dan Sumbu-y",
+        narasi: "Tiga buah gaya bekerja pada satu titik tangkap di pusat koordinat seperti ditunjukkan pada diagram berikut:" + SVG_Q24,
+        question: `Besar komponen resultan ketiga gaya tersebut pada sumbu-x (<span class="math">R<sub>x</sub></span>) dan sumbu-y (<span class="math">R<sub>y</sub></span>) berturut-turut adalah...`,
         options: [
-          "(1), (2), dan (5)",
-          "(1), (3), (4), dan (6)",
-          "(2), (3), dan (5)",
-          "(2), (4), dan (5)",
-          "(3), (5), dan (6)"
+          `<span class="math">R<sub>x</sub> = 22 N</span> dan <span class="math">R<sub>y</sub> = 8 N</span>`,
+          `<span class="math">R<sub>x</sub> = 10 N</span> dan <span class="math">R<sub>y</sub> = 20 N</span>`,
+          `<span class="math">R<sub>x</sub> = 10 N</span> dan <span class="math">R<sub>y</sub> = 8 N</span>`,
+          `<span class="math">R<sub>x</sub> = 8 N</span> dan <span class="math">R<sub>y</sub> = 10 N</span>`,
+          `<span class="math">R<sub>x</sub> = &minus;10 N</span> dan <span class="math">R<sub>y</sub> = 8 N</span>`
         ],
-        answer: 1,
-        bahas: "Jabir bin Hayyan (kimia), Ibnu Sina (kedokteran), Al-Khawarizmi (matematika), dan Al-Biruni (astronomi/geografi) adalah ilmuwan bidang ilmu umum."
+        answer: 2,
+        bahas: `Uraikan masing-masing gaya ke sumbu-x dan sumbu-y (<span class="math">cos 37° = sin 53° = 0,8</span>; <span class="math">sin 37° = cos 53° = 0,6</span>):<br/>
+        • <span class="math">F<sub>1x</sub> = +20 cos 37° = +16 N</span> &nbsp;|&nbsp; <span class="math">F<sub>1y</sub> = +20 sin 37° = +12 N</span><br/>
+        • <span class="math">F<sub>2x</sub> = &minus;10 cos 53° = &minus;6 N</span> &nbsp;|&nbsp; <span class="math">F<sub>2y</sub> = +10 sin 53° = +8 N</span><br/>
+        • <span class="math">F<sub>3x</sub> = 0 N</span> &nbsp;|&nbsp; <span class="math">F<sub>3y</sub> = &minus;12 N</span><br/>
+        Jumlahkan per sumbu:<br/>
+        • <span class="math">R<sub>x</sub> = 16 &minus; 6 + 0 = <b>10 N</b></span><br/>
+        • <span class="math">R<sub>y</sub> = 12 + 8 &minus; 12 = <b>8 N</b></span>.`
       },
       {
         no: 25,
         type: "PG",
         cog: "C3",
-        topic: "Hiwar • Pertanyaan Tentang Karya Terkenal Ibnu Sina",
-        narasi: `<div class="arab">فَاطِمَةُ : .......................... ؟<br/>عَائِشَةُ : أَشْهَرُ مُؤَلَّفَاتِ ابْنِ سِينَا هُوَ كِتَابُ "الْقَانُونُ فِي الطِّبِّ".</div>`,
-        question: "Bentuk pertanyaan yang tepat untuk melengkapi dialog tersebut adalah...",
+        topic: "Gaya Penyeimbang dalam Notasi Vektor Satuan",
+        narasi: `Tiga gaya bekerja bersamaan pada sebuah benda titik, dinyatakan dalam notasi vektor satuan:<br/>
+        <span class="math">${vec("F")}<sub>1</sub> = (4i&#770; + 7j&#770;) N</span><br/>
+        <span class="math">${vec("F")}<sub>2</sub> = (&minus;9i&#770; + 2j&#770;) N</span><br/>
+        <span class="math">${vec("F")}<sub>3</sub> = (2i&#770; &minus; 5j&#770;) N</span>`,
+        question: `Gaya penyeimbang (<span class="math">${vec("F")}<sub>p</sub></span>) yang harus ditambahkan agar benda berada dalam keadaan seimbang adalah...`,
         options: [
-          "<span class='arab-inline'>مَتَى وُلِدَ ابْنُ سِينَا؟</span>",
-          "<span class='arab-inline'>مَا أَشْهَرُ مُؤَلَّفَاتِ ابْنِ سِينَا؟</span>",
-          "<span class='arab-inline'>أَيْنَ عَاشَ ابْنُ سِينَا؟</span>",
-          "<span class='arab-inline'>لِمَاذَا دَرَسَ ابْنُ سِينَا الطِّبَّ؟</span>",
-          "<span class='arab-inline'>هَلْ سَافَرَ ابْنُ سِينَا إِلَى مِصْرَ؟</span>"
+          `<span class="math">(&minus;3i&#770; + 4j&#770;) N</span>`,
+          `<span class="math">(3i&#770; + 4j&#770;) N</span>`,
+          `<span class="math">(3i&#770; &minus; 4j&#770;) N</span>`,
+          `<span class="math">(&minus;3i&#770; &minus; 4j&#770;) N</span>`,
+          `<span class="math">(15i&#770; &minus; 14j&#770;) N</span>`
         ],
-        answer: 1,
-        bahas: "Pertanyaan 'Mā asyharu mu'allafāti Ibni Sīnā?' (Apa karya paling terkenal Ibnu Sina?) tepat berpasangan dengan jawaban 'Asyharu mu'allafāti Ibni Sīnā huwa kitābul-Qānūn fiṭ-Ṭibb'."
+        answer: 2,
+        bahas: `1) Hitung resultan ketiga gaya:<br/>
+        <span class="math">${vec("R")} = (4 &minus; 9 + 2)i&#770; + (7 + 2 &minus; 5)j&#770; = (&minus;3i&#770; + 4j&#770;) N</span>.<br/>
+        2) Syarat seimbang: <span class="math">${vec("R")} + ${vec("F")}<sub>p</sub> = 0 &rArr; ${vec("F")}<sub>p</sub> = &minus;${vec("R")} = <b>(3i&#770; &minus; 4j&#770;) N</b></span>.`
       },
       {
         no: 26,
         type: "PG",
-        cog: "C4",
-        topic: "Tokoh Ilmuwan Muslim • Analisis Pernyataan Jabir bin Hayyan",
-        narasi: `<div class="arab">جَابِرُ بْنُ حَيَّانَ عَالِمٌ مُسْلِمٌ بَرَعَ فِي عِلْمِ الْكِيمِيَاءِ، وَاعْتَمَدَ عَلَى التَّجْرِبَةِ الْعَمَلِيَّةِ، وَأَلَّفَ كِتَابَ "<u>صَحِيحِ مُسْلِمٍ</u>".</div>`,
-        question: "Informasi atau kata yang TIDAK tepat dalam pernyataan tentang Jabir bin Hayyan di atas adalah...",
+        cog: "C5",
+        topic: "Evaluasi Kondisi Keseimbangan Titik",
+        narasi: `Pada pengecekan simpul kabel menara, alat ukur menunjukkan jumlah komponen gaya horizontal <span class="math">&Sigma;F<sub>x</sub> = +12 N &minus; 12 N = 0 N</span> dan jumlah komponen gaya vertikal <span class="math">&Sigma;F<sub>y</sub> = +15 N &minus; 9 N = +6 N</span>.<br/>Tiga teknisi memberikan pernyataan berikut:<br/>• <b>Teknisi 1:</b> "Titik simpul sudah seimbang statis penuh karena resultan gaya pada sumbu-x bernilai nol."<br/>• <b>Teknisi 2:</b> "Titik simpul belum seimbang karena masih ada resultan komponen gaya vertikal sebesar +6 N ke arah sumbu-y positif."<br/>• <b>Teknisi 3:</b> "Untuk menyeimbangkan titik simpul, perlu ditambahkan gaya penyeimbang sebesar 6 N ke arah sumbu-y negatif (<span class="math">&minus;6j&#770; N</span>)."`,
+        question: "Evaluasi yang tepat terhadap pernyataan ketiga teknisi tersebut adalah...",
         options: [
-          "<span class='arab-inline'>عَالِمٌ مُسْلِمٌ</span>",
-          "<span class='arab-inline'>عِلْمِ الْكِيمِيَاءِ</span>",
-          "<span class='arab-inline'>التَّجْرِبَةِ الْعَمَلِيَّةِ</span>",
-          "<span class='arab-inline'>صَحِيحِ مُسْلِمٍ</span>",
-          "<span class='arab-inline'>بَرَعَ</span>"
+          "Hanya pernyataan Teknisi 1 yang benar.",
+          "Pernyataan Teknisi 1 dan 2 benar, sedangkan Teknisi 3 salah.",
+          "Pernyataan Teknisi 2 dan 3 benar, sedangkan Teknisi 1 salah.",
+          "Hanya pernyataan Teknisi 3 yang benar.",
+          "Semua pernyataan teknisi salah."
         ],
-        answer: 3,
-        bahas: "Shahih Muslim adalah kitab hadis karya Imam Muslim, bukan karya Jabir bin Hayyan."
+        answer: 2,
+        bahas: `Syarat keseimbangan titik partikel mengharuskan <span class="math">&Sigma;F<sub>x</sub> = 0</span> <b>DAN</b> <span class="math">&Sigma;F<sub>y</sub> = 0</span> secara bersamaan.<br/>
+        • <b>Teknisi 1 SALAH</b> karena meskipun <span class="math">&Sigma;F<sub>x</sub> = 0</span>, nilai <span class="math">&Sigma;F<sub>y</sub> &ne; 0</span>.<br/>
+        • <b>Teknisi 2 BENAR</b> (<span class="math">&Sigma;F<sub>y</sub> = +6 N</span>).<br/>
+        • <b>Teknisi 3 BENAR</b> (gaya penyeimbang adalah <span class="math">&minus;6j&#770; N</span> agar <span class="math">&Sigma;F<sub>y</sub> = 0</span>).`
       },
       {
         no: 27,
         type: "PG",
-        cog: "C1",
-        topic: "Tokoh Ilmuwan Muslim • Informasi Kuantitatif Karya Ibnu Sina",
-        narasi: `<div class="arab">تُرْجِمَتْ كُتُبُ ابْنِ سِينَا إِلَى <u>عَشْرِ</u> لُغَاتٍ أَجْنَبِيَّةٍ مِثْلِ اللَّاتِينِيَّةِ وَالْإِنْجِلِيزِيَّةِ وَالْفَرَنْسِيَّةِ.</div>`,
-        question: "Ungkapan bilangan yang sesuai dengan arti kata bergaris bawah (عَشْرِ لُغَاتٍ) adalah...",
+        cog: "C3",
+        topic: "Kecepatan Resultan Dua Vektor Berarah",
+        narasi: `Sebuah drone pemetaan terbang ke arah timur dengan kelajuan <span class="math">12 m/s</span>, sementara angin berhembus dari arah selatan menuju utara dengan kelajuan <span class="math">5 m/s</span> sehingga membelokkan gerak drone.`,
+        question: "Besar kecepatan resultan drone terhadap pengamat di tanah adalah...",
         options: [
-          "5 bahasa asing",
-          "7 bahasa asing",
-          "10 bahasa asing",
-          "12 bahasa asing",
-          "20 bahasa asing"
+          "7 m/s",
+          "13 m/s",
+          "15 m/s",
+          "17 m/s",
+          "60 m/s"
         ],
-        answer: 2,
-        bahas: "عَشْرِ لُغَاتٍ berarti 'sepuluh (10) bahasa'."
+        answer: 1,
+        bahas: `Arah timur (<span class="math">v<sub>x</sub> = 12 m/s</span>) dan arah utara (<span class="math">v<sub>y</sub> = 5 m/s</span>) saling tegak lurus (<span class="math">90°</span>):<br/>
+        <span class="math">v<sub>R</sub> = ${sqrt("12<sup>2</sup> + 5<sup>2</sup>")} = ${sqrt("144 + 25")} = ${sqrt("169")} = <b>13 m/s</b></span>.`
       },
       {
         no: 28,
         type: "PG",
-        cog: "C2",
-        topic: "Sharaf • Fi'il Madhi Mabni Lil Majhul",
-        narasi: `<div class="arab"><u>تُرْجِمَ</u> كِتَابُ الْقَانُونِ إِلَى اللُّغَةِ اللَّاتِينِيَّةِ.</div>`,
-        question: "Klasifikasi bentuk kata (تُرْجِمَ) berdasarkan jenis waktu dan bentuk pelakunya adalah...",
+        cog: "C4",
+        topic: "Gerak Perahu pada Sungai Berarus",
+        narasi: `Sebuah sungai selebar <span class="math">120 meter</span> memiliki arus air berkecepatan <span class="math">3 m/s</span> sejajar tepi sungai. Sebuah perahu bermesin bergerak dengan haluan diarahkan <b>tegak lurus</b> terhadap tepi sungai dengan kelajuan terhadap air sebesar <span class="math">4 m/s</span>.`,
+        question: "Waktu yang diperlukan perahu untuk menyeberangi sungai dan jarak perahu terbawa arus ke hilir berturut-turut adalah...",
         options: [
-          "Fi'il madhi mabni lil ma'lum (kata kerja aktif lampau)",
-          "Fi'il madhi mabni lil majhul (kata kerja pasif lampau)",
-          "Fi'il mudhari' mabni lil majhul (kata kerja pasif sekarang)",
-          "Fi'il amr (kata kerja perintah)",
-          "Isim maf'ul (kata benda pasif)"
+          "24 detik dan 72 meter",
+          "30 detik dan 90 meter",
+          "30 detik dan 120 meter",
+          "40 detik dan 120 meter",
+          "24 detik dan 90 meter"
         ],
         answer: 1,
-        bahas: "تُرْجِمَ (telah diterjemahkan) berwazan فُعْلِلَ (dhammah huruf pertama, kasrah sebelum akhir) yang merupakan fi'il madhi mabni lil majhul."
+        bahas: `Pisahkan gerak menjadi dua komponen saling bebas:<br/>
+        • Komponen menyeberang (tegak lurus tepi): <span class="math">v<sub>y</sub> = 4 m/s</span>, lebar <span class="math">d = 120 m</span> &rArr; Waktu menyeberang <span class="math">t = ${frac("d", "v<sub>y</sub>")} = ${frac("120", "4")} = <b>30 detik</b></span>.<br/>
+        • Komponen sejajar arus sungai: <span class="math">v<sub>x</sub> = v<sub>arus</sub> = 3 m/s</span> &rArr; Jarak terbawa arus ke hilir <span class="math">x = v<sub>x</sub> &middot; t = 3 &times; 30 = <b>90 meter</b></span>.`
       },
       {
         no: 29,
         type: "PG",
-        cog: "C1",
-        topic: "Kosakata Bahasa Arab • Antonim (مضاد)",
-        narasi: `<div class="arab">بَلَغَتْ نَهْضَةُ الْعُلُومِ مَرْحَلَةً مُهِمَّةً وَلَمْ تَكُنْ <u>نِهَايَةً</u> لِلْإِبْدَاعِ.</div>`,
-        question: "Antonim (مُضَادّ) dari kosakata (نِهَايَةٌ) yang berarti 'akhir' adalah...",
+        cog: "C4",
+        topic: "Sudut Haluan & Waktu Penyeberangan Sungai",
+        narasi: `Sebuah sungai selebar <span class="math">160 meter</span> mengalir ke timur dengan kecepatan arus <span class="math">3 m/s</span>. Seorang nakhoda ingin menyeberangi sungai dari selatan ke utara sehingga perahu tiba <b>tepat di titik seberang</b> (lintasan resultan tegak lurus tepi sungai) menggunakan perahu berkelajuan <span class="math">5 m/s</span> relatif terhadap air. (Gunakan <span class="math">sin 37° = 0,6</span> dan <span class="math">cos 37° = 0,8</span>).`,
+        question: "Arah sudut haluan perahu terhadap garis tegak lurus tepi sungai beserta waktu penyeberangannya adalah...",
         options: [
-          "<span class='arab-inline'>بِدَايَةٌ</span> (awal/permulaan)",
-          "<span class='arab-inline'>خَاتِمَةٌ</span> (penutup)",
-          "<span class='arab-inline'>غَايَةٌ</span> (tujuan)",
-          "<span class='arab-inline'>نَتِيجَةٌ</span> (hasil)",
-          "<span class='arab-inline'>وَسَطٌ</span> (tengah)"
+          "37° ke arah hilir (timur) dan waktu tempuh 32 detik",
+          "37° ke arah hulu (barat) dan waktu tempuh 40 detik",
+          "53° ke arah hulu (barat) dan waktu tempuh 40 detik",
+          "37° ke arah hulu (barat) dan waktu tempuh 53,3 detik",
+          "53° ke arah hilir (timur) dan waktu tempuh 32 detik"
         ],
-        answer: 0,
-        bahas: "نِهَايَةٌ berarti akhir/penghujung, antonimnya adalah بِدَايَةٌ (permulaan/awal)."
+        answer: 1,
+        bahas: `Agar lintasan resultan lurus ke utara (<span class="math">v<sub>x,total</sub> = 0</span>), haluan perahu harus dimiringkan menyudut <span class="math">&theta;</span> ke arah <b>hulu (barat)</b> untuk melawan arus ke timur:<br/>
+        • <span class="math">v<sub>p</sub> sin &theta; = v<sub>arus</sub> &rArr; 5 sin &theta; = 3 &rArr; sin &theta; = 0,6 &rArr; <b>&theta; = 37° ke arah hulu (barat)</b></span>.<br/>
+        • Komponen kecepatan menyeberang ke utara: <span class="math">v<sub>y</sub> = v<sub>p</sub> cos 37° = 5 &times; 0,8 = 4 m/s</span>.<br/>
+        • Waktu penyeberangan: <span class="math">t = ${frac("160", "4")} = <b>40 detik</b></span>.`
       },
       {
         no: 30,
         type: "PG",
-        cog: "C2",
-        topic: "Sharaf • Fi'il Mudhari' Mabni Lil Majhul",
-        narasi: `<div class="arab"><u>يُدْرَسُ</u> كِتَابُ ابْنِ سِينَا فِي الْجَامِعَاتِ الْأُورُوبِّيَّةِ.</div>`,
-        question: "Jenis fi'il dari kata (يُدْرَسُ) berdasarkan bentuk waktu dan konstruksi pasifnya adalah...",
+        cog: "C4",
+        topic: "Analisis Tiga Vektor pada Bidang Koordinat",
+        narasi: `Perhatikan tiga buah vektor <span class="math">${vec("A")}</span>, <span class="math">${vec("B")}</span>, dan <span class="math">${vec("C")}</span> pada bidang koordinat Kartesius berikut ini:` + SVG_Q30,
+        question: `Analisis yang paling tepat mengenai vektor resultan (<span class="math">${vec("R")} = ${vec("A")} + ${vec("B")} + ${vec("C")}</span>), besarnya, vektor satuannya, serta sifat penjumlahan vektor tersebut adalah...`,
         options: [
-          "Fi'il madhi mabni lil majhul",
-          "Fi'il mudhari' mabni lil ma'lum",
-          "Fi'il mudhari' mabni lil majhul",
-          "Fi'il madhi mabni lil ma'lum",
-          "Fi'il amr"
+          `<span class="math">${vec("R")} = 4i&#770; + 3j&#770;</span>, besarnya 7 satuan, vektor satuan <span class="math">0,6i&#770; + 0,8j&#770;</span>, dan tidak bersifat komutatif.`,
+          `<span class="math">${vec("R")} = 4i&#770; + 3j&#770;</span>, besarnya 5 satuan, vektor satuan <span class="math">0,8i&#770; + 0,6j&#770;</span>, dan penjumlahannya bersifat komutatif serta asosiatif (<span class="math">|${vec("R")}| &lt; |${vec("A")}| + |${vec("B")}| + |${vec("C")}|</span>).`,
+          `<span class="math">${vec("R")} = 3i&#770; + 4j&#770;</span>, besarnya 5 satuan, vektor satuan <span class="math">0,8i&#770; + 0,6j&#770;</span>, dan <span class="math">|${vec("R")}| = |${vec("A")}| + |${vec("B")}| + |${vec("C")}|</span>.`,
+          `<span class="math">${vec("R")} = 6i&#770; + 9j&#770;</span>, besarnya 15 satuan, vektor satuan <span class="math">0,4i&#770; + 0,6j&#770;</span>, dan tidak dapat dijumlahkan secara poligon.`,
+          `<span class="math">${vec("R")} = 4i&#770; &minus; 3j&#770;</span>, besarnya 5 satuan, vektor satuan <span class="math">0,8i&#770; &minus; 0,6j&#770;</span>, dan penjumlahannya hanya berlaku asosiatif.`
         ],
-        answer: 2,
-        bahas: "يُدْرَسُ (dipelajari/sedang dipelajari) diawali ya' mudhara'ah berharakat dhammah dan huruf sebelum akhir berharakat fathah (يُفْعَلُ), sehingga merupakan fi'il mudhari' mabni lil majhul."
-      },
-
-      // ===================== SOAL 31 - 35 (BENAR / SALAH) =====================
-      {
-        no: 31,
-        type: "PGK_BS",
-        cog: "C2",
-        topic: "Faktor Perkembangan Peradaban Islam",
-        narasi: "Peradaban Islam mengalami kemajuan pesat pada abad pertengahan karena berbagai faktor pendorong internal maupun eksternal.",
-        question: "Tentukan kebenaran (Benar/Salah) pernyataan berikut tentang faktor yang memengaruhi perkembangan peradaban Islam!",
-        statements: [
-          "Dorongan ajaran Al-Qur'an dan Hadis untuk menuntut ilmu, meneliti alam, dan menggunakan akal menjadi faktor utama kemajuan.",
-          "Gerakan penerjemahan buku-buku ilmu pengetahuan dari Yunani, Persia, dan India ke dalam bahasa Arab di Baitul Hikmah.",
-          "Dukungan penuh para khalifah terhadap ilmuwan, pendirian perpustakaan, observatorium, dan rumah sakit.",
-          "Kebijakan khalifah Abbasiyah melarang umat Islam mempelajari ilmu kedokteran, matematika, dan astronomi.",
-          "Keterbukaan peradaban Islam dalam berinteraksi dengan budaya lain tanpa meninggalkan prinsip tauhid."
-        ],
-        answer: ["B", "B", "B", "S", "B"],
-        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (justru ilmu pengetahuan umum didorong dan difasilitasi penuh).\n5) BENAR."
-      },
-      {
-        no: 32,
-        type: "PGK_BS",
-        cog: "C3",
-        topic: "Nahwu • Al-Asma' Al-Khamsah (الأسماء الخمسة)",
-        narasi: "Al-Asma' Al-Khamsah (أَبُو، أَخُو، حَمُو، فُو، ذُو) di-i'rab dengan huruf: rafa' dengan wawu (و), nashab dengan alif (ا), dan jar dengan ya' (ي) apabila bersambung dengan selain ya' mutakallim.",
-        question: "Tentukan ketepatan (Benar/Salah) penggunaan Al-Asma' Al-Khamsah dalam kalimat-kalimat berikut!",
-        statements: [
-          "جَاءَ أَبُوكَ إِلَى الْمَدْرَسَةِ — Tepat karena أَبُوكَ berkedudukan rafa' (fa'il) dengan tanda wawu.",
-          "رَأَيْتُ أَخَاكَ فِي الْمَسْجِدِ — Tepat karena أَخَاكَ berkedudukan nashab (maf'ul bih) dengan tanda alif.",
-          "سَلَّمْتُ عَلَى أَبِيكَ — Tepat karena أَبِيكَ berkedudukan jar setelah huruf عَلَى dengan tanda ya'.",
-          "إِنَّ أَبُوكَ عَالِمٌ كَبِيرٌ — Tepat karena isim إِنَّ harus rafa' dengan wawu.",
-          "هٰذَا الرَّجُلُ ذُو عِلْمٍ وَاسِعٍ — Tepat karena ذُو berkedudukan rafa' (khabar) dengan tanda wawu."
-        ],
-        answer: ["B", "B", "B", "S", "B"],
-        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (isim إِنَّ harus nashab dengan alif: إِنَّ أَبَاكَ عَالِمٌ).\n5) BENAR."
-      },
-      {
-        no: 33,
-        type: "PGK_BS",
-        cog: "C3",
-        topic: "Nahwu • Al-Af'al Al-Khamsah (الأفعال الخمسة)",
-        narasi: "Al-Af'al Al-Khamsah adalah setiap fi'il mudhari' yang bersambung dengan alif itsnain (ان), wawu jama'ah (ون), atau ya' mukhathabah (ين).",
-        question: "Tentukan kebenaran (Benar/Salah) pernyataan mengenai keberadaan Al-Af'al Al-Khamsah dalam kalimat berikut!",
-        statements: [
-          "Kalimat (الطُّلَّابُ يَكْتُبُونَ الدَّرْسَ) mengandung al-af'al al-khamsah yaitu يَكْتُبُونَ.",
-          "Kalimat (الطَّالِبَانِ يَذْهَبَانِ إِلَى الْمَكْتَبَةِ) mengandung al-af'al al-khamsah yaitu يَذْهَبَانِ.",
-          "Kalimat (أَنْتِ تَقْرَئِينَ الْكِتَابَ) mengandung al-af'al al-khamsah yaitu تَقْرَئِينَ.",
-          "Kalimat (الطَّالِبُ يَكْتُبُ الدَّرْسَ) mengandung al-af'al al-khamsah yaitu يَكْتُبُ.",
-          "Kalimat (أَنْتُمْ تَجْتَهِدُونَ فِي الطَّلَبِ) mengandung al-af'al al-khamsah yaitu تَجْتَهِدُونَ."
-        ],
-        answer: ["B", "B", "B", "S", "B"],
-        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (يَكْتُبُ adalah fi'il mudhari' mufrad biasa, bukan af'alul khamsah).\n5) BENAR."
-      },
-      {
-        no: 34,
-        type: "PGK_BS",
-        cog: "C2",
-        topic: "Biografi dan Karya Imam Bukhari",
-        narasi: "Imam Muhammad bin Ismail Al-Bukhari (194–256 H) adalah ulama hadis terkemuka sepanjang sejarah Islam.",
-        question: "Nilailah kebenaran (Benar/Salah) pernyataan tentang identitas, gelar, dan karya Imam Bukhari berikut!",
-        statements: [
-          "Nama lengkap beliau adalah Abu Abdillah Muhammad bin Ismail Al-Bukhari.",
-          "Beliau mendapat gelar 'Amirul Mukminin fil Hadis' karena ketelitian dan hafalannya yang luar biasa.",
-          "Karya terbesar beliau adalah Al-Jami' ash-Shahih yang dikenal luas sebagai Shahih al-Bukhari.",
-          "Imam Bukhari menyusun kitab Shahih-nya dengan menyeleksi hadis-hadis secara sangat ketat selama sekitar 16 tahun.",
-          "Imam Bukhari lahir di kota Kairo dan menulis kitab Ihya' Ulumiddin."
-        ],
-        answer: ["B", "B", "B", "B", "S"],
-        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (Imam Bukhari lahir di Bukhara; Ihya' Ulumiddin adalah karya Imam Al-Ghazali)."
-      },
-      {
-        no: 35,
-        type: "PGK_BS",
-        cog: "C2",
-        topic: "Biografi dan Pemikiran Imam Al-Ghazali",
-        narasi: "Abu Hamid Muhammad bin Muhammad Al-Ghazali (450–505 H) merupakan ulama besar yang pemikirannya memengaruhi dunia Islam.",
-        question: "Nilailah kebenaran (Benar/Salah) pernyataan tentang biografi, gelar, karya, dan pemikiran Imam Al-Ghazali berikut!",
-        statements: [
-          "Imam Al-Ghazali lahir di kota Thus, Khurasan (Persia) dan pernah mengajar di Madrasah Nizhamiyah Baghdad.",
-          "Beliau dijuluki 'Hujjatul Islam' karena kepiawaiannya membela akidah Islam dengan argumen rasional dan spiritual.",
-          "Karya monumental beliau yang memadukan fikih, akhlak, dan tasawuf adalah kitab Ihya' Ulumiddin.",
-          "Dalam kitab Tahafut al-Falasifah, beliau mengkritik pemikiran filsafat yang bertentangan dengan akidah Islam.",
-          "Imam Al-Ghazali merupakan penemu rumus aljabar dan penulis kitab Al-Jabr wal-Muqabalah."
-        ],
-        answer: ["B", "B", "B", "B", "S"],
-        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (penulis Al-Jabr wal-Muqabalah adalah Al-Khawarizmi)."
-      },
-
-      // ===================== SOAL 36 - 40 (CHECKLIST) =====================
-      {
-        no: 36,
-        type: "PGK_CHECK",
-        cog: "C3",
-        topic: "Nahwu • Fi'il Mabni Lil Ma'lum (Kata Kerja Aktif)",
-        narasi: "Fi'il mabni lil ma'lum adalah kata kerja aktif yang menyebutkan pelakunya (fa'il) dalam kalimat.",
-        question: "Pilihlah kalimat-kalimat yang mengandung fi'il mabni lil ma'lum (kata kerja aktif)! (Pilih lebih dari satu)",
-        options: [
-          "<span class='arab-inline'>قَرَأَ الطَّالِبُ كِتَابَ التَّارِيخِ.</span>",
-          "<span class='arab-inline'>يَشْرَحُ الْأُسْتَاذُ الدَّرْسَ بِوُضُوحٍ.</span>",
-          "<span class='arab-inline'>فُتِحَ بَابُ الْمَكْتَبَةِ صَبَاحًا.</span>",
-          "<span class='arab-inline'>كَتَبَتْ عَائِشَةُ مَقَالَةً عِلْمِيَّةً.</span>",
-          "<span class='arab-inline'>أَلَّفَ ابْنُ سِينَا كِتَابَ الْقَانُونِ.</span>"
-        ],
-        answer: [0, 1, 3, 4],
-        bahas: "Kalimat 1 (قَرَأَ), 2 (يَشْرَحُ), 4 (كَتَبَتْ), dan 5 (أَلَّفَ) adalah fi'il mabni lil ma'lum (aktif). Kalimat 3 (فُتِحَ) adalah fi'il mabni lil majhul (pasif: dibuka)."
-      },
-      {
-        no: 37,
-        type: "PGK_CHECK",
-        cog: "C2",
-        topic: "Ulama Bidang Ilmu Agama & Kontribusinya",
-        narasi: "Para ulama Muslim mewariskan karya dan kontribusi penting dalam ilmu-ilmu keislaman (Hadis, Fikih, Tafsir, dan Tasawuf).",
-        question: "Pilihlah pernyataan yang SESUAI antara tokoh Muslim bidang ilmu agama dengan kontribusinya! (Pilih lebih dari satu)",
-        options: [
-          "Imam Bukhari — Ulama ahli hadis yang menyusun kitab Shahih al-Bukhari.",
-          "Imam Asy-Syafi'i — Ulama fikih yang merumuskan kaidah Usul Fikih dalam kitab Ar-Risalah.",
-          "Imam Al-Ghazali — Ulama yang memadukan ilmu fikih dan tasawuf dalam kitab Ihya' Ulumiddin.",
-          "Jabir bin Hayyan — Ulama ahli hadis yang menyusun kitab Shahih Muslim.",
-          "Imam Malik bin Anas — Ulama pendiri Mazhab Maliki yang menyusun kitab Al-Muwaththa'."
-        ],
-        answer: [0, 1, 2, 4],
-        bahas: "Pernyataan 1, 2, 3, dan 5 benar. Pernyataan 4 salah karena Jabir bin Hayyan adalah ilmuwan kimia, sedangkan penyusun Shahih Muslim adalah Imam Muslim."
-      },
-      {
-        no: 38,
-        type: "PGK_CHECK",
-        cog: "C3",
-        topic: "Sharaf • Fi'il Madhi Mabni Lil Majhul",
-        narasi: "Fi'il madhi mabni lil majhul (kata kerja pasif lampau) dibentuk dengan mendhammahkan huruf pertama dan mengkasrahkan huruf sebelum akhir (seperti فُعِلَ atau تُرْجِمَ).",
-        question: "Pilihlah kalimat-kalimat yang mengandung fi'il madhi mabni lil majhul! (Pilih lebih dari satu)",
-        options: [
-          "<span class='arab-inline'>كُتِبَ الدَّرْسُ عَلَى السَّبُّورَةِ.</span>",
-          "<span class='arab-inline'>وُلِدَ الْإِمَامُ الشَّافِعِيُّ فِي غَزَّةَ.</span>",
-          "<span class='arab-inline'>تُرْجِمَتْ كُتُبُ الْعُلَمَاءِ إِلَى اللَّاتِينِيَّةِ.</span>",
-          "<span class='arab-inline'>دَرَسَ الطُّلَّابُ فِي الْمَعْمَلِ.</span>",
-          "<span class='arab-inline'>بُنِيَتْ مَدِينَةُ بَغْدَادَ فِي الْعَصْرِ الْعَبَّاسِيِّ.</span>"
-        ],
-        answer: [0, 1, 2, 4],
-        bahas: "Kalimat 1 (كُتِبَ = ditulis), 2 (وُلِدَ = dilahirkan), 3 (تُرْجِمَتْ = diterjemahkan), dan 5 (بُنِيَتْ = dibangun) adalah fi'il madhi mabni lil majhul. Kalimat 4 (دَرَسَ) adalah mabni lil ma'lum (aktif)."
-      },
-      {
-        no: 39,
-        type: "PGK_CHECK",
-        cog: "C1",
-        topic: "Biografi dan Karya Ibnu Sina",
-        narasi: "Ibnu Sina (370–428 H / 980–1037 M) adalah salah satu ilmuwan polimatik terbesar dalam sejarah peradaban Islam.",
-        question: "Pilihlah pernyataan-pernyataan yang SESUAI dengan identitas, bidang keilmuan, dan karya Ibnu Sina! (Pilih lebih dari satu)",
-        options: [
-          "Di dunia Barat, Ibnu Sina dikenal dengan nama Avicenna dan dijuluki Bapak Kedokteran Modern.",
-          "Beliau lahir di Afshana dekat Bukhara dan menguasai berbagai ilmu sejak usia muda.",
-          "Karya utamanya di bidang kedokteran adalah Al-Qanun fi ath-Thibb (The Canon of Medicine).",
-          "Di bidang filsafat dan sains, beliau menulis kitab ensiklopedis berjudul Asy-Syifa'.",
-          "Ibnu Sina hanya menekuni ilmu nahwu dan tidak pernah menulis di bidang kedokteran."
-        ],
-        answer: [0, 1, 2, 3],
-        bahas: "Pernyataan 1, 2, 3, dan 4 sesuai dengan biografi dan karya Ibnu Sina. Pernyataan 5 salah."
-      },
-      {
-        no: 40,
-        type: "PGK_CHECK",
-        cog: "C1",
-        topic: "Biografi dan Kontribusi Al-Biruni",
-        narasi: "Abu Raihan Muhammad bin Ahmad Al-Biruni (362–440 H / 973–1048 M) adalah ilmuwan Muslim serba bisa pada masa keemasan Islam.",
-        question: "Pilihlah pernyataan-pernyataan yang SESUAI dengan bidang keilmuan, penemuan, dan karya Al-Biruni! (Pilih lebih dari satu)",
-        options: [
-          "Al-Biruni unggul dalam bidang astronomi, matematika, fisika, geografi, dan sejarah.",
-          "Beliau berhasil menghitung jari-jari dan keliling bumi dengan tingkat akurasi sangat tinggi pada masanya.",
-          "Salah satu karyanya yang terkenal tentang sejarah dan budaya India adalah kitab Tahqiq ma lil-Hind.",
-          "Beliau juga menulis kitab Al-Qanun al-Mas'udi di bidang astronomi.",
-          "Al-Biruni adalah seorang pelukis Eropa abad ke-19 yang menentang ilmu astronomi."
-        ],
-        answer: [0, 1, 2, 3],
-        bahas: "Pernyataan 1, 2, 3, dan 4 benar mengenai keilmuan, kontribusi pengukuran bumi, dan karya Al-Biruni. Pernyataan 5 salah."
+        answer: 1,
+        bahas: `Dari grafik koordinat: <span class="math">${vec("A")} = 3i&#770; + 2j&#770;</span>, <span class="math">${vec("B")} = &minus;i&#770; + 4j&#770;</span>, dan <span class="math">${vec("C")} = 2i&#770; &minus; 3j&#770;</span>.<br/>
+        • <b>Resultan:</b> <span class="math">${vec("R")} = (3 &minus; 1 + 2)i&#770; + (2 + 4 &minus; 3)j&#770; = <b>4i&#770; + 3j&#770;</b></span>.<br/>
+        • <b>Besar resultan:</b> <span class="math">|${vec("R")}| = ${sqrt("4<sup>2</sup> + 3<sup>2</sup>")} = <b>5 satuan</b></span>.<br/>
+        • <b>Vektor satuan:</b> <span class="math">u&#770;<sub>R</sub> = ${frac(vec("R"), "|" + vec("R") + "|")} = ${frac("4", "5")}i&#770; + ${frac("3", "5")}j&#770; = <b>0,8i&#770; + 0,6j&#770;</b></span>.<br/>
+        • <b>Sifat penjumlahan:</b> Penjumlahan vektor bersifat <b>komutatif</b> dan <b>asosiatif</b>, serta karena ketiga vektor tidak searah, besar resultannya lebih kecil daripada jumlah panjang skalar masing-masing vektor (<span class="math">5 &lt; ${sqrt("13")} + ${sqrt("17")} + ${sqrt("13")}</span>).`
       }
     ];
 
@@ -1450,38 +1602,12 @@
     let autoBahasMode = false;
     let isEvaluated = false;
 
-    // Inisialisasi jawaban default untuk PGK B/S dan Checklist
-    QUESTIONS.forEach((q, idx) => {
-      if (q.type === "PGK_BS") {
-        userAnswers[idx] = new Array(q.statements.length).fill(null);
-      } else if (q.type === "PGK_CHECK") {
-        userAnswers[idx] = [];
-      }
-    });
-
     function isQuestionAnswered(idx) {
-      const q = QUESTIONS[idx];
-      const ans = userAnswers[idx];
-      if (q.type === "PG") return ans !== null;
-      if (q.type === "PGK_BS") return Array.isArray(ans) && ans.every(v => v !== null);
-      if (q.type === "PGK_CHECK") return Array.isArray(ans) && ans.length > 0;
-      return false;
+      return userAnswers[idx] !== null;
     }
 
     function isQuestionCorrect(idx) {
-      const q = QUESTIONS[idx];
-      const ans = userAnswers[idx];
-      if (q.type === "PG") return ans === q.answer;
-      if (q.type === "PGK_BS") {
-        return Array.isArray(ans) && q.answer.every((val, i) => ans[i] === val);
-      }
-      if (q.type === "PGK_CHECK") {
-        if (!Array.isArray(ans) || ans.length !== q.answer.length) return false;
-        const sortedA = [...ans].sort((a, b) => a - b);
-        const sortedB = [...q.answer].sort((a, b) => a - b);
-        return sortedA.every((val, i) => val === sortedB[i]);
-      }
-      return false;
+      return userAnswers[idx] === QUESTIONS[idx].answer;
     }
 
     function renderNav() {
@@ -1515,129 +1641,59 @@
       const q = QUESTIONS[currentIndex];
       const total = QUESTIONS.length;
 
-      // Progress
       document.getElementById("progressLabel").textContent = `Soal ${q.no} dari ${total}`;
       const pct = ((currentIndex + 1) / total) * 100;
       document.getElementById("progressPercent").textContent = `${pct.toFixed(1)}%`;
       document.getElementById("progressFill").style.width = `${pct}%`;
 
-      // Meta tags
-      const typeLabel =
-        q.type === "PG" ? "Pilihan Ganda" :
-        q.type === "PGK_BS" ? "Benar-Salah" :
-        "Checklist";
-
       document.getElementById("qMeta").innerHTML = `
         <span class="tag tag-num">No. ${q.no}</span>
-        <span class="tag tag-type">${typeLabel}</span>
-        <span class="tag tag-cog">${q.cog}</span>
+        <span class="tag tag-type">Pilihan Ganda</span>
+        <span class="tag tag-cog">Level ${q.cog}</span>
         <span class="tag tag-topic">${q.topic}</span>
       `;
 
-      document.getElementById("qNarasi").innerHTML = q.narasi.replace(/\n/g, "<br>");
-      document.getElementById("qText").textContent = q.question;
+      document.getElementById("qNarasi").innerHTML = q.narasi;
+      document.getElementById("qText").innerHTML = q.question;
 
       const inputArea = document.getElementById("qInputArea");
       inputArea.innerHTML = "";
 
       const showCorrection = isEvaluated || bahasVisible[currentIndex];
+      const list = document.createElement("div");
+      list.className = "options-list";
+      const letters = ["A", "B", "C", "D", "E"];
 
-      if (q.type === "PG") {
-        const list = document.createElement("div");
-        list.className = "options-list";
-        const letters = ["A", "B", "C", "D", "E"];
+      q.options.forEach((opt, i) => {
+        const item = document.createElement("div");
+        item.className = "option-item";
+        const selected = userAnswers[currentIndex] === i;
+        if (selected) item.classList.add("selected");
 
-        q.options.forEach((opt, i) => {
-          const item = document.createElement("div");
-          item.className = "option-item";
-          const selected = userAnswers[currentIndex] === i;
-          if (selected) item.classList.add("selected");
+        if (showCorrection) {
+          if (i === q.answer) item.classList.add("correct");
+          else if (selected && i !== q.answer) item.classList.add("wrong");
+        }
 
-          if (showCorrection) {
-            if (i === q.answer) item.classList.add("correct");
-            else if (selected && i !== q.answer) item.classList.add("wrong");
-          }
-
-          item.innerHTML = `
-            <span class="option-letter">${letters[i]}</span>
-            <span>${opt}</span>
-          `;
-          item.onclick = () => selectPG(i);
-          list.appendChild(item);
-        });
-        inputArea.appendChild(list);
-      } else if (q.type === "PGK_BS") {
-        const table = document.createElement("table");
-        table.className = "bs-table";
-        table.innerHTML = `
-          <thead>
-            <tr>
-              <th>Pernyataan</th>
-              <th class="center">Benar</th>
-              <th class="center">Salah</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
+        item.innerHTML = `
+          <span class="option-letter">${letters[i]}</span>
+          <span>${opt}</span>
         `;
-        const tbody = table.querySelector("tbody");
+        item.onclick = () => selectPG(i);
+        list.appendChild(item);
+      });
+      inputArea.appendChild(list);
 
-        q.statements.forEach((stmt, i) => {
-          const tr = document.createElement("tr");
-          const curVal = userAnswers[currentIndex][i];
-
-          if (showCorrection && curVal !== null) {
-            tr.className = curVal === q.answer[i] ? "row-correct" : "row-wrong";
-          }
-
-          tr.innerHTML = `
-            <td><strong>${i + 1}.</strong> ${stmt}</td>
-            <td class="center">
-              <button class="bs-btn ${curVal === 'B' ? 'active-b' : ''}" onclick="selectBS(${i}, 'B')">B</button>
-            </td>
-            <td class="center">
-              <button class="bs-btn ${curVal === 'S' ? 'active-s' : ''}" onclick="selectBS(${i}, 'S')">S</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-        inputArea.appendChild(table);
-      } else if (q.type === "PGK_CHECK") {
-        const list = document.createElement("div");
-        list.className = "options-list";
-
-        q.options.forEach((opt, i) => {
-          const item = document.createElement("div");
-          item.className = "check-item";
-          const selected = userAnswers[currentIndex].includes(i);
-          if (selected) item.classList.add("selected");
-
-          if (showCorrection) {
-            if (q.answer.includes(i)) item.classList.add("correct");
-            else if (selected && !q.answer.includes(i)) item.classList.add("wrong");
-          }
-
-          item.innerHTML = `
-            <span class="check-box">${selected ? "✓" : ""}</span>
-            <span>${opt}</span>
-          `;
-          item.onclick = () => toggleCheck(i);
-          list.appendChild(item);
-        });
-        inputArea.appendChild(list);
-      }
-
-      // Pembahasan box
       const bahasBox = document.getElementById("bahasBox");
       const shouldShowBahas = bahasVisible[currentIndex] || autoBahasMode;
       if (shouldShowBahas) {
         bahasBox.classList.add("show");
-        document.getElementById("bahasKey").textContent = formatAnswerKey(q);
-        document.getElementById("bahasText").textContent = q.bahas;
+        document.getElementById("bahasKey").textContent = `Kunci Jawaban: ${letters[q.answer]}`;
+        document.getElementById("bahasText").innerHTML = q.bahas;
       } else {
         bahasBox.classList.remove("show");
       }
 
-      // Tombol prev/next
       document.getElementById("prevBtn").disabled = currentIndex === 0;
       document.getElementById("nextBtn").disabled = currentIndex === total - 1;
       document.getElementById("bahasBtn").textContent = shouldShowBahas ? "🙈 Sembunyikan Bahas" : "💡 Bahas Soal Ini";
@@ -1645,36 +1701,8 @@
       renderNav();
     }
 
-    function formatAnswerKey(q) {
-      const letters = ["A", "B", "C", "D", "E"];
-      if (q.type === "PG") {
-        return `Kunci Jawaban: ${letters[q.answer]}`;
-      }
-      if (q.type === "PGK_BS") {
-        return `Kunci Jawaban: ${q.answer.map((v, i) => `${i + 1}.${v === 'B' ? 'Benar' : 'Salah'}`).join(" | ")}`;
-      }
-      if (q.type === "PGK_CHECK") {
-        return `Kunci Jawaban: Pernyataan nomor ${q.answer.map(i => i + 1).join(", ")}`;
-      }
-    }
-
     function selectPG(optionIdx) {
       userAnswers[currentIndex] = optionIdx;
-      if (autoBahasMode) bahasVisible[currentIndex] = true;
-      renderQuestion();
-    }
-
-    function selectBS(stmtIdx, val) {
-      userAnswers[currentIndex][stmtIdx] = val;
-      if (autoBahasMode && isQuestionAnswered(currentIndex)) bahasVisible[currentIndex] = true;
-      renderQuestion();
-    }
-
-    function toggleCheck(optIdx) {
-      const arr = userAnswers[currentIndex];
-      const pos = arr.indexOf(optIdx);
-      if (pos === -1) arr.push(optIdx);
-      else arr.splice(pos, 1);
       if (autoBahasMode) bahasVisible[currentIndex] = true;
       renderQuestion();
     }
@@ -1727,11 +1755,7 @@
       isEvaluated = false;
       currentIndex = 0;
       bahasVisible.fill(false);
-      QUESTIONS.forEach((q, idx) => {
-        if (q.type === "PG") userAnswers[idx] = null;
-        else if (q.type === "PGK_BS") userAnswers[idx] = new Array(q.statements.length).fill(null);
-        else userAnswers[idx] = [];
-      });
+      userAnswers.fill(null);
       document.getElementById("summaryBanner").classList.remove("show");
       renderQuestion();
     }
