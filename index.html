@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asesmen PSAS Sejarah XII — Latihan &amp; Pembahasan</title>
+  <style>
+    :root {
+      --primary: #4338ca;
+      --primary-dark: #1e1b4b;
+      --primary-light: #e0e7ff;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --bg: #f5f3ff;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #c7d2fe;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --danger: #475569;
+      --danger-bg: #e2e8f0;
+      --info: #0369a1;
+      --info-bg: #e0f2fe;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(67, 56, 202, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .topbar {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 18px 24px;
+      box-shadow: 0 4px 16px rgba(30, 27, 75, 0.24);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      font-weight: 800;
+      color: #c7d2fe;
+    }
+
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand p {
+      font-size: 0.82rem;
+      opacity: 0.92;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-btn {
+      background: #fff;
+      color: var(--primary-dark);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .mode-btn:hover {
+      background: #c7d2fe;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 18px 48px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    /* Progress Bar */
+    .progress-wrap {
+      margin-bottom: 20px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #0d9488);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Question Meta */
+    .q-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 999px;
+      letter-spacing: 0.2px;
+    }
+
+    .tag-num {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .tag-type {
+      background: #ccfbf1;
+      color: #115e59;
+      border: 1px solid #99f6e4;
+    }
+
+    .tag-cog {
+      background: var(--info-bg);
+      color: var(--info);
+    }
+
+    .tag-topic {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+    }
+
+    .q-narasi {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 18px;
+      font-size: 0.97rem;
+      color: #334155;
+      line-height: 1.85;
+    }
+
+    .q-text {
+      font-size: 1.04rem;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    .quote-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-style: italic;
+      color: #1e293b;
+    }
+
+    /* Timeline 14 */
+    .timeline-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0 4px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .timeline-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tl-item {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      background: #f8fafc;
+      color: #475569;
+    }
+
+    .tl-item.active-bold {
+      border: 2.5px solid var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.14);
+    }
+
+    .tl-year {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .tl-label {
+      font-size: 0.84rem;
+    }
+
+    /* Archival Photo Slot (for authentic historical images) */
+    .archival-slot {
+      background: #ffffff;
+      border: 1.5px dashed #818cf8;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0 4px;
+      text-align: center;
+    }
+
+    .archival-img {
+      max-width: 100%;
+      max-height: 290px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      display: none;
+      margin: 0 auto 10px;
+      object-fit: contain;
+    }
+
+    .archival-img.loaded {
+      display: block;
+    }
+
+    .archival-placeholder {
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 10px;
+      padding: 18px 14px;
+      color: #312e81;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .upload-label {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .upload-label:hover {
+      background: var(--primary-dark);
+    }
+
+    .upload-input {
+      display: none;
+    }
+
+    /* Options PG */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      background: #fff;
+      line-height: 1.75;
+    }
+
+    .option-item:hover {
+      border-color: var(--primary);
+      background: var(--bg);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      box-shadow: 0 0 0 2px rgba(67, 56, 202, 0.16);
+    }
+
+    .option-item.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .option-item.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .option-letter {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .option-item.selected .option-letter {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .option-item.correct .option-letter {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .option-item.wrong .option-letter {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* PGK Benar/Salah Table */
+    .bs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+
+    .bs-table th {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      text-align: left;
+    }
+
+    .bs-table th.center,
+    .bs-table td.center {
+      text-align: center;
+      width: 82px;
+    }
+
+    .bs-table td {
+      padding: 14px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      vertical-align: middle;
+      line-height: 1.75;
+    }
+
+    .bs-table tr.row-correct {
+      background: var(--success-bg);
+    }
+
+    .bs-table tr.row-wrong {
+      background: var(--danger-bg);
+    }
+
+    .bs-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .bs-btn.active-b {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .bs-btn.active-s {
+      background: #334155;
+      color: #fff;
+      border-color: #334155;
+    }
+
+    /* PGK Checklist */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.18s;
+      background: #fff;
+      line-height: 1.75;
+    }
+
+    .check-item:hover {
+      border-color: var(--primary);
+      background: var(--bg);
+    }
+
+    .check-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .check-item.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .check-item.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid #94a3b8;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .check-item.selected .check-box {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Pembahasan Box */
+    .bahas-box {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #eef2ff;
+      border: 1.5px solid #a5b4fc;
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .bahas-box.show {
+      display: block;
+    }
+
+    .bahas-title {
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.98rem;
+    }
+
+    .bahas-key {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .bahas-text {
+      font-size: 0.95rem;
+      color: #1e293b;
+      line-height: 1.9;
+    }
+
+    /* Action Footer */
+    .q-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #f1f5f9;
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-bahas {
+      background: var(--accent-light);
+      color: #115e59;
+      border-color: #2dd4bf;
+    }
+
+    .btn-bahas:hover:not(:disabled) {
+      background: #99f6e4;
+    }
+
+    .btn-finish {
+      background: #0f766e;
+      color: #fff;
+      border-color: #0f766e;
+    }
+
+    .btn-finish:hover:not(:disabled) {
+      background: #115e59;
+    }
+
+    /* Sidebar Navigator */
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .nav-btn {
+      height: 38px;
+      border-radius: 9px;
+      border: 1.5px solid #cbd5e1;
+      background: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.15s;
+      color: var(--text);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--primary);
+    }
+
+    .nav-btn.current {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(67, 56, 202, 0.25);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .nav-btn.answered {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .nav-btn.eval-correct {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .nav-btn.eval-wrong {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    .summary-banner {
+      display: none;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #1e1b4b, #4338ca);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-banner.show {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .score-big {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #c7d2fe;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">SEJ</div>
+        <div>
+          <h1>Asesmen PSAS Ganjil Sejarah — Kelas XII/F</h1>
+          <p>Perjuangan Kemerdekaan, Demokrasi Liberal &amp; Demokrasi Terpimpin • 40 Soal (PG, PGK, Benar/Salah)</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="pill" id="answeredCount">Terjawab: 0 / 40</span>
+        <button class="mode-btn" id="toggleAutoBahas" onclick="toggleModeBahas()">
+          Mode Bahas Langsung: OFF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div>
+      <!-- Hasil Akhir Banner -->
+      <section class="summary-banner" id="summaryBanner">
+        <div>
+          <div style="font-size:0.85rem; opacity:0.9; font-weight:600;">HASIL EVALUASI ASESMEN SEJARAH</div>
+          <div class="score-big" id="finalScoreText">0 / 100</div>
+          <div style="font-size:0.9rem; margin-top:4px;" id="finalDetailText">Benar: 0 dari 40 soal</div>
+        </div>
+        <div class="btn-group">
+          <button class="btn" onclick="resetQuiz()">Ulangi Latihan</button>
+          <button class="btn btn-bahas" onclick="showAllBahasMode()">Buka Semua Pembahasan</button>
+        </div>
+      </section>
+
+      <!-- Card Soal Utama -->
+      <section class="card" id="questionCard">
+        <div class="progress-wrap">
+          <div class="progress-header">
+            <span id="progressLabel">Soal 1 dari 40</span>
+            <span id="progressPercent">2.5%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="q-meta" id="qMeta"></div>
+        <div class="q-narasi" id="qNarasi"></div>
+        <div class="q-text" id="qText"></div>
+
+        <div id="qInputArea"></div>
+
+        <!-- Fitur Bahas -->
+        <div class="bahas-box" id="bahasBox">
+          <div class="bahas-title">📜 Pembahasan Soal</div>
+          <div class="bahas-key" id="bahasKey"></div>
+          <div class="bahas-text" id="bahasText"></div>
+        </div>
+
+        <div class="q-footer">
+          <div class="btn-group">
+            <button class="btn" id="prevBtn" onclick="goTo(currentIndex - 1)">← Sebelumnya</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="goTo(currentIndex + 1)">Selanjutnya →</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-bahas" id="bahasBtn" onclick="toggleBahas()">💡 Bahas Soal Ini</button>
+            <button class="btn btn-finish" onclick="finishQuiz()">✅ Selesai &amp; Nilai</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar Navigasi -->
+    <aside class="card sidebar-card">
+      <h3>Navigasi Soal (1–40)</h3>
+      <div class="legend">
+        <span><i class="dot" style="background:#fff; border:1.5px solid #cbd5e1;"></i> Belum</span>
+        <span><i class="dot" style="background:var(--primary);"></i> Dijawab</span>
+        <span><i class="dot" style="background:var(--success);"></i> Benar</span>
+        <span><i class="dot" style="background:var(--danger);"></i> Salah</span>
+      </div>
+      <div class="nav-grid" id="navGrid"></div>
+      <div style="font-size:0.8rem; color:var(--muted); line-height:1.6;">
+        <strong>Struktur Kisi-Kisi Sejarah:</strong><br />
+        • No. 1–30: Pilihan Ganda (PG)<br />
+        • No. 31–35: PG Kompleks (Checklist 3 jawaban)<br />
+        • No. 36–40: Benar / Salah
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // Simpan DataURL foto arsip asli yang diunggah pengguna (khusus No. 6 & No. 15)
+    const uploadedImages = {
+      6: null,
+      15: null
+    };
+
+    function buildArchivalSlot(qNo, defaultFile, title, note) {
+      const customSrc = uploadedImages[qNo];
+      const srcToUse = customSrc || defaultFile;
+      return `
+        <div class="archival-slot">
+          <img
+            id="archivalImg-${qNo}"
+            class="archival-img ${customSrc ? 'loaded' : ''}"
+            src="${srcToUse}"
+            alt="${title}"
+            onload="this.classList.add('loaded'); const ph=document.getElementById('archivalPh-${qNo}'); if(ph) ph.style.display='none';"
+            onerror="if(!uploadedImages[${qNo}]){ this.classList.remove('loaded'); const ph=document.getElementById('archivalPh-${qNo}'); if(ph) ph.style.display='block'; }"
+          />
+          <div id="archivalPh-${qNo}" class="archival-placeholder" style="${customSrc ? 'display:none;' : ''}">
+            <strong>📁 Slot Dokumen / Foto Arsip Asli: ${title}</strong><br/>
+            <span style="font-size:0.84rem; color:#475569;">${note}</span><br/>
+            <span style="font-size:0.8rem; color:#64748b;">Letakkan file <code>${defaultFile}</code> di folder yang sama dengan file HTML ini, atau unggah foto arsip aslinya langsung di bawah ini:</span>
+          </div>
+          <label class="upload-label">
+            📂 Pilih / Unggah Foto Asli (${defaultFile})
+            <input type="file" class="upload-input" accept="image/*" onchange="handleImageUpload(${qNo}, this)" />
+          </label>
+        </div>
+      `;
+    }
+
+    function handleImageUpload(qNo, inputEl) {
+      const file = inputEl.files && inputEl.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        uploadedImages[qNo] = e.target.result;
+        renderQuestion();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    const QUESTIONS = [
+      // ===================== SOAL 1 - 30 (PILIHAN GANDA) =====================
+      {
+        no: 1,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Sidang PPKI I (18 Agustus 1945)",
+        narasi: "Sehari setelah Proklamasi Kemerdekaan, PPKI menggelar Sidang I pada tanggal 18 Agustus 1945. Pada rapat tersebut, Otto Iskandardinata mengusulkan agar pemilihan Presiden dan Wakil Presiden dilakukan secara aklamasi, sehingga Ir. Soekarno dan Drs. Mohammad Hatta langsung ditetapkan secara bulat tanpa pemungutan suara.",
+        question: "Berdasarkan kondisi Indonesia pasca-Proklamasi, analisis alasan paling tepat digunakannya strategi pemilihan secara aklamasi tersebut adalah...",
+        options: [
+          "Untuk menghemat anggaran keuangan negara yang baru berdiri dari biaya pencetakan surat suara.",
+          "Karena di Indonesia sama sekali tidak ada tokoh pergerakan nasional selain Soekarno dan Hatta.",
+          "Karena situasi politik dan keamanan sangat genting serta mendesak (mengisi kekosongan kekuasaan/vacuum of power sebelum kedatangan Sekutu) sehingga kepemimpinan eksekutif harus segera terbentuk.",
+          "Karena UUD 1945 secara mutlak melarang pelaksanaan pemilihan umum di masa depan.",
+          "Atas perintah langsung panglima tentara Jepang di Jakarta agar segera dibubarkan."
+        ],
+        answer: 2,
+        bahas: "Pada 18 Agustus 1945, Indonesia baru saja merdeka dan menghadapi situasi politik-keamanan yang sangat genting serta mendesak (<i>vacuum of power</i> pasca-kapitulasi Jepang dan bayang-bayang kedatangan Sekutu). Pemilihan secara aklamasi dipilih untuk segera membentuk kepemimpinan nasional yang sah dan berwibawa—bukan karena menghemat anggaran ataupun ketiadaan tokoh lain."
+      },
+      {
+        no: 2,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Strategi Belanda Pasca-Proklamasi",
+        narasi: "Setelah Proklamasi 17 Agustus 1945, Belanda berupaya keras menancapkan kembali kekuasaan kolonialnya di Indonesia dengan berbagai cara, baik secara militer maupun diplomasi politik.",
+        question: "Kombinasi strategi utama yang dijalankan Belanda untuk mengembalikan kekuasaannya di Indonesia pasca-kemerdekaan adalah...",
+        options: [
+          "Menyerahkan seluruh persenjataan Sekutu kepada TKR dan mengakui kedaulatan RI sejak September 1945.",
+          "Melancarkan operasi militer (Agresi Militer I dan II) serta menerapkan politik pecah belah melalui pembentukan negara-negara bagian federal dalam wadah Republik Indonesia Serikat (RIS).",
+          "Membiayai pembentukan PDRI di Sumatera Barat agar pemerintahan di Yogyakarta tetap aman.",
+          "Mengajak seluruh negara Asia-Afrika mendukung kemerdekaan penuh Republik Indonesia di PBB.",
+          "Membubarkan NICA dan KNIL secara sepihak pada akhir tahun 1945."
+        ],
+        answer: 1,
+        bahas: "Belanda memadukan strategi kekerasan militer berupa <b>Agresi Militer I</b> (1947) dan <b>Agresi Militer II</b> (1948) dengan strategi politik/diplomasi mengulur waktu dan memecah belah wilayah RI melalui pembentukan negara-negara boneka federal (BFO) dalam kerangka Republik Indonesia Serikat (RIS)."
+      },
+      {
+        no: 3,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Bandung Lautan Api",
+        narasi: "Pada tanggal 23–24 Maret 1946, dalam menghadapi ultimatum Sekutu agar Tentara Republik Indonesia (TRI) dan pejuang mengosongkan wilayah Bandung Selatan, para pejuang bersama sekitar 200.000 warga Tatar Sunda memilih membumihanguskan gedung-gedung penting serta permukiman sebelum bergerak mengungsi ke daerah pegunungan selatan (peristiwa Bandung Lautan Api).",
+        question: "Alasan strategis utama dilakukannya operasi bumi hangus dalam peristiwa Bandung Lautan Api tersebut adalah...",
+        options: [
+          "Sebagai bentuk kemarahan rakyat terhadap pemerintah pusat RI yang memindahkan ibu kota ke Jakarta.",
+          "Mencegah Kota Bandung beserta fasilitas strategis, gedung, dan sarana logistiknya dimanfaatkan oleh Sekutu dan Belanda sebagai basis kekuatan militer.",
+          "Menghapus seluruh jejak sejarah Kerajaan Pajajaran agar tidak diketahui tentara Jepang.",
+          "Melaksanakan perintah resmi pemerintah kolonial NICA demi pembangunan kota baru.",
+          "Mengalihkan perhatian pasukan Belanda agar pindah menyerang Pulau Bali."
+        ],
+        answer: 1,
+        bahas: "Operasi bumi hangus pada 23–24 Maret 1946 diputuskan oleh markas pejuang (antara lain A.H. Nasution) agar Sekutu dan NICA/Belanda tidak dapat menggunakan gedung-gedung, gudang mesiu, dan infrastruktur Kota Bandung sebagai basis militer maupun pusat logistik untuk menyerang wilayah RI."
+      },
+      {
+        no: 4,
+        type: "PG",
+        cog: "C3 dan C4 • Level 2",
+        topic: "Pertempuran Surabaya",
+        narasi: `Perhatikan kutipan pidato bersejarah berikut:<div class="quote-box">"Selama banteng-banteng Indonesia masih mempunyai darah merah yang dapat membikin secarik kain putih merah dan putih, maka selama itu tidak akan kita mau menyerah kepada siapa pun juga! ... Lebih baik kita hancur lebur daripada tidak merdeka. Semboyan kita tetap: merdeka atau mati!"</div>`,
+        question: "Keterangan historis yang tepat mengenai latar belakang kutipan pidato tersebut adalah...",
+        options: [
+          "Cuplikan pidato Jenderal Soedirman saat memimpin Palagan Ambarawa pada Desember 1945.",
+          "Cuplikan pidato Ir. Soekarno saat membacakan Dekrit Presiden tanggal 5 Juli 1959.",
+          "Cuplikan pidato Bung Tomo yang disiarkan melalui Radio Pemberontakan pada 9 November 1945 sebagai respons atas ultimatum Sekutu menjelang Pertempuran Surabaya 10 November 1945.",
+          "Cuplikan pidato I Gusti Ngurah Rai menjelang perang Puputan Margarana di Bali tahun 1946.",
+          "Cuplikan pidato Sjafruddin Prawiranegara saat mengumumkan berdirinya PDRI di Bukittinggi."
+        ],
+        answer: 2,
+        bahas: "Kutipan heroik tersebut adalah pidato <b>Bung Tomo (Sutomo)</b> yang disiarkan melalui Radio Pemberontakan pada <b>9 November 1945</b> untuk membakar semangat arek-arek Suroboyo dalam menolak ultimatum Sekutu (Mayjen E.C. Mansergh) menjelang pecahnya Pertempuran Surabaya 10 November 1945."
+      },
+      {
+        no: 5,
+        type: "PG",
+        cog: "C5 • Level 3",
+        topic: "Pembubaran RIS Menuju NKRI",
+        narasi: "Setelah KMB, terbentuk negara federal Republik Indonesia Serikat (RIS) pada Desember 1949 yang terdiri atas RI dan 15 negara bagian/daerah otonom bentukan Belanda. Namun sejak awal 1950, demonstrasi rakyat terus menuntut pembubaran negara bagian. Satu per satu negara bagian (seperti Pasundan, Jawa Timur, Madura, hingga Sumatera Selatan) melebur ke RI sampai pada April 1950 hanya tersisa tiga negara bagian (RI, Negara Indonesia Timur, dan Negara Sumatera Timur), sebelum akhirnya resmi bersatu kembali pada Agustus 1950.",
+        question: "Kesimpulan historis yang paling tepat berdasarkan dinamika singkatnya usia negara federal RIS tersebut adalah...",
+        options: [
+          "Bentuk negara serikat/federal terbukti merupakan sistem yang paling dicintai rakyat Indonesia sepanjang sejarah.",
+          "RIS pada dasarnya hanyalah bentuk negara transisi/sementara akibat kompromi diplomasi KMB menuju terbentuknya kembali Negara Kesatuan Republik Indonesia (NKRI).",
+          "Pembubaran RIS terjadi karena desakan Belanda agar Indonesia tetap berbentuk monarki federal.",
+          "Seluruh negara bagian RIS berhasil bertahan hingga masa berakhirnya Demokrasi Terpimpin tahun 1966.",
+          "Bergabungnya negara bagian ke RI membuat kedaulatan Indonesia kembali dicabut oleh PBB."
+        ],
+        answer: 1,
+        bahas: "Gelombang penolakan rakyat serta kesadaran para pemimpin daerah membuat negara-negara bagian cepat melebur ke pangkuan RI hingga akhirnya disepakati Piagam Persetujuan Mei 1950 dan proklamasi kembalinya NKRI pada 17 Agustus 1950. Hal ini membuktikan RIS semata merupakan negara transisi menuju NKRI."
+      },
+      {
+        no: 6,
+        type: "PG",
+        cog: "C3 dan C4 • Level 2",
+        topic: "Perjanjian Renville",
+        narasi: "Perhatikan foto arsip kapal perang yang berlabuh di Teluk Jakarta sebagai lokasi perundingan antara delegasi Indonesia dan Belanda berikut ini:" + buildArchivalSlot(6, "uss_renville.jpg", "Kapal Perang USS Renville di Teluk Jakarta (1948)", "Menampilkan kapal pengangkut angkatan laut Amerika Serikat USS Renville yang dijadikan tempat netral perundingan Indonesia–Belanda."),
+        question: "Peristiwa diplomasi yang berkaitan langsung dengan dokumen foto kapal perang di atas adalah...",
+        options: [
+          "Perjanjian Linggarjati tanggal 15 November 1946 yang ditengahi oleh Lord Killearn dari Inggris.",
+          "Perjanjian Renville tanggal 17 Januari 1948 yang ditengahi oleh Komisi Tiga Negara (KTN).",
+          "Perjanjian Roem-Royen tanggal 7 Mei 1949 yang ditengahi oleh UNCI.",
+          "Konferensi Meja Bundar tanggal 23 Agustus–2 November 1949 di Den Haag, Belanda.",
+          "Perjanjian New York tanggal 15 Agustus 1962 mengenai penyerahan Irian Barat."
+        ],
+        answer: 1,
+        bahas: "Nama perundingan diambil dari kapal perang Amerika Serikat <b>USS Renville</b> yang berlabuh di Teluk Jakarta. <b>Perjanjian Renville</b> ditandatangani pada <b>17 Januari 1948</b> dengan mediasi <b>Komisi Tiga Negara (KTN)</b> yang beranggotakan Australia (wakil RI), Belgia (wakil Belanda), dan Amerika Serikat (penengah netral)."
+      },
+      {
+        no: 7,
+        type: "PG",
+        cog: "C4 dan C5 • Level 3",
+        topic: "Pemerintahan Darurat Republik Indonesia (PDRI)",
+        narasi: `Menyusul Agresi Militer Belanda II pada 19 Desember 1948 yang menduduki Yogyakarta, dibentuklah Pemerintahan Darurat Republik Indonesia (PDRI) di Bukittinggi, Sumatera Barat yang dipimpin Mr. Sjafruddin Prawiranegara. Perhatikan pernyataan berikut:<br/>(1) Mengisi kekosongan kekuasaan akibat ditangkap dan diasingkannya Presiden Soekarno dan Wapres Hatta.<br/>(2) Memindahkan pusat pemerintahan sementara ke wilayah yang aman dan masih dikuasai penuh oleh RI.<br/>(3) Membuktikan kepada dunia dan menggalang dukungan internasional bahwa negara RI masih eksis dan berdaulat.<br/>(4) Menyerahkan kedaulatan Pulau Sumatera secara terpisah kepada pemerintahan sipil NICA.`,
+        question: "Analisis yang paling tepat mengenai alasan utama yang saling berkaitan dalam pembentukan PDRI adalah pernyataan nomor...",
+        options: [
+          "(1) dan (4) saja",
+          "(2) dan (4) saja",
+          "(1), (2), dan (3)",
+          "(2), (3), dan (4)",
+          "Hanya pernyataan (3)"
+        ],
+        answer: 2,
+        bahas: "Ketiga alasan (1), (2), dan (3) saling berkaitan erat: karena Soekarno–Hatta ditawan di Yogyakarta, mandat diberikan kepada Sjafruddin Prawiranegara agar tidak terjadi <i>vacuum of power</i> (1), memindahkan pusat kendali ke Sumatera Barat yang aman (2), dan menunjukkan kepada dunia internasional bahwa Republik Indonesia belum bubar (3)."
+      },
+      {
+        no: 8,
+        type: "PG",
+        cog: "C3 • Level 2",
+        topic: "Pasukan Kolonial Pasca-PD II (KNIL)",
+        narasi: "Pada akhir tahun 1945, terdapat kelompok pasukan bersenjata yang sejak masa kolonial telah lama bermukim di Hindia Belanda. Pada tahun 1942–1945 mereka sempat menjadi tahanan perang tentara pendudukan Jepang, kemudian setelah Jepang menyerah kepada Sekutu, mereka dibebaskan dari kamp interniran dan dipersenjatai kembali oleh Sekutu serta Belanda untuk membantu upaya menguasai kembali Indonesia.",
+        question: "Nama pasukan yang dimaksud pada informasi sejarah di atas adalah...",
+        options: [
+          "AFNEI (Allied Forces Netherlands East Indies)",
+          "SEAC (South East Asia Command)",
+          "KNIL (Koninklijk Nederlands Indisch Leger)",
+          "NICA (Netherlands Indies Civil Administration)",
+          "PETA (Pembela Tanah Air)"
+        ],
+        answer: 2,
+        bahas: "<b>KNIL</b> (<i>Koninklijk Nederlands Indisch Leger</i> / Tentara Kerajaan Hindia Belanda) adalah pasukan militer kolonial Hindia Belanda. Pasukan ini menyerah kepada Jepang di Kalijati tahun 1942 dan ditawan, lalu dibebaskan serta dipersenjatai kembali pada akhir 1945."
+      },
+      {
+        no: 9,
+        type: "PG",
+        cog: "C2 dan C4 • Level 3",
+        topic: "Perbedaan KNIL, NICA, AFNEI, SEAC, & SWPA",
+        narasi: "Pasca-kekalahan Jepang pada Agustus 1945, hadir berbagai kesatuan militer, sipil, dan komando asing di Indonesia. Masing-masing badan memiliki tugas serta struktur komando yang berbeda, mulai dari pasukan militer kolonial bekas tawanan Jepang yang sudah lama bermukim dan dipersenjatai kembali, badan pemerintahan sipil Belanda, hingga komando tentara Sekutu.",
+        question: "Pemetaan perbedaan fungsi yang paling tepat antara KNIL, NICA, AFNEI, SEAC, dan SWPA adalah...",
+        options: [
+          "KNIL adalah badan pemerintahan sipil Belanda; NICA adalah tentara bayaran Jepang; AFNEI adalah komando Amerika di Pasifik.",
+          "KNIL adalah tentara kolonial Hindia Belanda bekas tawanan Jepang (fungsi militer kolonial); NICA adalah badan pemerintahan sipil Belanda; AFNEI adalah pasukan Sekutu Inggris pelucut Jepang di Indonesia; SEAC adalah komando induk Sekutu di Asia Tenggara; SWPA adalah komando Sekutu di Pasifik Barat Daya.",
+          "AFNEI dan NICA sama-sama merupakan badan sipil PBB yang bertugas menyelenggarakan PEPERA di Irian Barat.",
+          "SEAC adalah pasukan khusus bentukan RI di Surabaya, sedangkan SWPA adalah tentara Kerajaan Belanda.",
+          "KNIL dan AFNEI adalah dua lembaga legislatif sementara dalam kabinet Demokrasi Liberal."
+        ],
+        answer: 1,
+        bahas: "Secara fungsional: <b>KNIL</b> = pasukan militer kolonial Hindia Belanda (eks tawanan perang Jepang yang dipersenjatai lagi akhir 1945); <b>NICA</b> = administrasi pemerintahan sipil Belanda pimpinan Van Mook; <b>AFNEI</b> = pasukan Inggris di Indonesia di bawah <b>SEAC</b> (Komando Asia Tenggara pimpinan Mountbatten); sedangkan <b>SWPA</b> = Komando Pasifik Barat Daya pimpinan MacArthur sebelum dialihkan ke SEAC."
+      },
+      {
+        no: 10,
+        type: "PG",
+        cog: "C2 dan C3 • Level 2",
+        topic: "Pertempuran Mempertahankan Kemerdekaan",
+        narasi: "Pertempuran besar ini meletus di pusat kota pada tanggal 10 November 1945 setelah sebelumnya terjadi insiden tewasnya Brigadir Jenderal A.W.S. Mallaby yang memicu ultimatum keras dari tentara Sekutu. Peristiwa heroik rakyat dan pejuang tersebut kini diperingati bangsa Indonesia setiap tahun sebagai Hari Pahlawan.",
+        question: "Nama peristiwa perjuangan fisik yang sesuai dengan deskripsi tokoh, lokasi, dan waktu di atas adalah...",
+        options: [
+          "Pertempuran Medan Area",
+          "Palagan Ambarawa",
+          "Pertempuran Surabaya",
+          "Bandung Lautan Api",
+          "Puputan Margarana"
+        ],
+        answer: 2,
+        bahas: "Pertempuran pada <b>10 November 1945</b> pasca-tewasnya <b>Brigadir Jenderal A.W.S. Mallaby</b> (30 Oktober 1945) yang diabadikan sebagai <b>Hari Pahlawan</b> adalah <b>Pertempuran Surabaya</b>."
+      },
+      {
+        no: 11,
+        type: "PG",
+        cog: "C4 dan C5 • Level 3",
+        topic: "Konferensi Asia-Afrika (1955)",
+        narasi: "Pada masa Kabinet Ali Sastroamidjojo I tahun 1955, Indonesia menjadi tuan rumah sekaligus pemrakarsa utama Konferensi Asia-Afrika (KAA) di Bandung yang melahirkan Dasasila Bandung di tengah memanasnya Perang Dingin antara Blok Barat dan Blok Timur.",
+        question: "Alasan paling konkret yang membuktikan bahwa KAA merupakan keberhasilan nyata Indonesia dalam menjalankan politik luar negeri bebas-aktif adalah...",
+        options: [
+          "Indonesia resmi menandatangani pakta pertahanan militer bersama Uni Soviet dan Amerika Serikat.",
+          "Peran aktif Indonesia menggalang solidaritas anti-kolonialisme untuk membantu mewujudkan kemerdekaan bangsa-bangsa Asia dan Afrika serta memperjuangkan perdamaian dunia sesuai Dasasila Bandung tanpa memihak blok militer mana pun.",
+          "Indonesia berhasil menjual seluruh aset perkebunan nasional kepada negara-negara Eropa Barat.",
+          "KAA mewajibkan seluruh negara peserta untuk menganut sistem Demokrasi Terpimpin ala Soekarno.",
+          "Indonesia memperoleh pinjaman militer tanpa batas melalui perjanjian Mutual Security Act."
+        ],
+        answer: 1,
+        bahas: "Politik bebas-aktif berarti tidak memihak blok militer manapun ('bebas') sekaligus turut aktif menjaga ketertiban dan kemerdekaan dunia ('aktif'). Melalui KAA 1955 dan Dasasila Bandung, Indonesia secara konkret menginspirasi dan mendorong dekolonisasi negara-negara terjajah di Asia dan Afrika serta perdamaian dunia."
+      },
+      {
+        no: 12,
+        type: "PG",
+        cog: "C2 • Level 1",
+        topic: "Kabinet Djuanda (Zaken Kabinet)",
+        narasi: "Pada tanggal 9 April 1957, Ir. Djuanda Kartawidjaja diangkat memimpin Kabinet Karya yang dikenal luas dalam sejarah Indonesia dengan sebutan <i>zaken kabinet</i>.",
+        question: "Alasan utama diterapkannya sistem <i>zaken kabinet</i> pada masa Kabinet Djuanda tersebut adalah...",
+        options: [
+          "Membagi kursi menteri secara merata berdasarkan jumlah kursi partai besar hasil pemilu agar partai puas.",
+          "Menempatkan menteri-menteri yang ahli di bidangnya (the right man in the right place), lepas dari tarik-menarik kepentingan partai politik, guna mengatasi kegagalan kabinet partai yang berumur pendek dan fokus pada pembangunan.",
+          "Menghapus seluruh jabatan presiden dan menggantinya dengan dewan raja-raja daerah.",
+          "Menjadikan seluruh panglima militer asing sebagai menteri luar negeri.",
+          "Membubarkan konstitusi dan menggantinya dengan aturan ekonomi kolonial."
+        ],
+        answer: 1,
+        bahas: "<i>Zaken kabinet</i> adalah kabinet yang jajaran menterinya berasal dari kalangan profesional/pakar di bidang masing-masing (<i>the right man in the right place</i>), bukan berdasarkan kuota kompromi partai politik, sehingga diharapkan lebih stabil dan efektif bekerja."
+      },
+      {
+        no: 13,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Sistem Ekonomi Ali-Baba",
+        narasi: "Pada masa Kabinet Ali Sastroamidjojo I, Menteri Perekonomian Iskaq Tjokrohadisurjo meluncurkan Sistem Ekonomi Ali-Baba yang mewajibkan pengusaha non-pribumi ('Baba') bekerja sama serta melatih pengusaha pribumi ('Ali') dengan dukungan fasilitas kredit dan lisensi impor dari pemerintah.",
+        question: "Analisis faktor utama penyebab kegagalan Sistem Ekonomi Ali-Baba tersebut adalah...",
+        options: [
+          "Seluruh pengusaha pribumi menolak menerima bantuan modal kredit karena sudah memiliki jaringan ekspor global.",
+          "Terjadinya praktik korupsi dan penjualan lisensi impor ilegal ('Ali-Ali-an'), kurangnya pengalaman manajemen pengusaha pribumi, serta penyalahgunaan fasilitas kredit untuk kepentingan konsumtif.",
+          "Larangan pemerintah pusat terhadap seluruh aktivitas perdagangan antarpulau di Indonesia.",
+          "Tingginya nilai tukar rupiah terhadap dolar Amerika yang membuat barang lokal terlalu mahal.",
+          "Penolakan penuh dari negara-negara peserta Konferensi Asia-Afrika tahun 1955."
+        ],
+        answer: 1,
+        bahas: "Sistem Ali-Baba gagal mencapai target karena pengusaha pribumi yang masih kurang berpengalaman kerap hanya menjadi alat untuk memperoleh lisensi impor lalu menjualnya kembali kepada pengusaha non-pribumi/asing (praktik 'Ali-Ali-an'), disertai korupsi birokrasi dan penggunaan kredit untuk konsumsi, bukan investasi produktif."
+      },
+      {
+        no: 14,
+        type: "PG",
+        cog: "C2 dan C4 • Level 2",
+        topic: "Periodisasi Sistem Demokrasi Indonesia",
+        narasi: `Perhatikan lini masa periodisasi sistem demokrasi di Indonesia berikut (bagian yang ditebalkan menjadi fokus pertanyaan):<div class="timeline-box"><div class="tl-item"><div class="tl-year">1945 – 1959</div><div class="tl-label">Era Awal Kemerdekaan &amp; Parlementer</div></div><div class="tl-item active-bold"><div class="tl-year">1959 – 1966</div><div class="tl-label">Periode Fokus Pertanyaan</div></div><div class="tl-item"><div class="tl-year">1966 – 1998</div><div class="tl-label">Era Pemerintahan Selanjutnya</div></div></div>`,
+        question: "Sistem demokrasi pada kurun waktu yang ditebalkan (1959–1966) beserta faktor utama berakhirnya adalah...",
+        options: [
+          "Demokrasi Liberal; berakhir karena keberhasilan Pemilu 1955 menyusun UUD baru.",
+          "Demokrasi Terpimpin; berakhir akibat ketidakstabilan sosial-politik, krisis ekonomi parah, menguatnya pengaruh komunis (PKI), serta peristiwa G30S/PKI 1965.",
+          "Demokrasi Pancasila Orde Baru; berakhir akibat krisis moneter dan gerakan Reformasi 1998.",
+          "Demokrasi Parlementer RIS; berakhir karena pembubaran negara-negara bagian pada Agustus 1950.",
+          "Demokrasi Reformasi; berakhir akibat dikeluarkannya Dekrit Presiden 5 Juli 1959."
+        ],
+        answer: 1,
+        bahas: "Periode <b>1959–1966</b> (dimulai sejak Dekrit Presiden 5 Juli 1959) adalah masa <b>Demokrasi Terpimpin</b>. Sistem ini runtuh akibat krisis ekonomi berkepanjangan, polarisasi tajam karena menguatnya pengaruh PKI, serta meletusnya peristiwa <b>G30S/PKI</b> tahun 1965."
+      },
+      {
+        no: 15,
+        type: "PG",
+        cog: "C2 • Level 1",
+        topic: "Tokoh Pemberontakan DI/TII",
+        narasi: "Perhatikan foto arsip tokoh pemimpin pusat gerakan Darul Islam / Tentara Islam Indonesia (DI/TII) yang memproklamasikan berdirinya Negara Islam Indonesia (NII) di Jawa Barat pada 7 Agustus 1949 berikut ini:" + buildArchivalSlot(15, "tokoh_ditii.jpg", "Foto Arsip Tokoh Pemimpin Pusat DI/TII (Jawa Barat)", "Menampilkan potret tokoh pendiri dan imam pusat gerakan DI/TII di Jawa Barat (1949)."),
+        question: "Nama tokoh pemimpin gerakan DI/TII tersebut beserta kesesuaian wilayah pemberontakannya adalah...",
+        options: [
+          "Kahar Muzakkar — pemimpin gerakan DI/TII di wilayah Jawa Barat.",
+          "Sekarmadji Maridjan Kartosoewiryo — pemimpin pusat gerakan DI/TII di wilayah Jawa Barat.",
+          "Teungku Daud Beureueh — pemimpin gerakan DI/TII di wilayah Kalimantan Selatan.",
+          "Ibnu Hadjar — pemimpin gerakan DI/TII di wilayah Aceh.",
+          "Amir Fatah — pemimpin gerakan DI/TII di wilayah Sulawesi Selatan."
+        ],
+        answer: 1,
+        bahas: "Pemimpin pusat DI/TII sekaligus proklamator NII di <b>Jawa Barat</b> adalah <b>Sekarmadji Maridjan Kartosoewiryo</b>. Sebagai pemetaan lengkap tokoh DI/TII di daerah lain: <b>Kahar Muzakkar</b> = Sulawesi Selatan, <b>Daud Beureueh</b> = Aceh, <b>Amir Fatah</b> = Jawa Tengah, dan <b>Ibnu Hadjar</b> = Kalimantan Selatan."
+      },
+      {
+        no: 16,
+        type: "PG",
+        cog: "C2 dan C4 • Level 2",
+        topic: "Pelanggaran Politik Bebas-Aktif (Kabinet Sukiman)",
+        narasi: "Pada tahun 1951–1952, Kabinet Sukiman mendapat kecaman keras dari parlemen dan publik karena kebijakannya dinilai telah menyimpang dari prinsip politik luar negeri bebas-aktif Indonesia hingga akhirnya kabinet tersebut jatuh.",
+        question: "Bukti konkret bentuk pelanggaran politik luar negeri bebas-aktif pada masa Kabinet Sukiman tersebut adalah...",
+        options: [
+          "Penyelenggaraan Konferensi Asia-Afrika di Bandung pada tahun 1955.",
+          "Penandatanganan perjanjian bantuan ekonomi dan militer Mutual Security Act (MSA) dengan Amerika Serikat yang mengikat Indonesia memihak Blok Barat.",
+          "Pembatalan hasil Konferensi Meja Bundar (KMB) secara sepihak.",
+          "Pembentukan Poros Jakarta–Peking bersama Republik Rakyat Tiongkok.",
+          "Pengiriman Kontingen Garuda I dalam misi perdamaian PBB ke Mesir."
+        ],
+        answer: 1,
+        bahas: "Menteri Luar Negeri Achmad Soebardjo dari Kabinet Sukiman menandatangani perjanjian <b>Mutual Security Act (MSA)</b> dengan Duta Besar AS Merle Cochran (1952). Karena bantuan MSA mensyaratkan keberpihakan militer/politik kepada Blok Barat, tindakan ini dianggap melanggar politik bebas-aktif."
+      },
+      {
+        no: 17,
+        type: "PG",
+        cog: "C4 dan C5 • Level 3",
+        topic: "Kebijakan Sanering (25 Agustus 1959)",
+        narasi: "Pada tanggal 25 Agustus 1959, pemerintah mengeluarkan kebijakan sanering (Perpu No. 2 Tahun 1959) yang memotong nilai uang kertas pecahan Rp 500 dan Rp 1.000 menjadi sepersepuluhnya (Rp 50 dan Rp 100) serta membekukan 90% simpanan di atas Rp 25.000 untuk menekan laju inflasi. Namun dalam jangka panjang, kebijakan ini gagal menstabilkan perekonomian dan inflasi justru melonjak kembali hingga ratusan persen.",
+        question: "Evaluasi paling tepat mengenai penyebab kegagalan kebijakan sanering 1959 tersebut adalah...",
+        options: [
+          "Karena potongan nilai uang terlalu kecil sehingga jumlah uang beredar tidak berubah sama sekali.",
+          "Karena kebijakan tersebut bersifat simptomatis (hanya memangkas uang beredar sesaat) tanpa menyelesaikan akar masalah inflasi, yaitu defisit anggaran belanja negara akibat pembiayaan proyek mercusuar dan konfrontasi politik yang terus ditutup dengan mencetak uang berlebihan.",
+          "Karena masyarakat menolak menggunakan mata uang rupiah dan beralih memakai uang logam Belanda.",
+          "Karena seluruh bank swasta asing memborong uang pecahan Rp 1.000 untuk diekspor ke Eropa.",
+          "Karena Indonesia mengalami surplus anggaran negara yang terlalu besar sehingga harga barang jatuh."
+        ],
+        answer: 1,
+        bahas: "Sanering 1959 bersifat <b>simptomatis</b> (mengobati gejala, bukan akar penyakit). Karena defisit APBN terus membengkak untuk membiayai proyek-proyek mercusuar, pembebasan Irian Barat, dan konfrontasi Malaysia tanpa penerimaan negara yang sepadan, pemerintah kembali mencetak uang baru sehingga inflasi meledak jauh lebih parah."
+      },
+      {
+        no: 18,
+        type: "PG",
+        cog: "C2 • Level 1",
+        topic: "Kebijakan Ekonomi Masa Demokrasi Liberal",
+        narasi: "Pada masa Demokrasi Liberal, pemerintah meluncurkan program ekonomi yang bertujuan mengubah struktur ekonomi kolonial menjadi ekonomi nasional melalui kanalisasi untuk melahirkan kelas pengusaha pribumi bermodal lemah dengan memberikan fasilitas kredit modal serta bimbingan usaha.",
+        question: "Nama program kebijakan ekonomi beserta tokoh penggagasnya sesuai deskripsi di atas adalah...",
+        options: [
+          "Sistem Ekonomi Ali-Baba — Iskaq Tjokrohadisurjo",
+          "Sistem Ekonomi Gerakan Benteng — Sumitro Djojohadikusumo",
+          "Kebijakan Gunting Syafruddin — Sjafruddin Prawiranegara",
+          "Deklarasi Ekonomi (Dekon) — Ir. Djuanda",
+          "Nasionalisasi De Javasche Bank — Jusuf Wibisono"
+        ],
+        answer: 1,
+        bahas: "<b>Sistem Ekonomi Gerakan Benteng</b> digagas oleh <b>Prof. Dr. Sumitro Djojohadikusumo</b> pada tahun 1950 (Kabinet Natsir) dengan tujuan menumbuhkan wirausaha pribumi agar mampu menggantikan dominasi perusahaan modal asing/kolonial."
+      },
+      {
+        no: 19,
+        type: "PG",
+        cog: "C2 • Level 1",
+        topic: "Penyelenggaraan KAA 1955",
+        narasi: "Pada masa Demokrasi Liberal, Indonesia meraih prestasi diplomatik gemilang di kancah internasional melalui penyelenggaraan Konferensi Asia-Afrika (KAA) tahun 1955 di Gedung Merdeka, Bandung, yang menghasilkan Dasa Sila Bandung.",
+        question: "Pemerintahan Perdana Menteri yang berhasil menyelenggarakan Konferensi Asia-Afrika tahun 1955 tersebut adalah...",
+        options: [
+          "Kabinet Natsir",
+          "Kabinet Sukiman",
+          "Kabinet Wilopo",
+          "Kabinet Ali Sastroamidjojo I",
+          "Kabinet Burhanuddin Harahap"
+        ],
+        answer: 3,
+        bahas: "Konferensi Asia-Afrika (18–24 April 1955) diselenggarakan pada masa pemerintahan Perdana Menteri <b>Ali Sastroamidjojo</b> (<b>Kabinet Ali Sastroamidjojo I</b>)."
+      },
+      {
+        no: 20,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Pidato Nawaksara & Peralihan ke Orde Baru",
+        narasi: "Dalam Sidang Umum IV MPRS pada tanggal 22 Juni 1966, Presiden Soekarno menyampaikan pidato pertanggungjawaban berjudul <i>Nawaksara</i> yang memuat sembilan pokok persoalan bangsa. Namun, MPRS secara resmi menolak pertanggungjawaban tersebut dan meminta Presiden melengkapinya.",
+        question: "Analisis penyebab utama ditolaknya pidato <i>Nawaksara</i> oleh MPRS tersebut adalah...",
+        options: [
+          "Karena Presiden Soekarno menuntut pembubaran MPRS secara langsung di dalam ruang sidang.",
+          "Karena pidato Nawaksara dianggap tidak menjelaskan secara jelas dan tegas peristiwa G30S/PKI serta tanggung jawab Presiden atas kemerosotan ekonomi dan moral bangsa.",
+          "Karena pidato tersebut disampaikan dalam bahasa Belanda dan tidak dimengerti anggota parlemen.",
+          "Karena Soekarno mengumumkan penyerahan kekuasaan kepada PKI di hadapan MPRS.",
+          "Karena jumlah pokok persoalan dalam pidato tersebut kurang dari sembilan poin."
+        ],
+        answer: 1,
+        bahas: "MPRS menolak pidato <i>Nawaksara</i> (dan kemudian <i>Pelengkap Nawaksara</i> tahun 1967) terutama karena dianggap tidak memberikan kejelasan maupun pertanggungjawaban yang tegas mengenai terjadinya peristiwa <b>G30S/PKI</b>, krisis ekonomi, serta dekadensi akhlak/tatanan negara."
+      },
+      {
+        no: 21,
+        type: "PG",
+        cog: "C2 • Level 1",
+        topic: "Konsep Politik Demokrasi Terpimpin",
+        narasi: "Pada masa Demokrasi Terpimpin, Presiden Soekarno mencetuskan suatu gagasan konsep politik yang bertujuan menyatukan dan merangkul seluruh elemen kekuatan masyarakat serta partai politik Indonesia dari tiga golongan besar, yakni golongan nasionalis, golongan agama, dan golongan komunis.",
+        question: "Istilah konsep pemikiran politik Presiden Soekarno yang dimaksud adalah...",
+        options: [
+          "Manipol-USDEK",
+          "NEFO dan OLDEFO",
+          "NASAKOM",
+          "Trikora",
+          "Dwikora"
+        ],
+        answer: 2,
+        bahas: "<b>NASAKOM</b> merupakan akronim dari <b>Nasionalis, Agama, dan Komunis</b>, yakni doktrin pemersatu tiga aliran ideologi besar yang diterapkan Presiden Soekarno selama masa Demokrasi Terpimpin."
+      },
+      {
+        no: 22,
+        type: "PG",
+        cog: "C4 dan C5 • Level 3",
+        topic: "Arah Politik Luar Negeri Demokrasi Terpimpin",
+        narasi: "Meskipun secara konstitusional tetap menganut politik bebas-aktif, kebijakan luar negeri Indonesia pada masa Demokrasi Terpimpin terlihat condong ke Blok Timur: membeli persenjataan besar-besaran dari Uni Soviet, menjalin kedekatan diplomatik dengan Tiongkok (Poros Jakarta–Peking), serta berkonfrontasi keras dengan blok Barat (anti-Nekolim).",
+        question: "Analisis faktor pendorong utama yang paling tepat menjelaskan pergeseran haluan luar negeri tersebut adalah...",
+        options: [
+          "Karena UUD 1945 telah diubah menjadi konstitusi negara komunis oleh Dekrit Presiden 5 Juli 1959.",
+          "Strategi pragmatis mengamankan kepentingan nasional—di mana Blok Timur dipandang sebagai sumber dukungan politik, militer, dan ekonomi yang paling siap membantu melawan Belanda di Irian Barat dan proyek nasional—sekaligus merefleksikan aliansi dalam negeri NASAKOM yang melibatkan PKI.",
+          "Karena Amerika Serikat mendesak Indonesia agar membeli kapal penjelajah perang dari Uni Soviet.",
+          "Karena Indonesia ingin menggabungkan wilayahnya ke dalam Federasi Uni Soviet.",
+          "Karena seluruh tokoh agama dan tentara di Indonesia mengadopsi ideologi komunisme."
+        ],
+        answer: 1,
+        bahas: "Indonesia tidak menjadi negara komunis. Kecenderungan ke Blok Timur didorong kepentingan strategis nasional (ketika Blok Barat menolak memasok senjata untuk merebut Irian Barat, Uni Soviet bersedia memberikan kredit senjata besar-besaran) sekaligus mencerminkan pengaruh aliansi politik dalam negeri <b>NASAKOM</b> yang melibatkan PKI."
+      },
+      {
+        no: 23,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Penyimpangan Kekuasaan Masa Demokrasi Terpimpin",
+        narasi: "Selama berlakunya Demokrasi Terpimpin (1959–1965), mekanisme pengawasan lembaga tinggi negara terhadap presiden menjadi lemah, bahkan Majelis Permusyawaratan Rakyat Sementara (MPRS) cenderung melegitimasi pemusatan kekuasaan di tangan eksekutif.",
+        question: "Kebijakan MPRS yang paling nyata menunjukkan penyimpangan penguatan kekuasaan presiden secara tidak terbatas pada masa Demokrasi Terpimpin adalah...",
+        options: [
+          "Membatasi masa jabatan presiden paling lama dua kali masa jabatan berturut-turut.",
+          "Menetapkan Ir. Soekarno sebagai Presiden Seumur Hidup melalui TAP MPRS No. III/MPRS/1963.",
+          "Mengembalikan sistem pemerintahan parlementer dengan Perdana Menteri sebagai kepala pemerintahan.",
+          "Menyelenggarakan pemilihan umum multipartai setiap lima tahun sekali.",
+          "Membubarkan Dewan Pertimbangan Agung Sementara dan Front Nasional."
+        ],
+        answer: 1,
+        bahas: "Melalui <b>TAP MPRS No. III/MPRS/1963</b>, MPRS mengangkat Ir. Soekarno sebagai <b>Presiden Seumur Hidup</b>. Ketetapan ini merupakan penyimpangan besar terhadap UUD 1945 Pasal 7 yang mengatur masa jabatan presiden selama lima tahun."
+      },
+      {
+        no: 24,
+        type: "PG",
+        cog: "C4 dan C5 • Level 3",
+        topic: "Ancaman G30S/PKI Terhadap Pancasila",
+        narasi: "Dalam kajian sejarah nasional, peristiwa Gerakan 30 September 1965 (G30S/PKI) kerap disebut sebagai bukti nyata bahwa ideologi Pancasila pernah berada di ujung tanduk dan terancam digantikan.",
+        question: "Analisis yang tepat untuk membenarkan pernyataan bahwa G30S/PKI mengancam eksistensi Pancasila adalah...",
+        options: [
+          "Karena G30S/PKI bertujuan mempercepat penyelenggaraan pemilihan umum yang demokratis.",
+          "Karena apabila gerakan kudeta tersebut berhasil melumpuhkan struktur kepemimpinan TNI AD, maka Presiden dapat dikendalikan oleh kekuatan pemberontak dan PKI akan leluasa mengganti dasar negara Pancasila dengan komunisme.",
+          "Karena peristiwa tersebut hanya merupakan perselisihan upah buruh perkebunan tanpa agenda politik.",
+          "Karena G30S/PKI didukung oleh seluruh negara anggota NATO untuk mempertahankan Pancasila.",
+          "Karena PKI berencana mengembalikan Undang-Undang Dasar Sementara 1950."
+        ],
+        answer: 1,
+        bahas: "Penculikan dan pembunuhan para perwira tinggi TNI AD (Pahlawan Revolusi) yang menjadi benteng pertahanan anti-komunis bertujuan melumpuhkan komando militer. Jika berhasil, posisi Presiden mudah dikendalikan dan PKI dapat leluasa mengubah ideologi negara Pancasila menjadi komunisme."
+      },
+      {
+        no: 25,
+        type: "PG",
+        cog: "C2 dan C4 • Level 2",
+        topic: "Latar Belakang G30S/PKI",
+        narasi: "Pada malam tanggal 30 September hingga dini hari 1 Oktober 1965, terjadi peristiwa penculikan dan pembunuhan terhadap sejumlah perwira tinggi TNI Angkatan Darat di Jakarta dan Yogyakarta yang dipimpin oleh Letkol Untung serta melibatkan tokoh-tokoh PKI.",
+        question: "Latar belakang politik utama terjadinya peristiwa G30S/PKI pada tahun 1965 adalah...",
+        options: [
+          "Upaya TNI AD untuk memisahkan Pulau Jawa dari NKRI.",
+          "Keinginan PKI untuk mengganti ideologi Pancasila dengan komunisme dan menguasai pemerintahan negara.",
+          "Ketidakpuasan petani atas keberhasilan program swasembada beras nasional.",
+          "Keinginan kelompok mahasiswa membentuk kabinet zaken di bawah pimpinan Djuanda.",
+          "Penolakan PKI terhadap pembebasan Irian Barat dari tangan Belanda."
+        ],
+        answer: 1,
+        bahas: "Latar belakang utama peristiwa G30S/PKI 1965 adalah ambisi PKI merebut kekuasaan pemerintahan dan mengganti dasar negara Pancasila dengan ideologi komunisme (yang dipicu pula oleh ketegangan dengan TNI AD, isu Dewan Jenderal, dan memburuknya kesehatan Presiden Soekarno)."
+      },
+      {
+        no: 26,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Konfrontasi Pembebasan Irian Barat",
+        narasi: "Karena Belanda terus mengingkari penyelesaian masalah Irian Barat melalui jalur diplomasi bilateral maupun forum PBB, sejak tahun 1957–1958 Indonesia melancarkan konfrontasi menyeluruh di bidang politik, ekonomi, dan militer.",
+        question: "Langkah yang menjadi puncak konfrontasi di bidang ekonomi dalam perjuangan pembebasan Irian Barat tersebut adalah...",
+        options: [
+          "Menyerahkan pengelolaan seluruh pelabuhan laut Indonesia kepada maskapai Belanda KPM.",
+          "Menasionalisasikan seluruh perusahaan dan aset milik Belanda di Indonesia melalui UU No. 86 Tahun 1958.",
+          "Membentuk Negara Papua Barat di bawah pengawasan Kerajaan Belanda.",
+          "Membayar ganti rugi utang Hindia Belanda sebesar dua kali lipat dari hasil KMB.",
+          "Mengundang investor swasta Belanda membuka perkebunan baru di Jakarta."
+        ],
+        answer: 1,
+        bahas: "Setelah membatalkan persetujuan KMB dan melancarkan aksi mogok buruh pada Desember 1957, puncak konfrontasi ekonomi RI terhadap Belanda diwujudkan dengan <b>nasionalisasi seluruh aset dan perusahaan milik Belanda di Indonesia</b> melalui <b>UU No. 86 Tahun 1958</b>."
+      },
+      {
+        no: 27,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Peranan UNTEA dalam Masalah Irian Barat",
+        narasi: "Berdasarkan Perjanjian New York tanggal 15 Agustus 1962 antara Indonesia dan Belanda, disepakati pembentukan badan pemerintahan sementara bernama <i>United Nations Temporary Executive Authority</i> (UNTEA) sebelum penyelenggaraan Penentuan Pendapat Rakyat (PEPERA).",
+        question: "Analisis yang tepat mengenai peranan utama UNTEA dalam penyelesaian masalah Irian Barat adalah...",
+        options: [
+          "Menjadi badan militer tetap PBB yang mempertahankan kekuasaan Belanda di Irian Barat selamanya.",
+          "Berperan sebagai badan penengah PBB antara Indonesia dan Belanda yang mengatur masa peralihan administrasi penyerahan Irian Barat dari Belanda ke Indonesia (1 Oktober 1962 – 1 Mei 1963).",
+          "Memimpin operasi militer Trikora di perairan Laut Arafura bersama TNI AL.",
+          "Membagi wilayah Irian Barat menjadi tiga negara bagian di bawah pengawasan Australia.",
+          "Menunda penyerahan Irian Barat kepada Indonesia hingga tahun 1998."
+        ],
+        answer: 1,
+        bahas: "<b>UNTEA</b> bertugas sebagai badan administrasi sementara/penengah dari PBB selama masa transisi penyerahan Irian Barat dari Belanda kepada Indonesia sejak <b>1 Oktober 1962 hingga 1 Mei 1963</b>."
+      },
+      {
+        no: 28,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Politik Mercusuar Demokrasi Terpimpin",
+        narasi: `Perhatikan kutipan gagasan pembangunan Presiden Soekarno pada awal 1960-an berikut:<div class="quote-box">"Jakarta harus menjadi kebanggaan bangsa Indonesia... Kita bangun Monumen Nasional (Monas), kompleks Gelora Bung Karno, Hotel Indonesia, dan Jembatan Semanggi untuk menyambut Asian Games IV tahun 1962 agar dunia menyaksikan kebesaran bangsa yang baru merdeka!"</div>`,
+        question: "Berdasarkan kutipan tersebut, hakikat dari kebijakan Politik Mercusuar pada masa Demokrasi Terpimpin adalah...",
+        options: [
+          "Kebijakan pengetatan anggaran negara dengan menunda seluruh pembangunan fisik di ibu kota.",
+          "Kebijakan pembangunan proyek-proyek prestisius dan monumental untuk meningkatkan martabat serta citra bangsa Indonesia sebagai 'mercusuar' di mata dunia internasional.",
+          "Program transmigrasi besar-besaran penduduk Jakarta ke luar Pulau Jawa.",
+          "Kebijakan swastanisasi gedung olahraga nasional kepada perusahaan konstruksi Belanda.",
+          "Pembangunan menara suar navigasi laut di seluruh pelabuhan kecil di Nusantara."
+        ],
+        answer: 1,
+        bahas: "<b>Politik Mercusuar</b> adalah kebijakan pembangunan proyek-proyek prestisius berskala megah (Monas, GBK, Hotel Indonesia, Jembatan Semanggi, Masjid Istiqlal) untuk menjadikan Indonesia sebagai 'mercusuar' bagi negara-negara NEFO serta menaikkan prestise bangsa di mata internasional, meskipun menelan biaya sangat besar di tengah inflasi."
+      },
+      {
+        no: 29,
+        type: "PG",
+        cog: "C5 • Level 3",
+        topic: "Warisan Positif Politik Mercusuar",
+        narasi: "Meskipun menuai kritik karena menguras kas negara pada dekade 1960-an, sejumlah bangunan fisik hasil Politik Mercusuar Soekarno tetap terawat dan digunakan oleh masyarakat lintas generasi.",
+        question: "Kombinasi warisan positif Politik Mercusuar yang hingga hari ini masih berfungsi vital dan menjadi ikon kebanggaan nasional di ibu kota adalah...",
+        options: [
+          "Benteng Vredeburg, Lawang Sewu, dan Gedung Sate.",
+          "Monumen Nasional (Monas), Kompleks Gelora Bung Karno (GBK), Masjid Istiqlal, dan Jembatan Semanggi.",
+          "Candi Borobudur, Candi Prambanan, dan Keraton Yogyakarta.",
+          "Pelabuhan Sunda Kelapa, Museum Fatahillah, dan Stasiun Jakarta Kota.",
+          "Bendungan Jatiluhur peninggalan VOC dan Balai Kota Batavia."
+        ],
+        answer: 1,
+        bahas: "Warisan monumental Politik Mercusuar yang hingga kini menjadi ikon kebanggaan nasional dan masih berfungsi aktif bagi publik antara lain <b>Monumen Nasional (Monas)</b>, <b>Gelora Bung Karno (GBK)</b>, <b>Masjid Istiqlal</b>, serta <b>Jembatan Semanggi</b> (dan Hotel Indonesia)."
+      },
+      {
+        no: 30,
+        type: "PG",
+        cog: "C4 • Level 2",
+        topic: "Dampak Sosial Kebijakan NASAKOM",
+        narasi: "Pada masa Demokrasi Terpimpin, pemerintah mewajibkan pelajaran Manipol-USDEK di sekolah dan lembaga negara, membentuk Front Nasional, serta mendorong organisasi kemasyarakatan untuk berafiliasi dalam kerangka NASAKOM (Nasionalis, Agama, Komunis).",
+        question: "Analisis dampak sosial yang muncul di tengah masyarakat Indonesia akibat penerapan kebijakan tersebut adalah...",
+        options: [
+          "Hilangnya seluruh perbedaan pandangan politik sehingga masyarakat hidup tanpa konflik sosial apa pun.",
+          "Terjadinya polarisasi ideologis dan persaingan tajam antara kelompok Nasionalis, Agama, dan Komunis hingga ke tingkat masyarakat desa dan kota.",
+          "Seluruh partai politik dan organisasi massa bergabung menjadi satu organisasi keagamaan tunggal.",
+          "Masyarakat di desa menolak bekerja sama dengan pemerintah daerah dalam bidang pertanian.",
+          "Terbentuknya sistem pemerintahan federasi berdasarkan pembagian tiga agama besar."
+        ],
+        answer: 1,
+        bahas: "Alih-alih menciptakan keharmonisan permanen, politisasi organisasi massa ke dalam blok-blok NASAKOM dan doktrin Manipol-USDEK justru memperdalam <b>polarisasi serta persaingan tajam antara kubu Nasionalis, Agama, dan Komunis</b> di desa maupun kota (seperti ketegangan aksi sepihak di pedesaan)."
+      },
+
+      // ===================== SOAL 31 - 35 (PG KOMPLEKS CHECKLIST) =====================
+      {
+        no: 31,
+        type: "PGK_CHECK",
+        cog: "C2 dan C4 • Level 2",
+        topic: "Perjuangan Bersenjata di Berbagai Daerah",
+        narasi: "Pasca-Proklamasi 17 Agustus 1945, kedatangan pasukan Sekutu yang diboncengi NICA memicu perlawanan bersenjata rakyat dan TKR/TRI di berbagai wilayah Indonesia.",
+        question: "Pilihlah 3 pernyataan yang BENAR mengenai perjuangan bersenjata di berbagai daerah! (Pilih tepat 3 jawaban)",
+        options: [
+          "Peristiwa Bandung Lautan Api (Maret 1946) menggunakan taktik bumi hangus di Bandung Selatan agar fasilitas strategis tidak dimanfaatkan oleh Sekutu dan NICA.",
+          "Puputan Margarana (20 November 1946) di Bali dipimpin oleh Letkol I Gusti Ngurah Rai yang bertempur hingga titik darah penghabisan melawan pasukan Belanda.",
+          "Serangan Umum 1 Maret 1949 di Yogyakarta berhasil menduduki ibu kota selama sekitar enam jam untuk membuktikan kepada dunia internasional bahwa TNI dan RI masih eksis.",
+          "Pertempuran Medan Area berlangsung di Semarang dan dipimpin secara langsung oleh Jenderal Soedirman pada akhir tahun 1945.",
+          "Pertempuran Lima Hari di Semarang terjadi pada tahun 1950 untuk mempertahankan negara federal Republik Indonesia Serikat (RIS)."
+        ],
+        answer: [0, 1, 2],
+        bahas: "Pernyataan 1 (Bandung Lautan Api), 2 (Puputan Margarana dipimpin I Gusti Ngurah Rai), dan 3 (Serangan Umum 1 Maret 1949 di Yogyakarta) adalah fakta sejarah yang benar. Pertempuran Medan Area terjadi di Medan/Sumatera Utara (bukan Semarang), dan Pertempuran Lima Hari Semarang terjadi Oktober 1945 melawan tentara Jepang."
+      },
+      {
+        no: 32,
+        type: "PGK_CHECK",
+        cog: "C4 • Level 2",
+        topic: "Strategi Belanda (NICA & Civil Affairs Agreement)",
+        narasi: "Setelah Jepang menyerah kepada Sekutu pada Agustus 1945, Belanda menyusun langkah hukum, sipil, dan militer untuk mengambil alih kembali bekas wilayah Hindia Belanda.",
+        question: "Pilihlah 3 pernyataan yang BENAR mengenai strategi Belanda mengembalikan kekuasaannya di Indonesia! (Pilih tepat 3 jawaban)",
+        options: [
+          "Melalui Civil Affairs Agreement (CAA) tanggal 24 Agustus 1945, Inggris menyetujui bahwa daerah-daerah yang dibebaskan dari Jepang di Indonesia akan diserahkan kembali kepada administrasi sipil Belanda (NICA).",
+          "Belanda membentuk NICA (Netherlands Indies Civil Administration) di bawah pimpinan H.J. van Mook yang datang membonceng pasukan Sekutu (AFNEI) ke Indonesia.",
+          "Sekutu dan Belanda membebaskan serta mempersenjatai kembali orang-orang Belanda dan serdadu KNIL bekas tawanan perang Jepang untuk memperkuat kendali militer di kota-kota besar.",
+          "Belanda secara sukarela mengakui kemerdekaan penuh Republik Indonesia pada bulan September 1945 di hadapan PBB.",
+          "Van Mook mendirikan NICA untuk membantu mempercepat pemindahan pusat pemerintahan RI dari Jakarta ke Bukittinggi."
+        ],
+        answer: [0, 1, 2],
+        bahas: "Tiga strategi Belanda pasca-kapitulasi Jepang ditunjukkan oleh opsi 1 (<i>Civil Affairs Agreement</i> Inggris–Belanda), opsi 2 (NICA pimpinan Van Mook membonceng AFNEI), dan opsi 3 (pembebasan dan persenjataan ulang bekas tawanan perang/serdadu KNIL)."
+      },
+      {
+        no: 33,
+        type: "PGK_CHECK",
+        cog: "C4 • Level 2",
+        topic: "Ciri & Pelaksanaan Demokrasi Liberal (1950–1959)",
+        narasi: "Pada kurun waktu 1950–1959, Indonesia menerapkan sistem Demokrasi Liberal berdasarkan Undang-Undang Dasar Sementara (UUDS) 1950.",
+        question: "Pilihlah 3 pernyataan yang BENAR mengenai karakteristik dan kebijakan masa Demokrasi Liberal! (Pilih tepat 3 jawaban)",
+        options: [
+          "Menerapkan sistem pemerintahan parlementer di mana kabinet dipimpin Perdana Menteri dan bertanggung jawab kepada parlemen (DPR) sehingga kabinet sering berganti akibat mosi tidak percaya.",
+          "Pemilu 1955 diselenggarakan dalam dua tahap dengan tujuan memilih anggota DPR serta memilih anggota Dewan Konstituante yang bertugas menyusun UUD tetap.",
+          "Pemerintah meluncurkan kebijakan Ekonomi Gerakan Benteng untuk menumbuhkan pengusaha pribumi melalui fasilitas kredit dan proteksi lisensi impor.",
+          "Sepanjang tahun 1950–1959 tidak pernah terjadi pergantian kabinet karena seluruh menteri diangkat seumur hidup oleh presiden.",
+          "Presiden Soekarno memegang kendali eksekutif penuh tanpa ada jabatan Perdana Menteri sepanjang berlakunya UUDS 1950."
+        ],
+        answer: [0, 1, 2],
+        bahas: "Ciri dan pelaksanaan Demokrasi Liberal (1950–1959) adalah sistem parlementer dengan instabilitas kabinet (7 kali ganti kabinet), terselenggaranya Pemilu 1955 untuk memilih DPR dan Konstituante, serta kebijakan ekonomi nasional seperti Gerakan Benteng."
+      },
+      {
+        no: 34,
+        type: "PGK_CHECK",
+        cog: "C4 • Level 2",
+        topic: "Ciri & Kebijakan Demokrasi Terpimpin (1959–1965)",
+        narasi: "Periode Demokrasi Terpimpin (1959–1965) menandai pemusatan kekuasaan politik di tangan Presiden Soekarno dengan berbagai doktrin politik dalam dan luar negeri.",
+        question: "Pilihlah 3 pernyataan yang BENAR mengenai ciri, kebijakan, dan penyimpangan Demokrasi Terpimpin! (Pilih tepat 3 jawaban)",
+        options: [
+          "Diawali oleh Dekrit Presiden 5 Juli 1959 yang membubarkan Konstituante, memberlakukan kembali UUD 1945 (UUDS 1950 tidak berlaku), serta membentuk MPRS dan DPAS.",
+          "Menerapkan doktrin NASAKOM di dalam negeri, melaksanakan Politik Mercusuar, serta melancarkan konfrontasi terhadap pembentukan Federasi Malaysia yang dianggap proyek neokolonialisme Inggris.",
+          "Indonesia berperan aktif memprakarsai berdirinya Gerakan Non-Blok (GNB) tahun 1961 sebagai upaya menolak dominasi blok militer Perang Dingin.",
+          "Dekrit Presiden 5 Juli 1959 menetapkan berlakunya kembali UUDS 1950 dan sistem kabinet parlementer.",
+          "Indonesia bergabung menjadi anggota resmi pakta pertahanan militer Blok Barat (SEATO) pada tahun 1963."
+        ],
+        answer: [0, 1, 2],
+        bahas: "Pernyataan 1 (isi Dekrit Presiden 5 Juli 1959), 2 (NASAKOM, Politik Mercusuar, dan konfrontasi Malaysia), serta 3 (Indonesia sebagai salah satu pemrakarsa GNB 1961) benar mengenai Demokrasi Terpimpin."
+      },
+      {
+        no: 35,
+        type: "PGK_CHECK",
+        cog: "C4 • Level 2",
+        topic: "Perjuangan Pembebasan Irian Barat",
+        narasi: "Belanda mengingkari janji penyelesaian masalah Irian Barat dalam KMB 1949 sehingga Presiden Soekarno menempuh jalur konfrontasi hingga lahirnya Trikora dan Perjanjian New York.",
+        question: "Pilihlah 3 pernyataan yang BENAR mengenai rangkaian perjuangan pembebasan Irian Barat! (Pilih tepat 3 jawaban)",
+        options: [
+          "Dalam KMB 1949, status wilayah Irian Barat ditunda penyelesaiannya selama satu tahun setelah pengakuan kedaulatan, namun Belanda terus bertahan dengan alasan perbedaan etnis dan kepentingan ekonomi strategisnya di Papua.",
+          "Presiden Soekarno mencanangkan Tri Komando Rakyat (Trikora) pada 19 Desember 1961 yang berisi: gagalkan pembentukan negara boneka Papua, kibarkan Sang Merah Putih di Irian Barat, dan bersiaplah untuk mobilisasi umum.",
+          "Konfrontasi Indonesia–Belanda berakhir melalui Perjanjian New York (15 Agustus 1962) yang turut dipengaruhi tekanan diplomatik Amerika Serikat agar Indonesia tidak semakin jatuh ke pengaruh Uni Soviet.",
+          "Belanda langsung menyerahkan penuh wilayah Irian Barat kepada Indonesia bersamaan dengan penandatanganan KMB pada Desember 1949.",
+          "Konfrontasi militer Trikora resmi diakhiri oleh penandatanganan Perjanjian Linggarjati di Cirebon."
+        ],
+        answer: [0, 1, 2],
+        bahas: "Tiga pernyataan yang benar adalah opsi 1 (penundaan hasil KMB 1949 dan alasan Belanda bertahan), opsi 2 (isi Trikora 19 Desember 1961), dan opsi 3 (Perjanjian New York 15 Agustus 1962 serta peran diplomasi AS di tengah Perang Dingin)."
+      },
+
+      // ===================== SOAL 36 - 40 (BENAR / SALAH) =====================
+      {
+        no: 36,
+        type: "PGK_BS",
+        cog: "C5 dan C6 • Level 3",
+        topic: "Dampak Agresi Militer Belanda II",
+        narasi: "Pada 19 Desember 1948, Belanda melancarkan Agresi Militer II dengan menduduki ibu kota Yogyakarta serta menawan Presiden Soekarno dan Wakil Presiden Hatta, dengan asumsi Republik Indonesia akan segera runtuh.",
+        question: "Tentukan status kebenaran (Benar/Salah) 5 pernyataan kesimpulan mengenai dampak Agresi Militer Belanda II tersebut!",
+        statements: [
+          "Agresi Militer II justru memicu kecaman keras dunia internasional dan menguatkan dukungan diplomatik terhadap kemerdekaan Indonesia di PBB serta negara-negara Asia.",
+          "Perang gerilya TNI di bawah pimpinan Jenderal Soedirman dan berdirinya PDRI membuktikan bahwa kekuatan militer Belanda bukan satu-satunya faktor penentu.",
+          "Kombinasi perlawanan gerilya di dalam negeri dan tekanan diplomasi internasional mempercepat perundingan (Roem-Royen dan KMB) menuju pengakuan kedaulatan RI.",
+          "Ditangkapnya Presiden Soekarno dan Wapres Hatta di Yogyakarta langsung membuat seluruh pasukan TNI menyerah tanpa syarat kepada Belanda.",
+          "Dewan Keamanan PBB memuji Agresi Militer II sebagai tindakan sah Belanda sehingga menolak menjatuhkan sanksi diplomatik."
+        ],
+        answer: ["B", "B", "B", "S", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) SALAH (TNI tetap melanjutkan perang gerilya di bawah Jenderal Soedirman dan pemerintahan berjalan lewat PDRI).\n5) SALAH (DK PBB mengecam agresi Belanda dan mengeluarkan resolusi penghentian permusuhan serta pembebasan pemimpin RI)."
+      },
+      {
+        no: 37,
+        type: "PGK_BS",
+        cog: "C4 • Level 2",
+        topic: "Tugas dan Peran AFNEI di Indonesia",
+        narasi: "Pasca-kekalahan Jepang pada Agustus 1945, Sekutu mengirimkan pasukan khusus AFNEI (<i>Allied Forces Netherlands East Indies</i>) pimpinan Letjen Sir Philip Christison ke Indonesia.",
+        question: "Tentukan status kebenaran (Benar/Salah) 5 pernyataan mengenai tugas dan peran AFNEI di Indonesia berikut!",
+        statements: [
+          "Menerima penyerahan kekuasaan dari tangan tentara pendudukan Jepang di Indonesia.",
+          "Melucuti senjata tentara Jepang dan memulangkan mereka kembali ke negara asalnya.",
+          "Membebaskan serta mengurus para tawanan perang dan interniran Sekutu (RAPWI).",
+          "Menghimpun keterangan dan bukti kejahatan perang tentara Jepang untuk dituntut di pengadilan militer Sekutu.",
+          "Membantu tentara Jepang mempertahankan wilayah jajahannya dan melarang pemulangan serdadu Jepang."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (tugas AFNEI justru melucuti dan memulangkan tentara Jepang, bukan membantu mereka mempertahankan kekuasaan)."
+      },
+      {
+        no: 38,
+        type: "PGK_BS",
+        cog: "C5 • Level 3",
+        topic: "Evaluasi Dampak Negatif Ekonomi Demokrasi Liberal",
+        narasi: "Berbagai kebijakan ekonomi yang silih berganti pada masa Demokrasi Liberal (1950–1959) tidak mampu sepenuhnya memulihkan perekonomian nasional yang terbebani utang KMB dan instabilitas politik.",
+        question: "Evaluasilah kebenaran (Benar/Salah) 5 pernyataan mengenai dampak negatif kebijakan ekonomi pada masa Demokrasi Liberal berikut!",
+        statements: [
+          "Defisit APBN yang membengkak dan ditutup dengan pencetakan uang memicu terjadinya inflasi tinggi yang membebani daya beli rakyat.",
+          "Ketidakstabilan penerimaan ekspor dan krisis anggaran mendorong meningkatnya ketergantungan pada pinjaman luar negeri.",
+          "Kegagalan kabinet mengatasi persoalan ekonomi sering memicu mosi tidak percaya di parlemen yang berujung pada pergantian kabinet berulang kali.",
+          "Kesenjangan pembangunan ekonomi antara pemerintah pusat dan daerah-daerah penghasil devisa di luar Jawa melebar hingga memicu pergolakan daerah.",
+          "Kebijakan ekonomi pada masa Demokrasi Liberal berhasil melunasi seluruh utang luar negeri Indonesia dan menghapus inflasi sebelum tahun 1959."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (inflasi justru tetap tinggi dan defisit anggaran serta beban utang tidak teratasi hingga berakhirnya Demokrasi Liberal)."
+      },
+      {
+        no: 39,
+        type: "PGK_BS",
+        cog: "C4 • Level 2",
+        topic: "Dampak Langsung Peristiwa G30S/PKI",
+        narasi: "Peristiwa Gerakan 30 September 1965 (G30S/PKI) menjadi titik balik besar yang mengubah arah sejarah politik, ideologi, dan kemanusiaan di Indonesia.",
+        question: "Tentukan status kebenaran (Benar/Salah) 5 pernyataan mengenai dampak langsung peristiwa G30S/PKI terhadap tatanan politik Indonesia berikut!",
+        statements: [
+          "Runtuhnya wibawa dan kekuasaan politik Presiden Soekarno secara bertahap hingga dikeluarkannya Supersemar dan pencabutan mandat oleh MPRS.",
+          "Dibubarkan dan dilarangnya Partai Komunis Indonesia (PKI) beserta ajaran komunisme melalui TAP MPRS No. XXV/MPRS/1966.",
+          "Terjadinya peralihan kepemimpinan nasional kepada Jenderal Soeharto yang menandai dimulainya pemerintahan Orde Baru.",
+          "Terjadinya penangkapan dan pembantaian massal terhadap anggota maupun pihak yang dituduh sebagai simpatisan PKI di berbagai wilayah Indonesia.",
+          "PKI ditetapkan oleh MPRS sebagai partai politik tunggal resmi yang memimpin pemerintahan Orde Baru."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (PKI justru dibubarkan dan dinyatakan sebagai partai terlarang pada 12 Maret 1966 serta dikukuhkan dalam TAP MPRS No. XXV/MPRS/1966)."
+      },
+      {
+        no: 40,
+        type: "PGK_BS",
+        cog: "C4 • Level 2",
+        topic: "Perbandingan Kedaulatan Rakyat: Liberal vs Terpimpin",
+        narasi: "Pelaksanaan prinsip kedaulatan rakyat dan struktur kepartaian mengalami perubahan fundamental saat Indonesia beralih dari Demokrasi Liberal (1950–1959) ke Demokrasi Terpimpin (1959–1965).",
+        question: "Nilailah kebenaran (Benar/Salah) 5 pernyataan perbandingan pelaksanaan kedaulatan rakyat antara Demokrasi Liberal dan Demokrasi Terpimpin berikut!",
+        statements: [
+          "Demokrasi Liberal menganut sistem multi-partai yang bebas bersaing di parlemen, sedangkan Demokrasi Terpimpin melakukan pembatasan dan penyederhanaan partai politik (hanya 10 partai yang diakui).",
+          "Pada Demokrasi Liberal, kedaulatan rakyat disalurkan melalui DPR hasil Pemilu 1955 dan mekanisme parlementer, sedangkan pada Demokrasi Terpimpin kekuasaan dan kedaulatan terpusat pada Presiden sebagai Pemimpin Besar Revolusi.",
+          "Pada Demokrasi Liberal, kabinet bertanggung jawab kepada DPR, sedangkan pada Demokrasi Terpimpin menteri-menteri bertanggung jawab langsung kepada Presiden.",
+          "Pada masa Demokrasi Terpimpin, DPR hasil Pemilu 1955 dibubarkan Presiden ketika menolak RAPBN lalu diganti dengan DPR-GR yang anggotanya ditunjuk langsung oleh Presiden.",
+          "Pada masa Demokrasi Liberal, tidak pernah diselenggarakan pemilihan umum nasional sama sekali karena seluruh anggota DPR diangkat oleh Presiden."
+        ],
+        answer: ["B", "B", "B", "B", "S"],
+        bahas: "1) BENAR.\n2) BENAR.\n3) BENAR.\n4) BENAR.\n5) SALAH (pada masa Demokrasi Liberal justru terlaksana Pemilu demokratis pertama tahun 1955 untuk memilih anggota DPR dan Konstituante)."
+      }
+    ];
+
+    // State Aplikasi
+    let currentIndex = 0;
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let bahasVisible = new Array(QUESTIONS.length).fill(false);
+    let autoBahasMode = false;
+    let isEvaluated = false;
+
+    // Inisialisasi jawaban default untuk PGK B/S dan Checklist
+    QUESTIONS.forEach((q, idx) => {
+      if (q.type === "PGK_BS") {
+        userAnswers[idx] = new Array(q.statements.length).fill(null);
+      } else if (q.type === "PGK_CHECK") {
+        userAnswers[idx] = [];
+      }
+    });
+
+    function isQuestionAnswered(idx) {
+      const q = QUESTIONS[idx];
+      const ans = userAnswers[idx];
+      if (q.type === "PG") return ans !== null;
+      if (q.type === "PGK_BS") return Array.isArray(ans) && ans.every(v => v !== null);
+      if (q.type === "PGK_CHECK") return Array.isArray(ans) && ans.length > 0;
+      return false;
+    }
+
+    function isQuestionCorrect(idx) {
+      const q = QUESTIONS[idx];
+      const ans = userAnswers[idx];
+      if (q.type === "PG") return ans === q.answer;
+      if (q.type === "PGK_BS") {
+        return Array.isArray(ans) && q.answer.every((val, i) => ans[i] === val);
+      }
+      if (q.type === "PGK_CHECK") {
+        if (!Array.isArray(ans) || ans.length !== q.answer.length) return false;
+        const sortedA = [...ans].sort((a, b) => a - b);
+        const sortedB = [...q.answer].sort((a, b) => a - b);
+        return sortedA.every((val, i) => val === sortedB[i]);
+      }
+      return false;
+    }
+
+    function renderNav() {
+      const grid = document.getElementById("navGrid");
+      grid.innerHTML = "";
+      let answeredTotal = 0;
+
+      QUESTIONS.forEach((q, idx) => {
+        const answered = isQuestionAnswered(idx);
+        if (answered) answeredTotal++;
+
+        const btn = document.createElement("button");
+        btn.className = "nav-btn";
+        btn.textContent = q.no;
+
+        if (idx === currentIndex) btn.classList.add("current");
+        if (isEvaluated) {
+          btn.classList.add(isQuestionCorrect(idx) ? "eval-correct" : "eval-wrong");
+        } else if (answered) {
+          btn.classList.add("answered");
+        }
+
+        btn.onclick = () => goTo(idx);
+        grid.appendChild(btn);
+      });
+
+      document.getElementById("answeredCount").textContent = `Terjawab: ${answeredTotal} / ${QUESTIONS.length}`;
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[currentIndex];
+      const total = QUESTIONS.length;
+
+      // Progress
+      document.getElementById("progressLabel").textContent = `Soal ${q.no} dari ${total}`;
+      const pct = ((currentIndex + 1) / total) * 100;
+      document.getElementById("progressPercent").textContent = `${pct.toFixed(1)}%`;
+      document.getElementById("progressFill").style.width = `${pct}%`;
+
+      // Meta tags
+      const typeLabel =
+        q.type === "PG" ? "Pilihan Ganda" :
+        q.type === "PGK_BS" ? "Benar / Salah" :
+        "PG Kompleks (Checklist)";
+
+      document.getElementById("qMeta").innerHTML = `
+        <span class="tag tag-num">No. ${q.no}</span>
+        <span class="tag tag-type">${typeLabel}</span>
+        <span class="tag tag-cog">${q.cog}</span>
+        <span class="tag tag-topic">${q.topic}</span>
+      `;
+
+      // Perbarui narasi dinamis jika berisi slot foto arsip No. 6 / No. 15
+      let narasiHTML = q.narasi;
+      if (q.no === 6) {
+        narasiHTML = "Perhatikan foto arsip kapal perang yang berlabuh di Teluk Jakarta sebagai lokasi perundingan antara delegasi Indonesia dan Belanda berikut ini:" +
+          buildArchivalSlot(6, "uss_renville.jpg", "Kapal Perang USS Renville di Teluk Jakarta (1948)", "Menampilkan kapal pengangkut angkatan laut Amerika Serikat USS Renville yang dijadikan tempat netral perundingan Indonesia–Belanda.");
+      } else if (q.no === 15) {
+        narasiHTML = "Perhatikan foto arsip tokoh pemimpin pusat gerakan Darul Islam / Tentara Islam Indonesia (DI/TII) yang memproklamasikan berdirinya Negara Islam Indonesia (NII) di Jawa Barat pada 7 Agustus 1949 berikut ini:" +
+          buildArchivalSlot(15, "tokoh_ditii.jpg", "Foto Arsip Tokoh Pemimpin Pusat DI/TII (Jawa Barat)", "Menampilkan potret tokoh pendiri dan imam pusat gerakan DI/TII di Jawa Barat (1949).");
+      }
+
+      document.getElementById("qNarasi").innerHTML = narasiHTML;
+      document.getElementById("qText").innerHTML = q.question;
+
+      const inputArea = document.getElementById("qInputArea");
+      inputArea.innerHTML = "";
+
+      const showCorrection = isEvaluated || bahasVisible[currentIndex];
+
+      if (q.type === "PG") {
+        const list = document.createElement("div");
+        list.className = "options-list";
+        const letters = ["A", "B", "C", "D", "E"];
+
+        q.options.forEach((opt, i) => {
+          const item = document.createElement("div");
+          item.className = "option-item";
+          const selected = userAnswers[currentIndex] === i;
+          if (selected) item.classList.add("selected");
+
+          if (showCorrection) {
+            if (i === q.answer) item.classList.add("correct");
+            else if (selected && i !== q.answer) item.classList.add("wrong");
+          }
+
+          item.innerHTML = `
+            <span class="option-letter">${letters[i]}</span>
+            <span>${opt}</span>
+          `;
+          item.onclick = () => selectPG(i);
+          list.appendChild(item);
+        });
+        inputArea.appendChild(list);
+      } else if (q.type === "PGK_BS") {
+        const table = document.createElement("table");
+        table.className = "bs-table";
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Pernyataan</th>
+              <th class="center">Benar</th>
+              <th class="center">Salah</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        `;
+        const tbody = table.querySelector("tbody");
+
+        q.statements.forEach((stmt, i) => {
+          const tr = document.createElement("tr");
+          const curVal = userAnswers[currentIndex][i];
+
+          if (showCorrection && curVal !== null) {
+            tr.className = curVal === q.answer[i] ? "row-correct" : "row-wrong";
+          }
+
+          tr.innerHTML = `
+            <td><strong>${i + 1}.</strong> ${stmt}</td>
+            <td class="center">
+              <button class="bs-btn ${curVal === 'B' ? 'active-b' : ''}" onclick="selectBS(${i}, 'B')">B</button>
+            </td>
+            <td class="center">
+              <button class="bs-btn ${curVal === 'S' ? 'active-s' : ''}" onclick="selectBS(${i}, 'S')">S</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+        inputArea.appendChild(table);
+      } else if (q.type === "PGK_CHECK") {
+        const list = document.createElement("div");
+        list.className = "options-list";
+
+        q.options.forEach((opt, i) => {
+          const item = document.createElement("div");
+          item.className = "check-item";
+          const selected = userAnswers[currentIndex].includes(i);
+          if (selected) item.classList.add("selected");
+
+          if (showCorrection) {
+            if (q.answer.includes(i)) item.classList.add("correct");
+            else if (selected && !q.answer.includes(i)) item.classList.add("wrong");
+          }
+
+          item.innerHTML = `
+            <span class="check-box">${selected ? "✓" : ""}</span>
+            <span>${opt}</span>
+          `;
+          item.onclick = () => toggleCheck(i);
+          list.appendChild(item);
+        });
+        inputArea.appendChild(list);
+      }
+
+      // Pembahasan box
+      const bahasBox = document.getElementById("bahasBox");
+      const shouldShowBahas = bahasVisible[currentIndex] || autoBahasMode;
+      if (shouldShowBahas) {
+        bahasBox.classList.add("show");
+        document.getElementById("bahasKey").textContent = formatAnswerKey(q);
+        document.getElementById("bahasText").innerHTML = q.bahas.replace(/\n/g, "<br/>");
+      } else {
+        bahasBox.classList.remove("show");
+      }
+
+      // Tombol prev/next
+      document.getElementById("prevBtn").disabled = currentIndex === 0;
+      document.getElementById("nextBtn").disabled = currentIndex === total - 1;
+      document.getElementById("bahasBtn").textContent = shouldShowBahas ? "🙈 Sembunyikan Bahas" : "💡 Bahas Soal Ini";
+
+      renderNav();
+    }
+
+    function formatAnswerKey(q) {
+      const letters = ["A", "B", "C", "D", "E"];
+      if (q.type === "PG") {
+        return `Kunci Jawaban: ${letters[q.answer]}`;
+      }
+      if (q.type === "PGK_BS") {
+        return `Kunci Jawaban: ${q.answer.map((v, i) => `${i + 1}.${v === 'B' ? 'Benar' : 'Salah'}`).join(" | ")}`;
+      }
+      if (q.type === "PGK_CHECK") {
+        return `Kunci Jawaban: Pernyataan nomor ${q.answer.map(i => i + 1).join(", ")}`;
+      }
+    }
+
+    function selectPG(optionIdx) {
+      userAnswers[currentIndex] = optionIdx;
+      if (autoBahasMode) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function selectBS(stmtIdx, val) {
+      userAnswers[currentIndex][stmtIdx] = val;
+      if (autoBahasMode && isQuestionAnswered(currentIndex)) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function toggleCheck(optIdx) {
+      const arr = userAnswers[currentIndex];
+      const pos = arr.indexOf(optIdx);
+      if (pos === -1) arr.push(optIdx);
+      else arr.splice(pos, 1);
+      if (autoBahasMode) bahasVisible[currentIndex] = true;
+      renderQuestion();
+    }
+
+    function toggleBahas() {
+      bahasVisible[currentIndex] = !bahasVisible[currentIndex];
+      renderQuestion();
+    }
+
+    function toggleModeBahas() {
+      autoBahasMode = !autoBahasMode;
+      const btn = document.getElementById("toggleAutoBahas");
+      btn.textContent = `Mode Bahas Langsung: ${autoBahasMode ? "ON" : "OFF"}`;
+      if (autoBahasMode) {
+        bahasVisible[currentIndex] = true;
+      }
+      renderQuestion();
+    }
+
+    function goTo(idx) {
+      if (idx < 0 || idx >= QUESTIONS.length) return;
+      currentIndex = idx;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function finishQuiz() {
+      isEvaluated = true;
+      let correctCount = 0;
+      QUESTIONS.forEach((_, idx) => {
+        if (isQuestionCorrect(idx)) correctCount++;
+        bahasVisible[idx] = true;
+      });
+
+      const score = Math.round((correctCount / QUESTIONS.length) * 100);
+      document.getElementById("finalScoreText").textContent = `${score} / 100`;
+      document.getElementById("finalDetailText").textContent = `Benar: ${correctCount} dari ${QUESTIONS.length} soal`;
+      document.getElementById("summaryBanner").classList.add("show");
+
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showAllBahasMode() {
+      bahasVisible = bahasVisible.map(() => true);
+      renderQuestion();
+    }
+
+    function resetQuiz() {
+      isEvaluated = false;
+      currentIndex = 0;
+      bahasVisible.fill(false);
+      QUESTIONS.forEach((q, idx) => {
+        if (q.type === "PG") userAnswers[idx] = null;
+        else if (q.type === "PGK_BS") userAnswers[idx] = new Array(q.statements.length).fill(null);
+        else userAnswers[idx] = [];
+      });
+      document.getElementById("summaryBanner").classList.remove("show");
+      renderQuestion();
+    }
+
+    // Render awal
+    renderQuestion();
+  </script>
+</body>
+</html>
